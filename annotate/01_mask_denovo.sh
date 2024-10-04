@@ -62,13 +62,12 @@ tail -n +2 "$SAMPFILE" | sed -n "${N}p" | while read -r SPECIES PHYLUM; do
         # Run RepeatMasker
         RepeatMasker -pa "$CPU" -e ncbi -dir "../$OUTDIR" -lib "../repeat_library/${name}-families.fa" "../$INDIR/${name}.fasta"
 
-        # Uncomment if you want to move generated files to repeat_library
-        # mv repeatmodeler-library.*.fasta "../repeat_library/${name}.repeatmodeler-library.fasta"
-        # mv funannotate-mask.log "../logs/masklog_long.$name.log"
+        mv repeatmodeler-library.*.fasta "../repeat_library/${name}.repeatmodeler-library.fasta"
+        mv funannotate-mask.log "../logs/masklog_long.$name.log"
 
         popd || { echo "Failed to return to the previous directory"; exit 1; }
         # Uncomment if you want to remove the temporary directory
-        # rm -r "$name.mask.$$"
+        rm -r "$name.mask.$$"
     else
         echo "Skipping ${name} as it has already been masked."
     fi
