@@ -14,6 +14,8 @@ print(dim(orthogroups_df))    # Check dimensions
 # Convert counts to binary presence/absence
 orthogroups_df[orthogroups_df > 0] <- 1
 
+# remove the first column
+orthogroups_df <- orthogroups_df[, -1]
 # Save the UpSet plot as PNG
 png(file = "upset_plot.png", width = 1200, height = 800)  # Increase dimensions
 upset(orthogroups_df, nsets = ncol(orthogroups_df), sets = rev(selected_species), 
