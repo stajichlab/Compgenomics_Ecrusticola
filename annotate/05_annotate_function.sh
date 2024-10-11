@@ -40,9 +40,9 @@ tail -n +2 $SAMPFILE | sed -n ${N}p | while read SPECIES PHYLUM
 do
   BASE=$(echo -n "$SPECIES" | perl -p -e 's/\s+/_/g')
   echo "$BASE"
-  MASKED=$(realpath $INDIR/$BASE.masked.fasta)
+  MASKED=$(realpath $INDIR/$BASE.fasta.masked)
   if [ ! -f $MASKED ]; then
-    echo "Cannot find $BASE.masked.fasta in $INDIR - may not have been run yet"
+    echo "Cannot find $BASE.fasta.masked in $INDIR - may not have been run yet"
     exit
   fi
   ANTISMASHRESULT=$OUTDIR/$name/annotate_misc/antiSMASH.results.gbk
