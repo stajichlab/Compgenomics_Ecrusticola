@@ -1,0 +1,2645 @@
+LOCUS       MU404329.1             43343 bp    DNA     linear   UNK 05-OCT-2024
+DEFINITION  Exophiala_viscosa.
+ACCESSION   MU404329
+VERSION     MU404329.1
+KEYWORDS    .
+SOURCE      Exophiala_viscosa
+  ORGANISM  Exophiala_viscosa Unclassified.
+            .
+COMMENT     'Annotated using Funannotate 1.8.17'.
+            ##antiSMASH-Data-START##
+            Version      :: 7.1.0
+            Run date     :: 2024-10-09 01:02:22
+            NOTE: This is a single region extracted from a larger record!
+            Orig. start  :: 173359
+            Orig. end    :: 216702
+            ##antiSMASH-Data-END##
+FEATURES             Location/Qualifiers
+     protocluster    1..43343
+                     /aStool="rule-based-clusters"
+                     /category="NRPS"
+                     /contig_edge="False"
+                     /core_location="[20000:23343]"
+                     /cutoff="0"
+                     /detection_rule="cds((PP-binding or NAD_binding_4) and
+                     (AMP-binding or A-OX))"
+                     /neighbourhood="20000"
+                     /product="NRPS-like"
+                     /protocluster_number="1"
+                     /tool="antismash"
+     proto_core      20001..23343
+                     /aStool="rule-based-clusters"
+                     /tool="antismash"
+                     /cutoff="0"
+                     /detection_rule="cds((PP-binding or NAD_binding_4) and
+                     (AMP-binding or A-OX))"
+                     /neighbourhood="20000"
+                     /product="NRPS-like"
+                     /protocluster_number="1"
+     cand_cluster    1..43343
+                     /SMILES="NC([*])C(=O)O"
+                     /candidate_cluster_number="1"
+                     /contig_edge="False"
+                     /detection_rules="cds((PP-binding or NAD_binding_4) and
+                     (AMP-binding or A-OX))"
+                     /kind="single"
+                     /product="NRPS-like"
+                     /protoclusters="1"
+                     /tool="antismash"
+     region          1..43343
+                     /candidate_cluster_numbers="1"
+                     /contig_edge="False"
+                     /product="NRPS-like"
+                     /region_number="1"
+                     /rules="cds((PP-binding or NAD_binding_4) and (AMP-binding
+                     or A-OX))"
+                     /tool="antismash"
+     gene            99..1185
+                     /locus_tag="FUN_007847"
+     mRNA            join(99..266,330..544,600..1185)
+                     /locus_tag="FUN_007847"
+                     /product="hypothetical protein"
+     CDS             join(99..266,330..544,600..1185)
+                     /codon_start=1
+                     /locus_tag="FUN_007847"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007847-T1"
+                     /transl_table=1
+                     /translation="MNSETKPMDGPAEMVDLTRAVTFEPLPDPIKVEGGLIVDTENLAS
+                     TEGLKLSRDGHTVLIPQPTDSEADCLNWSTTKKHLILFTIAWDALCADFVGAIGSAPII
+                     FQAAEWQMSFNKANQPNAITVLLLGISGLIWVPMSSYWDRAPVLFWTEVIGFFFTVGTA
+                     LCNTYETFFAMRVLSAIFLTASQTVSLALLKDIFFFHERARKIGLWAALYTASPYLGPQ
+                     LGSFVVGKTLDWHNVYWMAAGCVAIQLLLLVLFLDETWYNRTLHSHEQPHRSQTTFGRL
+                     GRLTGAWQIQHHKRYFSTVSATYRELLFVILQPHFTLIAIL"
+     PFAM_domain     join(453..544,600..1026)
+                     /aSDomain="MFS_1"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF07690.19"
+                     /db_xref="GO:0022857"
+                     /db_xref="GO:0055085"
+                     /description="Major Facilitator Superfamily"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007847_0083"
+                     /evalue="3.00E-15"
+                     /gene_ontologies="GO:0022857: transmembrane transporter
+                     activity"
+                     /gene_ontologies="GO:0055085: transmembrane transport"
+                     /label="FUN_007847"
+                     /locus_tag="FUN_007847"
+                     /protein_end="270"
+                     /protein_start="97"
+                     /score="56.1"
+                     /tool="antismash"
+                     /translation="IGSAPIIFQAAEWQMSFNKANQPNAITVLLLGISGLIWVPMSSYW
+                     DRAPVLFWTEVIGFFFTVGTALCNTYETFFAMRVLSAIFLTASQTVSLALLKDIFFFHE
+                     RARKIGLWAALYTASPYLGPQLGSFVVGKTLDWHNVYWMAAGCVAIQLLLLVLFLDETW
+                     YNRTLHSHEQ"
+     PFAM_domain     join(453..544,600..1026)
+                     /aSDomain="MFS_1"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF07690.19"
+                     /db_xref="GO:0022857"
+                     /db_xref="GO:0055085"
+                     /description="Major Facilitator Superfamily"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007847_0001"
+                     /evalue="3.00E-15"
+                     /gene_ontologies="GO:0022857: transmembrane transporter
+                     activity"
+                     /gene_ontologies="GO:0055085: transmembrane transport"
+                     /label="FUN_007847"
+                     /locus_tag="FUN_007847"
+                     /protein_end="270"
+                     /protein_start="97"
+                     /score="56.1"
+                     /tool="antismash"
+                     /translation="IGSAPIIFQAAEWQMSFNKANQPNAITVLLLGISGLIWVPMSSYW
+                     DRAPVLFWTEVIGFFFTVGTALCNTYETFFAMRVLSAIFLTASQTVSLALLKDIFFFHE
+                     RARKIGLWAALYTASPYLGPQLGSFVVGKTLDWHNVYWMAAGCVAIQLLLLVLFLDETW
+                     YNRTLHSHEQ"
+     gene            complement(1513..3292)
+                     /locus_tag="FUN_007848"
+     mRNA            complement(join(1513..1914,1974..2134,2195..2721,
+                     2771..3104,3157..3292))
+                     /locus_tag="FUN_007848"
+                     /product="hypothetical protein"
+     CDS             complement(join(1513..1914,1974..2134,2195..2721,
+                     2771..3104,3157..3292))
+                     /codon_start=1
+                     /gene_functions="transport (smcogs) SMCOG1169:sugar
+                     transport protein (Score: 300.6; E-value: 3.1e-91)"
+                     /gene_kind="transport"
+                     /locus_tag="FUN_007848"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007848-T1"
+                     /transl_table=1
+                     /translation="MLRLTSYNIWIVLASALGAYSYGFSFAVFVTSIGEPGFFTFFKLN
+                     PASSKTASILGAISALFCAGAAFGAILQGWTSDRFGRRISLAIGGAIATVGTTVVAAAW
+                     NIPMLFVFRFITGLGVGQLLALVPLYIAEVAPPHRRGLLSAATGCSFSLGYLSSAWIGY
+                     GCFFTTNDVVQWRMPLCLCPIAPLGLVIACYWIPESPRWLIWNDRLDEAWVVIQKVHHD
+                     LSDPRDTAAHAEFIQIKAQVEHDKQFKATYLKMFTHPSWRKRTLLAILVIFAVGSAGIN
+                     GITTYLILVAQSIGFTGSKALLLYGIYVIIAVGFNFVNAAVIDKVGRRPLMLIGLAWCS
+                     SCLLATSLLIWKFAETPNSAANKATIFFIMMYAFGVGMFIDPTQFVIVSEIFPTTIRAK
+                     GLTVALFTYFVTTIIYTAGAPTAFANIGWRYYLVFVCVTVACMVALFFMLPETTGKTLE
+                     EIGALFGDEVVVHFAQDGHGLVEVDADTAFALKNETIHVEKIPSAKGQGERAGASKEET
+                     AA"
+     PFAM_domain     complement(join(1681..1914,1974..2134,2195..2721,
+                     2771..3104,3157..3253))
+                     /aSDomain="Sugar_tr"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00083.27"
+                     /db_xref="GO:0016020"
+                     /db_xref="GO:0022857"
+                     /db_xref="GO:0055085"
+                     /description="Sugar (and other) transporter"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007848_0084"
+                     /evalue="5.70E-83"
+                     /gene_ontologies="GO:0016020: membrane"
+                     /gene_ontologies="GO:0022857: transmembrane transporter
+                     activity"
+                     /gene_ontologies="GO:0055085: transmembrane transport"
+                     /label="FUN_007848"
+                     /locus_tag="FUN_007848"
+                     /protein_end="464"
+                     /protein_start="13"
+                     /score="279.4"
+                     /tool="antismash"
+                     /translation="ASALGAYSYGFSFAVFVTSIGEPGFFTFFKLNPASSKTASILGAI
+                     SALFCAGAAFGAILQGWTSDRFGRRISLAIGGAIATVGTTVVAAAWNIPMLFVFRFITG
+                     LGVGQLLALVPLYIAEVAPPHRRGLLSAATGCSFSLGYLSSAWIGYGCFFTTNDVVQWR
+                     MPLCLCPIAPLGLVIACYWIPESPRWLIWNDRLDEAWVVIQKVHHDLSDPRDTAAHAEF
+                     IQIKAQVEHDKQFKATYLKMFTHPSWRKRTLLAILVIFAVGSAGINGITTYLILVAQSI
+                     GFTGSKALLLYGIYVIIAVGFNFVNAAVIDKVGRRPLMLIGLAWCSSCLLATSLLIWKF
+                     AETPNSAANKATIFFIMMYAFGVGMFIDPTQFVIVSEIFPTTIRAKGLTVALFTYFVTT
+                     IIYTAGAPTAFANIGWRYYLVFVCVTVACMVALFFMLPETTGKTLEEIGALF"
+     PFAM_domain     complement(join(1681..1914,1974..2134,2195..2721,
+                     2771..3104,3157..3253))
+                     /aSDomain="Sugar_tr"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00083.27"
+                     /db_xref="GO:0016020"
+                     /db_xref="GO:0022857"
+                     /db_xref="GO:0055085"
+                     /description="Sugar (and other) transporter"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007848_0002"
+                     /evalue="5.70E-83"
+                     /gene_ontologies="GO:0016020: membrane"
+                     /gene_ontologies="GO:0022857: transmembrane transporter
+                     activity"
+                     /gene_ontologies="GO:0055085: transmembrane transport"
+                     /label="FUN_007848"
+                     /locus_tag="FUN_007848"
+                     /protein_end="464"
+                     /protein_start="13"
+                     /score="279.4"
+                     /tool="antismash"
+                     /translation="ASALGAYSYGFSFAVFVTSIGEPGFFTFFKLNPASSKTASILGAI
+                     SALFCAGAAFGAILQGWTSDRFGRRISLAIGGAIATVGTTVVAAAWNIPMLFVFRFITG
+                     LGVGQLLALVPLYIAEVAPPHRRGLLSAATGCSFSLGYLSSAWIGYGCFFTTNDVVQWR
+                     MPLCLCPIAPLGLVIACYWIPESPRWLIWNDRLDEAWVVIQKVHHDLSDPRDTAAHAEF
+                     IQIKAQVEHDKQFKATYLKMFTHPSWRKRTLLAILVIFAVGSAGINGITTYLILVAQSI
+                     GFTGSKALLLYGIYVIIAVGFNFVNAAVIDKVGRRPLMLIGLAWCSSCLLATSLLIWKF
+                     AETPNSAANKATIFFIMMYAFGVGMFIDPTQFVIVSEIFPTTIRAKGLTVALFTYFVTT
+                     IIYTAGAPTAFANIGWRYYLVFVCVTVACMVALFFMLPETTGKTLEEIGALF"
+     gene            3858..4758
+                     /locus_tag="FUN_007849"
+     mRNA            join(3858..4154,4207..4758)
+                     /locus_tag="FUN_007849"
+                     /product="hypothetical protein"
+     CDS             join(3858..4154,4207..4758)
+                     /NRPS_PKS="Domain: PKS_KR (20-197). E-value: 7.7e-09.
+                     Score: 27.5. Matches aSDomain:
+                     nrpspksdomains_FUN_007849_PKS_KR.1"
+                     /codon_start=1
+                     /gene_functions="biosynthetic-additional
+                     (rule-based-clusters) adh_short_C2"
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1001:short-chain dehydrogenase/reductase SDR (Score:
+                     190; E-value: 8.5e-58)"
+                     /gene_kind="biosynthetic-additional"
+                     /locus_tag="FUN_007849"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007849-T1"
+                     /sec_met_domain="adh_short_C2 (E-value: 4.6e-32, bitscore:
+                     106.6, seeds: 47, tool: rule-based-clusters)"
+                     /transl_table=1
+                     /translation="MSTNRVYKLDGTGRLHGRIAIVTGSSSGLGREIALAIAREGASVV
+                     CSDLREAARPDGFEEDKEIPTHEVIKNNGGRAVFKKCDLSHTSEIVAVIQFAVETWGKL
+                     DILVNNAGLWMPLRDFVEESEEQWDAMFAINAKGTRTAMQEAIKQYLRQPIDEISGSRG
+                     RIVSISSAAGGRTAIRREATYAASKAAVAMLTQNVALDHAKDYININGVCPGVVKSGAA
+                     GINFRTPEIITEMRKTTPWPRLGEPSDIAKAVVFLCSDDAQWITGQNLAVDGGFTIGIP
+                     L"
+     CDS_motif       3918..3983
+                     /aSTool="nrps_pks_domains"
+                     /database="abmotifs"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksmotif_FUN_007849_0001"
+                     /evalue="3.70E-04"
+                     /label="PKSI-KR_m1"
+                     /locus_tag="FUN_007849"
+                     /protein_end="42"
+                     /protein_start="20"
+                     /score="13.2"
+                     /tool="antismash"
+                     /translation="IVTGSSSGLGREIALAIAREGA"
+     aSDomain        join(3918..4154,4207..4500)
+                     /aSDomain="PKS_KR"
+                     /aSTool="nrps_pks_domains"
+                     /database="nrpspksdomains.hmm"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksdomains_FUN_007849_PKS_KR.1"
+                     /evalue="7.70E-09"
+                     /label="FUN_007849_PKS_KR.1"
+                     /locus_tag="FUN_007849"
+                     /protein_end="197"
+                     /protein_start="20"
+                     /score="27.5"
+                     /specificity="KR activity: inactive"
+                     /specificity="KR stereochemistry: C2"
+                     /tool="antismash"
+                     /translation="IVTGSSSGLGREIALAIAREGASVVCSDLREAARPDGFEEDKEIP
+                     THEVIKNNGGRAVFKKCDLSHTSEIVAVIQFAVETWGKLDILVNNAGLWMPLRDFVEES
+                     EEQWDAMFAINAKGTRTAMQEAIKQYLRQPIDEISGSRGRIVSISSAAGGRTAIRREAT
+                     YAASKAAVAMLTQN"
+     PFAM_domain     join(3927..4154,4207..4740)
+                     /aSDomain="adh_short_C2"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF13561.9"
+                     /description="Enoyl-(Acyl carrier protein) reductase"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007849_0085"
+                     /evalue="2.90E-56"
+                     /label="FUN_007849"
+                     /locus_tag="FUN_007849"
+                     /protein_end="277"
+                     /protein_start="23"
+                     /score="190.8"
+                     /tool="antismash"
+                     /translation="GSSSGLGREIALAIAREGASVVCSDLREAARPDGFEEDKEIPTHE
+                     VIKNNGGRAVFKKCDLSHTSEIVAVIQFAVETWGKLDILVNNAGLWMPLRDFVEESEEQ
+                     WDAMFAINAKGTRTAMQEAIKQYLRQPIDEISGSRGRIVSISSAAGGRTAIRREATYAA
+                     SKAAVAMLTQNVALDHAKDYININGVCPGVVKSGAAGINFRTPEIITEMRKTTPWPRLG
+                     EPSDIAKAVVFLCSDDAQWITGQNLAVDGGFT"
+     PFAM_domain     join(3927..4154,4207..4740)
+                     /aSDomain="adh_short_C2"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF13561.9"
+                     /description="Enoyl-(Acyl carrier protein) reductase"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007849_0003"
+                     /evalue="2.90E-56"
+                     /label="FUN_007849"
+                     /locus_tag="FUN_007849"
+                     /protein_end="277"
+                     /protein_start="23"
+                     /score="190.8"
+                     /tool="antismash"
+                     /translation="GSSSGLGREIALAIAREGASVVCSDLREAARPDGFEEDKEIPTHE
+                     VIKNNGGRAVFKKCDLSHTSEIVAVIQFAVETWGKLDILVNNAGLWMPLRDFVEESEEQ
+                     WDAMFAINAKGTRTAMQEAIKQYLRQPIDEISGSRGRIVSISSAAGGRTAIRREATYAA
+                     SKAAVAMLTQNVALDHAKDYININGVCPGVVKSGAAGINFRTPEIITEMRKTTPWPRLG
+                     EPSDIAKAVVFLCSDDAQWITGQNLAVDGGFT"
+     gene            5271..5769
+                     /locus_tag="FUN_007850"
+     mRNA            join(5271..5293,5349..5769)
+                     /locus_tag="FUN_007850"
+                     /product="hypothetical protein"
+     CDS             join(5271..5293,5349..5769)
+                     /NRPS_PKS="Domain: PKS_KR (7-125). E-value: 2.9e-08. Score:
+                     25.7. Matches aSDomain: nrpspksdomains_FUN_007850_PKS_KR.1"
+                     /codon_start=1
+                     /gene_functions="biosynthetic-additional
+                     (rule-based-clusters) Polysacc_synt_2"
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1001:short-chain dehydrogenase/reductase SDR (Score:
+                     89.6; E-value: 3.9e-27)"
+                     /gene_kind="biosynthetic-additional"
+                     /locus_tag="FUN_007850"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007850-T1"
+                     /sec_met_domain="Polysacc_synt_2 (E-value: 7e-07, bitscore:
+                     23.3, seeds: 77, tool: rule-based-clusters)"
+                     /transl_table=1
+                     /translation="MTIFGNQGVALITGAGGALGRGIALQFARDGVRRIAGLDLSQNGL
+                     AATAKAVESEVPEIEFLPVTVDISDERQIADAFRQVVDRFGRIDYAINNAAIASPFVTT
+                     GDAEVQDFDRVQNINLKGTWLCEREELRQMMKQEPLPPMGESS"
+     aSDomain        join(5292..5293,5349..5700)
+                     /aSDomain="PKS_KR"
+                     /aSTool="nrps_pks_domains"
+                     /database="nrpspksdomains.hmm"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksdomains_FUN_007850_PKS_KR.1"
+                     /evalue="2.90E-08"
+                     /label="FUN_007850_PKS_KR.1"
+                     /locus_tag="FUN_007850"
+                     /protein_end="125"
+                     /protein_start="7"
+                     /score="25.7"
+                     /specificity="KR activity: inactive"
+                     /specificity="KR stereochemistry: C1"
+                     /tool="antismash"
+                     /translation="GVALITGAGGALGRGIALQFARDGVRRIAGLDLSQNGLAATAKAV
+                     ESEVPEIEFLPVTVDISDERQIADAFRQVVDRFGRIDYAINNAAIASPFVTTGDAEVQD
+                     FDRVQNINLKGTWL"
+     PFAM_domain     5350..5739
+                     /aSDomain="adh_short"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00106.28"
+                     /description="short chain dehydrogenase"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007850_0086"
+                     /evalue="8.40E-25"
+                     /label="FUN_007850"
+                     /locus_tag="FUN_007850"
+                     /protein_end="138"
+                     /protein_start="8"
+                     /score="87.5"
+                     /tool="antismash"
+                     /translation="VALITGAGGALGRGIALQFARDGVRRIAGLDLSQNGLAATAKAVE
+                     SEVPEIEFLPVTVDISDERQIADAFRQVVDRFGRIDYAINNAAIASPFVTTGDAEVQDF
+                     DRVQNINLKGTWLCEREELRQMMKQE"
+     PFAM_domain     5350..5739
+                     /aSDomain="adh_short"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00106.28"
+                     /description="short chain dehydrogenase"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007850_0004"
+                     /evalue="8.40E-25"
+                     /label="FUN_007850"
+                     /locus_tag="FUN_007850"
+                     /protein_end="138"
+                     /protein_start="8"
+                     /score="87.5"
+                     /tool="antismash"
+                     /translation="VALITGAGGALGRGIALQFARDGVRRIAGLDLSQNGLAATAKAVE
+                     SEVPEIEFLPVTVDISDERQIADAFRQVVDRFGRIDYAINNAAIASPFVTTGDAEVQDF
+                     DRVQNINLKGTWLCEREELRQMMKQE"
+     CDS_motif       5356..5433
+                     /aSTool="nrps_pks_domains"
+                     /database="abmotifs"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksmotif_FUN_007850_0001"
+                     /evalue="3.20E-04"
+                     /label="PKSI-KR_m1"
+                     /locus_tag="FUN_007850"
+                     /protein_end="36"
+                     /protein_start="10"
+                     /score="13.4"
+                     /tool="antismash"
+                     /translation="LITGAGGALGRGIALQFARDGVRRIA"
+     gene            5938..6413
+                     /locus_tag="FUN_007851"
+     mRNA            join(5938..5974,6041..6116,6172..6334,6387..6413)
+                     /locus_tag="FUN_007851"
+                     /product="hypothetical protein"
+     CDS             join(5938..5974,6041..6116,6172..6334,6387..6413)
+                     /codon_start=1
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1001:short-chain dehydrogenase/reductase SDR (Score:
+                     70.8; E-value: 2e-21)"
+                     /gene_kind="biosynthetic-additional"
+                     /locus_tag="FUN_007851"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007851-T1"
+                     /transl_table=1
+                     /translation="MPLDGLYTISKHGILGMVRTDGVDYATKGIRINAICPGFIDTPLV
+                     TPPIRKLLQPQIDKTPMGRMANPQEVADAAVYLASDRASYITGTVLSVDGGYNAQ"
+     PFAM_domain     join(5950..5974,6041..6116,6172..6334,6387..6404)
+                     /aSDomain="adh_short_C2"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF13561.9"
+                     /description="Enoyl-(Acyl carrier protein) reductase"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007851_0087"
+                     /evalue="7.80E-31"
+                     /label="FUN_007851"
+                     /locus_tag="FUN_007851"
+                     /protein_end="98"
+                     /protein_start="4"
+                     /score="107.6"
+                     /tool="antismash"
+                     /translation="GLYTISKHGILGMVRTDGVDYATKGIRINAICPGFIDTPLVTPPI
+                     RKLLQPQIDKTPMGRMANPQEVADAAVYLASDRASYITGTVLSVDGGYN"
+     PFAM_domain     join(5950..5974,6041..6116,6172..6334,6387..6404)
+                     /aSDomain="adh_short_C2"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF13561.9"
+                     /description="Enoyl-(Acyl carrier protein) reductase"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007851_0005"
+                     /evalue="7.80E-31"
+                     /label="FUN_007851"
+                     /locus_tag="FUN_007851"
+                     /protein_end="98"
+                     /protein_start="4"
+                     /score="107.6"
+                     /tool="antismash"
+                     /translation="GLYTISKHGILGMVRTDGVDYATKGIRINAICPGFIDTPLVTPPI
+                     RKLLQPQIDKTPMGRMANPQEVADAAVYLASDRASYITGTVLSVDGGYN"
+     gene            complement(7024..9235)
+                     /locus_tag="FUN_007852"
+     mRNA            complement(join(7024..7320,7373..9235))
+                     /locus_tag="FUN_007852"
+                     /product="hypothetical protein"
+     CDS             complement(join(7024..7320,7373..9235))
+                     /codon_start=1
+                     /locus_tag="FUN_007852"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007852-T1"
+                     /transl_table=1
+                     /translation="MDSASFTDILHSRLGPRANNDVSSFLSSSLSSLKDPTIFTVLALF
+                     LVYAFWSSRERLSSKEKNAQKAYGYRRTLAEGETRDIARKIADADKNCVILFGTQTGIA
+                     EDIAARLAKEGHSRFGLKTMVGNLEDYDYETLNQIPVDKVVMFILSTFGEGEPTDNAQD
+                     FYRYITADNLNFEDGSSSLPNLSFLSFGLGNSTYEHFNAVSSKVDVTLERLGGHRICPA
+                     GRGDDGEKTTEEDFLAWKETMWAALAKHMNLEEKKVIYEPVFTIIDRHDLNKDDPKVYL
+                     GEPNQLHLQGILQAPFNAHNPFLAPITASHQLFKARDRNCIHVEFDLGDSGLTYETGDH
+                     VSLMPTNSKTEVDRFLEMFGLTAKRDTVIDIKPLERTAKVSFPVPTTYDTIVRHKLEIG
+                     APVSRQFIQQLSEYAPSPEAKKEMEKLGTDKDYFHSYVTQRQLNLAQTLQTVSGGAAWK
+                     MVPFTMLVEGLLTLQPRLYSISSSPVVTSNRFTITTKVETHAILDTEFTFNGVATKHLL
+                     ALQQILSDERSPEVEYTGLFPNQLIRNSRQGLRVPAYIRPSSFRLPNDPKVPVIMVGPG
+                     TGVAPFRAFMQERAAQHKAGKDVGVSMLFYGCRNKDDFIYEKDWEEFGRVLGDKFKMIT
+                     AFSRVDTGSKVYVQDKIRHRAAEIDALLRTGAAFYICGDATMAKDVSNLLEGIIAEQRG
+                     LLLVEACSIVKEMRSANKLQEDAWS"
+     PFAM_domain     complement(join(7138..7320,7373..7522))
+                     /aSDomain="NAD_binding_1"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00175.24"
+                     /db_xref="GO:0016491"
+                     /description="Oxidoreductase NAD-binding domain"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007852_0090"
+                     /evalue="7.70E-21"
+                     /gene_ontologies="GO:0016491: oxidoreductase activity"
+                     /label="FUN_007852"
+                     /locus_tag="FUN_007852"
+                     /protein_end="682"
+                     /protein_start="571"
+                     /score="74.9"
+                     /tool="antismash"
+                     /translation="MVGPGTGVAPFRAFMQERAAQHKAGKDVGVSMLFYGCRNKDDFIY
+                     EKDWEEFGRVLGDKFKMITAFSRVDTGSKVYVQDKIRHRAAEIDALLRTGAAFYICGDA
+                     TMAKDVS"
+     PFAM_domain     complement(join(7138..7320,7373..7522))
+                     /aSDomain="NAD_binding_1"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00175.24"
+                     /db_xref="GO:0016491"
+                     /description="Oxidoreductase NAD-binding domain"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007852_0008"
+                     /evalue="7.70E-21"
+                     /gene_ontologies="GO:0016491: oxidoreductase activity"
+                     /label="FUN_007852"
+                     /locus_tag="FUN_007852"
+                     /protein_end="682"
+                     /protein_start="571"
+                     /score="74.9"
+                     /tool="antismash"
+                     /translation="MVGPGTGVAPFRAFMQERAAQHKAGKDVGVSMLFYGCRNKDDFIY
+                     EKDWEEFGRVLGDKFKMITAFSRVDTGSKVYVQDKIRHRAAEIDALLRTGAAFYICGDA
+                     TMAKDVS"
+     PFAM_domain     complement(7694..8350)
+                     /aSDomain="FAD_binding_1"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00667.23"
+                     /db_xref="GO:0016491"
+                     /description="FAD binding domain"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007852_0089"
+                     /evalue="3.90E-60"
+                     /gene_ontologies="GO:0016491: oxidoreductase activity"
+                     /label="FUN_007852"
+                     /locus_tag="FUN_007852"
+                     /protein_end="514"
+                     /protein_start="295"
+                     /score="203.3"
+                     /tool="antismash"
+                     /translation="PFNAHNPFLAPITASHQLFKARDRNCIHVEFDLGDSGLTYETGDH
+                     VSLMPTNSKTEVDRFLEMFGLTAKRDTVIDIKPLERTAKVSFPVPTTYDTIVRHKLEIG
+                     APVSRQFIQQLSEYAPSPEAKKEMEKLGTDKDYFHSYVTQRQLNLAQTLQTVSGGAAWK
+                     MVPFTMLVEGLLTLQPRLYSISSSPVVTSNRFTITTKVETHAILDTEFTFNGVATK"
+     PFAM_domain     complement(7694..8350)
+                     /aSDomain="FAD_binding_1"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00667.23"
+                     /db_xref="GO:0016491"
+                     /description="FAD binding domain"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007852_0007"
+                     /evalue="3.90E-60"
+                     /gene_ontologies="GO:0016491: oxidoreductase activity"
+                     /label="FUN_007852"
+                     /locus_tag="FUN_007852"
+                     /protein_end="514"
+                     /protein_start="295"
+                     /score="203.3"
+                     /tool="antismash"
+                     /translation="PFNAHNPFLAPITASHQLFKARDRNCIHVEFDLGDSGLTYETGDH
+                     VSLMPTNSKTEVDRFLEMFGLTAKRDTVIDIKPLERTAKVSFPVPTTYDTIVRHKLEIG
+                     APVSRQFIQQLSEYAPSPEAKKEMEKLGTDKDYFHSYVTQRQLNLAQTLQTVSGGAAWK
+                     MVPFTMLVEGLLTLQPRLYSISSSPVVTSNRFTITTKVETHAILDTEFTFNGVATK"
+     PFAM_domain     complement(8519..8953)
+                     /aSDomain="Flavodoxin_1"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00258.28"
+                     /db_xref="GO:0010181"
+                     /description="Flavodoxin"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007852_0088"
+                     /evalue="1.40E-30"
+                     /gene_ontologies="GO:0010181: FMN binding"
+                     /label="FUN_007852"
+                     /locus_tag="FUN_007852"
+                     /protein_end="239"
+                     /protein_start="94"
+                     /score="106.5"
+                     /tool="antismash"
+                     /translation="ILFGTQTGIAEDIAARLAKEGHSRFGLKTMVGNLEDYDYETLNQI
+                     PVDKVVMFILSTFGEGEPTDNAQDFYRYITADNLNFEDGSSSLPNLSFLSFGLGNSTYE
+                     HFNAVSSKVDVTLERLGGHRICPAGRGDDGEKTTEEDFLAW"
+     PFAM_domain     complement(8519..8953)
+                     /aSDomain="Flavodoxin_1"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00258.28"
+                     /db_xref="GO:0010181"
+                     /description="Flavodoxin"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007852_0006"
+                     /evalue="1.40E-30"
+                     /gene_ontologies="GO:0010181: FMN binding"
+                     /label="FUN_007852"
+                     /locus_tag="FUN_007852"
+                     /protein_end="239"
+                     /protein_start="94"
+                     /score="106.5"
+                     /tool="antismash"
+                     /translation="ILFGTQTGIAEDIAARLAKEGHSRFGLKTMVGNLEDYDYETLNQI
+                     PVDKVVMFILSTFGEGEPTDNAQDFYRYITADNLNFEDGSSSLPNLSFLSFGLGNSTYE
+                     HFNAVSSKVDVTLERLGGHRICPAGRGDDGEKTTEEDFLAW"
+     gene            complement(10388..11830)
+                     /locus_tag="FUN_007853"
+     mRNA            complement(join(10388..10934,10986..11063,11119..11513,
+                     11639..11830))
+                     /locus_tag="FUN_007853"
+                     /product="hypothetical protein"
+     CDS             complement(join(10388..10934,10986..11063,11119..11513,
+                     11639..11830))
+                     /codon_start=1
+                     /gene_functions="biosynthetic-additional
+                     (rule-based-clusters) p450"
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1034:cytochrome P450 (Score: 159.6; E-value: 2.1e-48)"
+                     /gene_kind="biosynthetic-additional"
+                     /locus_tag="FUN_007853"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007853-T1"
+                     /sec_met_domain="p450 (E-value: 8.7e-44, bitscore: 144.6,
+                     seeds: 50, tool: rule-based-clusters)"
+                     /transl_table=1
+                     /translation="MPSSLNSDAPKSSLLRFHRVTVLLHQLLTDPKNFYNHIRRTTSSI
+                     SCILIYGQRGPTFENFWGHFGEALEPGANPPVDEYPFLKLVPERFAFWKRRARTAGNSM
+                     HAIWTKARRLVDERRARGDHRISLADRLLDEYSEKGFPMSQHALDQLFGELVEGGAETT
+                     SSSMLTMTLALAKNPWVQQKAKEQLDAACGNERMPEWADFAKLPYINSIVKEGMRWRPA
+                     VATGLPRRTAEDDWYEGMFIPKDSTVFLPIWAVHHSERDGYDDPFTFNPDRYINHHKLA
+                     NDYAGSADFKNRDKFSSSCTWCLLTVAEHHYAYGAGRRMCPGVHLAERNQWRIVAKLIW
+                     AFEIQEPVDANGRTISLDPEAYQTGLLHAPTPFEVVFKPRSKAHVEIIKRSFEGAMRDL
+                     APFE"
+     PFAM_domain     complement(join(10553..10934,10986..11063,11119..11513,
+                     11639..11719))
+                     /aSDomain="p450"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00067.25"
+                     /db_xref="GO:0004497"
+                     /db_xref="GO:0005506"
+                     /db_xref="GO:0016705"
+                     /db_xref="GO:0020037"
+                     /description="Cytochrome P450"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007853_0091"
+                     /evalue="4.10E-42"
+                     /gene_ontologies="GO:0004497: monooxygenase activity"
+                     /gene_ontologies="GO:0005506: iron ion binding"
+                     /gene_ontologies="GO:0016705: oxidoreductase activity,
+                     acting on paired donors, with incorporation or reduction of
+                     molecular oxygen"
+                     /gene_ontologies="GO:0020037: heme binding"
+                     /label="FUN_007853"
+                     /locus_tag="FUN_007853"
+                     /protein_end="349"
+                     /protein_start="37"
+                     /score="144.6"
+                     /tool="antismash"
+                     /translation="IRRTTSSISCILIYGQRGPTFENFWGHFGEALEPGANPPVDEYPF
+                     LKLVPERFAFWKRRARTAGNSMHAIWTKARRLVDERRARGDHRISLADRLLDEYSEKGF
+                     PMSQHALDQLFGELVEGGAETTSSSMLTMTLALAKNPWVQQKAKEQLDAACGNERMPEW
+                     ADFAKLPYINSIVKEGMRWRPAVATGLPRRTAEDDWYEGMFIPKDSTVFLPIWAVHHSE
+                     RDGYDDPFTFNPDRYINHHKLANDYAGSADFKNRDKFSSSCTWCLLTVAEHHYAYGAGR
+                     RMCPGVHLAERNQWRIVAKLIWAFEIQEPVD"
+     PFAM_domain     complement(join(10553..10934,10986..11063,11119..11513,
+                     11639..11719))
+                     /aSDomain="p450"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00067.25"
+                     /db_xref="GO:0004497"
+                     /db_xref="GO:0005506"
+                     /db_xref="GO:0016705"
+                     /db_xref="GO:0020037"
+                     /description="Cytochrome P450"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007853_0009"
+                     /evalue="4.10E-42"
+                     /gene_ontologies="GO:0004497: monooxygenase activity"
+                     /gene_ontologies="GO:0005506: iron ion binding"
+                     /gene_ontologies="GO:0016705: oxidoreductase activity,
+                     acting on paired donors, with incorporation or reduction of
+                     molecular oxygen"
+                     /gene_ontologies="GO:0020037: heme binding"
+                     /label="FUN_007853"
+                     /locus_tag="FUN_007853"
+                     /protein_end="349"
+                     /protein_start="37"
+                     /score="144.6"
+                     /tool="antismash"
+                     /translation="IRRTTSSISCILIYGQRGPTFENFWGHFGEALEPGANPPVDEYPF
+                     LKLVPERFAFWKRRARTAGNSMHAIWTKARRLVDERRARGDHRISLADRLLDEYSEKGF
+                     PMSQHALDQLFGELVEGGAETTSSSMLTMTLALAKNPWVQQKAKEQLDAACGNERMPEW
+                     ADFAKLPYINSIVKEGMRWRPAVATGLPRRTAEDDWYEGMFIPKDSTVFLPIWAVHHSE
+                     RDGYDDPFTFNPDRYINHHKLANDYAGSADFKNRDKFSSSCTWCLLTVAEHHYAYGAGR
+                     RMCPGVHLAERNQWRIVAKLIWAFEIQEPVD"
+     gene            12886..13587
+                     /locus_tag="FUN_007854"
+     mRNA            join(12886..12924,12984..13040,13105..13587)
+                     /locus_tag="FUN_007854"
+                     /product="hypothetical protein"
+     CDS             join(12886..12924,12984..13040,13105..13587)
+                     /codon_start=1
+                     /locus_tag="FUN_007854"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007854-T1"
+                     /transl_table=1
+                     /translation="MTSKTSNEGWYVETDYSTVEDALKKMTFPPSKLHKKELLAEEEEI
+                     LKHICGWSHVMNKLFNESIEPGRPFYLFDDAMTYDIYGNTIRGAFLEHFNETFHYFSKS
+                     RFEMKDLEPVATSKTTGYITMMQRLVGGTSDDGKPFEMTYRLTYLLAKIDGAWKFIHEH
+                     VSFPVEMATMKADPTCTIDPLKAFRGIEN"
+     PFAM_domain     13267..13515
+                     /aSDomain="SnoaL_3"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF13474.9"
+                     /description="SnoaL-like domain"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007854_0092"
+                     /evalue="8.90E-08"
+                     /label="FUN_007854"
+                     /locus_tag="FUN_007854"
+                     /protein_end="169"
+                     /protein_start="86"
+                     /score="32.6"
+                     /tool="antismash"
+                     /translation="RGAFLEHFNETFHYFSKSRFEMKDLEPVATSKTTGYITMMQRLVG
+                     GTSDDGKPFEMTYRLTYLLAKIDGAWKFIHEHVSFPVE"
+     PFAM_domain     13267..13515
+                     /aSDomain="SnoaL_3"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF13474.9"
+                     /description="SnoaL-like domain"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007854_0010"
+                     /evalue="8.90E-08"
+                     /label="FUN_007854"
+                     /locus_tag="FUN_007854"
+                     /protein_end="169"
+                     /protein_start="86"
+                     /score="32.6"
+                     /tool="antismash"
+                     /translation="RGAFLEHFNETFHYFSKSRFEMKDLEPVATSKTTGYITMMQRLVG
+                     GTSDDGKPFEMTYRLTYLLAKIDGAWKFIHEHVSFPVE"
+     gene            complement(14989..16606)
+                     /locus_tag="FUN_007855"
+     mRNA            complement(join(14989..15248,15302..15514,15571..16075,
+                     16128..16572,16599..16606))
+                     /locus_tag="FUN_007855"
+                     /product="hypothetical protein"
+     CDS             complement(join(14989..15248,15302..15514,15571..16075,
+                     16128..16572,16599..16606))
+                     /codon_start=1
+                     /gene_functions="biosynthetic-additional
+                     (rule-based-clusters) p450"
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1034:cytochrome P450 (Score: 189.8; E-value: 1.4e-57)"
+                     /gene_kind="biosynthetic-additional"
+                     /locus_tag="FUN_007855"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007855-T1"
+                     /sec_met_domain="p450 (E-value: 2.7e-63, bitscore: 208.9,
+                     seeds: 50, tool: rule-based-clusters)"
+                     /transl_table=1
+                     /translation="MDVFRSWAKEYGPVFSLKFGPSNMIVLCDRKAIHALLDKKSNIYS
+                     DRPHTYVGQLLTKGDMIALEQMDDHWRLKRKVVAHNFSPKQLDEKHFKVQEAEATMLMA
+                     DLLNDPKGFYNHIRRYTASVASVLIFGSRGATFDSFWAHGVYDVMSKWTEAMEPGANPP
+                     VDEYPLLQWVPLWLAPWKRRAILAGQTMDKVWGEAVNRVQKRRTHGLRRDCITDTLLDE
+                     WKDGMPISQHSFNNLVGELVEGAADTTAAQLLTLVMAFAKNPRVQKRAQEEIDKVCGTE
+                     RFPLWSDFKDIPYINAIVKEGMRWRPVAVTGSPHRVREDDYYQGMLIPKDSTIIVPVWA
+                     LHHGDEFDDENEFRPERYVGHSKLANDYAGSPDWANRDHYGYGAGRRICPGMHFAERNM
+                     WRVTAKLLWAFEFAEPLDPKTGKVISLDPDAYNRGILQAPLPYNVQVTPRSPQHVQTIK
+                     REIAAAKEFLKPWEELKD"
+     PFAM_domain     complement(join(15154..15248,15302..15514,15571..16075,
+                     16128..16572,16599..16600))
+                     /aSDomain="p450"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00067.25"
+                     /db_xref="GO:0004497"
+                     /db_xref="GO:0005506"
+                     /db_xref="GO:0016705"
+                     /db_xref="GO:0020037"
+                     /description="Cytochrome P450"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007855_0093"
+                     /evalue="1.30E-61"
+                     /gene_ontologies="GO:0004497: monooxygenase activity"
+                     /gene_ontologies="GO:0005506: iron ion binding"
+                     /gene_ontologies="GO:0016705: oxidoreductase activity,
+                     acting on paired donors, with incorporation or reduction of
+                     molecular oxygen"
+                     /gene_ontologies="GO:0020037: heme binding"
+                     /label="FUN_007855"
+                     /locus_tag="FUN_007855"
+                     /protein_end="422"
+                     /protein_start="2"
+                     /score="208.9"
+                     /tool="antismash"
+                     /translation="VFRSWAKEYGPVFSLKFGPSNMIVLCDRKAIHALLDKKSNIYSDR
+                     PHTYVGQLLTKGDMIALEQMDDHWRLKRKVVAHNFSPKQLDEKHFKVQEAEATMLMADL
+                     LNDPKGFYNHIRRYTASVASVLIFGSRGATFDSFWAHGVYDVMSKWTEAMEPGANPPVD
+                     EYPLLQWVPLWLAPWKRRAILAGQTMDKVWGEAVNRVQKRRTHGLRRDCITDTLLDEWK
+                     DGMPISQHSFNNLVGELVEGAADTTAAQLLTLVMAFAKNPRVQKRAQEEIDKVCGTERF
+                     PLWSDFKDIPYINAIVKEGMRWRPVAVTGSPHRVREDDYYQGMLIPKDSTIIVPVWALH
+                     HGDEFDDENEFRPERYVGHSKLANDYAGSPDWANRDHYGYGAGRRICPGMHFAERNMWR
+                     VTAKLLWAFEFAEPLDPKTGK"
+     PFAM_domain     complement(join(15154..15248,15302..15514,15571..16075,
+                     16128..16572,16599..16600))
+                     /aSDomain="p450"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00067.25"
+                     /db_xref="GO:0004497"
+                     /db_xref="GO:0005506"
+                     /db_xref="GO:0016705"
+                     /db_xref="GO:0020037"
+                     /description="Cytochrome P450"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007855_0011"
+                     /evalue="1.30E-61"
+                     /gene_ontologies="GO:0004497: monooxygenase activity"
+                     /gene_ontologies="GO:0005506: iron ion binding"
+                     /gene_ontologies="GO:0016705: oxidoreductase activity,
+                     acting on paired donors, with incorporation or reduction of
+                     molecular oxygen"
+                     /gene_ontologies="GO:0020037: heme binding"
+                     /label="FUN_007855"
+                     /locus_tag="FUN_007855"
+                     /protein_end="422"
+                     /protein_start="2"
+                     /score="208.9"
+                     /tool="antismash"
+                     /translation="VFRSWAKEYGPVFSLKFGPSNMIVLCDRKAIHALLDKKSNIYSDR
+                     PHTYVGQLLTKGDMIALEQMDDHWRLKRKVVAHNFSPKQLDEKHFKVQEAEATMLMADL
+                     LNDPKGFYNHIRRYTASVASVLIFGSRGATFDSFWAHGVYDVMSKWTEAMEPGANPPVD
+                     EYPLLQWVPLWLAPWKRRAILAGQTMDKVWGEAVNRVQKRRTHGLRRDCITDTLLDEWK
+                     DGMPISQHSFNNLVGELVEGAADTTAAQLLTLVMAFAKNPRVQKRAQEEIDKVCGTERF
+                     PLWSDFKDIPYINAIVKEGMRWRPVAVTGSPHRVREDDYYQGMLIPKDSTIIVPVWALH
+                     HGDEFDDENEFRPERYVGHSKLANDYAGSPDWANRDHYGYGAGRRICPGMHFAERNMWR
+                     VTAKLLWAFEFAEPLDPKTGK"
+     PFAM_domain     join(17324..17428,17497..17853,17915..18376)
+                     /aSDomain="Aldo_ket_red"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00248.24"
+                     /description="Aldo/keto reductase family"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007856_0094"
+                     /evalue="6.70E-66"
+                     /label="FUN_007856"
+                     /locus_tag="FUN_007856"
+                     /protein_end="308"
+                     /protein_start="0"
+                     /score="222.4"
+                     /tool="antismash"
+                     /translation="MGFGNPKWEGWVMDEDHSLPILEHAYNCGINTWDTADFYSHGDSE
+                     RIIGKALKAYKIPRENVTILTKCYFGVSHDGNQLPLADCVTNNGPMVNRVGLSRKHIFD
+                     AVDASVSRLGTYIDLLQIHRLDRDPPMEEIMGALNDVVQSGKVRYIGASSMAAWEFQKM
+                     QNIAEARGWHRFVSMQNYLNLLYREEEREMIPYCKATGVGVIPWSPVARGILGRPWGSA
+                     ATKREGTDAYLSTLITRESEADKAIVDRVEQLAKRIGVPMASVATAWVLSKGLNPVLGL
+                     SSRERIDKAIEATRLQLSKEDIEYLEE"
+     PFAM_domain     join(17324..17428,17497..17853,17915..18376)
+                     /aSDomain="Aldo_ket_red"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00248.24"
+                     /description="Aldo/keto reductase family"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007856_0012"
+                     /evalue="6.70E-66"
+                     /label="FUN_007856"
+                     /locus_tag="FUN_007856"
+                     /protein_end="308"
+                     /protein_start="0"
+                     /score="222.4"
+                     /tool="antismash"
+                     /translation="MGFGNPKWEGWVMDEDHSLPILEHAYNCGINTWDTADFYSHGDSE
+                     RIIGKALKAYKIPRENVTILTKCYFGVSHDGNQLPLADCVTNNGPMVNRVGLSRKHIFD
+                     AVDASVSRLGTYIDLLQIHRLDRDPPMEEIMGALNDVVQSGKVRYIGASSMAAWEFQKM
+                     QNIAEARGWHRFVSMQNYLNLLYREEEREMIPYCKATGVGVIPWSPVARGILGRPWGSA
+                     ATKREGTDAYLSTLITRESEADKAIVDRVEQLAKRIGVPMASVATAWVLSKGLNPVLGL
+                     SSRERIDKAIEATRLQLSKEDIEYLEE"
+     gene            17324..18409
+                     /locus_tag="FUN_007856"
+     mRNA            join(17324..17428,17497..17853,17915..18409)
+                     /locus_tag="FUN_007856"
+                     /product="hypothetical protein"
+     CDS             join(17324..17428,17497..17853,17915..18409)
+                     /codon_start=1
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1039:aldo/keto reductase family oxidoreductase (Score:
+                     285.6; E-value: 6.9e-87)"
+                     /gene_kind="biosynthetic-additional"
+                     /locus_tag="FUN_007856"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007856-T1"
+                     /transl_table=1
+                     /translation="MGFGNPKWEGWVMDEDHSLPILEHAYNCGINTWDTADFYSHGDSE
+                     RIIGKALKAYKIPRENVTILTKCYFGVSHDGNQLPLADCVTNNGPMVNRVGLSRKHIFD
+                     AVDASVSRLGTYIDLLQIHRLDRDPPMEEIMGALNDVVQSGKVRYIGASSMAAWEFQKM
+                     QNIAEARGWHRFVSMQNYLNLLYREEEREMIPYCKATGVGVIPWSPVARGILGRPWGSA
+                     ATKREGTDAYLSTLITRESEADKAIVDRVEQLAKRIGVPMASVATAWVLSKGLNPVLGL
+                     SSRERIDKAIEATRLQLSKEDIEYLEEPYQPKNVTGY"
+     gene            19030..19868
+                     /locus_tag="FUN_007857"
+     mRNA            join(19030..19604,19670..19868)
+                     /locus_tag="FUN_007857"
+                     /product="hypothetical protein"
+     CDS             join(19030..19604,19670..19868)
+                     /NRPS_PKS="Domain: PKS_KR (7-175). E-value: 8.2e-10. Score:
+                     30.7. Matches aSDomain: nrpspksdomains_FUN_007857_PKS_KR.1"
+                     /codon_start=1
+                     /gene_functions="biosynthetic-additional
+                     (rule-based-clusters) adh_short"
+                     /gene_functions="biosynthetic-additional
+                     (rule-based-clusters) adh_short_C2"
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1001:short-chain dehydrogenase/reductase SDR (Score:
+                     203.9; E-value: 4.7e-62)"
+                     /gene_kind="biosynthetic-additional"
+                     /locus_tag="FUN_007857"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007857-T1"
+                     /sec_met_domain="adh_short (E-value: 2.7e-30, bitscore:
+                     100.4, seeds: 230, tool: rule-based-clusters)"
+                     /sec_met_domain="adh_short_C2 (E-value: 5.1e-31, bitscore:
+                     103.2, seeds: 47, tool: rule-based-clusters)"
+                     /transl_table=1
+                     /translation="MASLAGKVVSVTGAASGIGLATARTLYARGALLALCDVRKDALDQ
+                     AIPEITASEQSSSRSRITTSAVDIRHSSQVNEWVQSTRSHYGRIDGAANVAGILGKSFG
+                     VGDLTQIDDEEFDKVTSVNLKGLFNCMRAQLKVMKSGASIVNASSTTGLEGHPMNSVYS
+                     ATKHAVIGLSKSAAGEFGARGIRVNCVAPGIFATPMVGSIGKLDKDNMSSVFARVPLNR
+                     MGDPAEAANVFCFLLSDESSFMTGTATVVDGGMLC"
+     aSDomain        19051..19554
+                     /aSDomain="PKS_KR"
+                     /aSTool="nrps_pks_domains"
+                     /database="nrpspksdomains.hmm"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksdomains_FUN_007857_PKS_KR.1"
+                     /evalue="8.20E-10"
+                     /label="FUN_007857_PKS_KR.1"
+                     /locus_tag="FUN_007857"
+                     /protein_end="175"
+                     /protein_start="7"
+                     /score="30.7"
+                     /specificity="KR activity: inactive"
+                     /specificity="KR stereochemistry: C2"
+                     /tool="antismash"
+                     /translation="VVSVTGAASGIGLATARTLYARGALLALCDVRKDALDQAIPEITA
+                     SEQSSSRSRITTSAVDIRHSSQVNEWVQSTRSHYGRIDGAANVAGILGKSFGVGDLTQI
+                     DDEEFDKVTSVNLKGLFNCMRAQLKVMKSGASIVNASSTTGLEGHPMNSVYSATKHAVI
+                     GLSKS"
+     CDS_motif       19060..19122
+                     /aSTool="nrps_pks_domains"
+                     /database="abmotifs"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksmotif_FUN_007857_0001"
+                     /evalue="1.40E-04"
+                     /label="PKSI-KR_m1"
+                     /locus_tag="FUN_007857"
+                     /protein_end="31"
+                     /protein_start="10"
+                     /score="14.5"
+                     /tool="antismash"
+                     /translation="VTGAASGIGLATARTLYARGA"
+     PFAM_domain     join(19066..19604,19670..19859)
+                     /aSDomain="adh_short_C2"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF13561.9"
+                     /description="Enoyl-(Acyl carrier protein) reductase"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007857_0095"
+                     /evalue="2.90E-66"
+                     /label="FUN_007857"
+                     /locus_tag="FUN_007857"
+                     /protein_end="255"
+                     /protein_start="12"
+                     /score="223.5"
+                     /tool="antismash"
+                     /translation="GAASGIGLATARTLYARGALLALCDVRKDALDQAIPEITASEQSS
+                     SRSRITTSAVDIRHSSQVNEWVQSTRSHYGRIDGAANVAGILGKSFGVGDLTQIDDEEF
+                     DKVTSVNLKGLFNCMRAQLKVMKSGASIVNASSTTGLEGHPMNSVYSATKHAVIGLSKS
+                     AAGEFGARGIRVNCVAPGIFATPMVGSIGKLDKDNMSSVFARVPLNRMGDPAEAANVFC
+                     FLLSDESSFMTGTATVVDGGM"
+     PFAM_domain     join(19066..19604,19670..19859)
+                     /aSDomain="adh_short_C2"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF13561.9"
+                     /description="Enoyl-(Acyl carrier protein) reductase"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007857_0013"
+                     /evalue="2.90E-66"
+                     /label="FUN_007857"
+                     /locus_tag="FUN_007857"
+                     /protein_end="255"
+                     /protein_start="12"
+                     /score="223.5"
+                     /tool="antismash"
+                     /translation="GAASGIGLATARTLYARGALLALCDVRKDALDQAIPEITASEQSS
+                     SRSRITTSAVDIRHSSQVNEWVQSTRSHYGRIDGAANVAGILGKSFGVGDLTQIDDEEF
+                     DKVTSVNLKGLFNCMRAQLKVMKSGASIVNASSTTGLEGHPMNSVYSATKHAVIGLSKS
+                     AAGEFGARGIRVNCVAPGIFATPMVGSIGKLDKDNMSSVFARVPLNRMGDPAEAANVFC
+                     FLLSDESSFMTGTATVVDGGM"
+     gene            complement(20001..23343)
+                     /locus_tag="FUN_007858"
+     mRNA            complement(join(20001..22472,22522..22673,22729..22990,
+                     23044..23343))
+                     /locus_tag="FUN_007858"
+                     /product="hypothetical protein"
+     CDS             complement(join(20001..22472,22522..22673,22729..22990,
+                     23044..23343))
+                     /NRPS_PKS="Domain: AMP-binding (35-343). E-value: 9.9e-29.
+                     Score: 91.9. Matches aSDomain:
+                     nrpspksdomains_FUN_007858_AMP-binding.1"
+                     /NRPS_PKS="Domain: ACP (582-638). E-value: 1.7e-06. Score:
+                     20.1. Matches aSDomain: nrpspksdomains_FUN_007858_ACP.1"
+                     /NRPS_PKS="Domain: TD (697-940). E-value: 1.1e-37. Score:
+                     121.4. Matches aSDomain: nrpspksdomains_FUN_007858_TD.1"
+                     /codon_start=1
+                     /gene_functions="biosynthetic (rule-based-clusters)
+                     NRPS-like: AMP-binding"
+                     /gene_functions="biosynthetic (rule-based-clusters)
+                     NRPS-like: NAD_binding_4"
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1002:AMP-dependent synthetase and ligase (Score: 69.9;
+                     E-value: 2.5e-21)"
+                     /gene_kind="biosynthetic"
+                     /locus_tag="FUN_007858"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007858-T1"
+                     /sec_met_domain="AMP-binding (E-value: 5.2e-23, bitscore:
+                     75.9, seeds: 400, tool: rule-based-clusters)"
+                     /sec_met_domain="NAD_binding_4 (E-value: 2.6e-35, bitscore:
+                     116.4, seeds: 102, tool: rule-based-clusters)"
+                     /transl_table=1
+                     /translation="MPTVEIPGGCHGERLIPHIVDAYAHSNPERAYALVPLYLDGRMEY
+                     RTITMRDLSNAVNRAAWWLKENLGQSTDFETLAYMGPADIRYGIFFIAAIKVGYKFLVP
+                     SARNSVSGNVSLFAACQCKKIVCGNDIVKRLGALESQILGLQHFVVEELEDLLSSKSPN
+                     FPYNKTHAEAVKDPVLICHTSGSTGAPKPIVLPNGAFSVIDNQRKLSKIEGRQNMDYSL
+                     FDLDGNYFVNTFPGFHVGGMVAMAALPIYYNTAIVMVPHDQPANGQLLAQVLSRVIARA
+                     IFSPPTVIEELLETTDGSNKLAKLDFIMYGGGPLSPMAGQSISESTLCVSVIGSTECGI
+                     IPARVPPKEAWNYFEFHPEYKAEMVHIADDIYELTIPNPPQMAWIHTIYHTFPDVEVWH
+                     TNDHYKQHPENCKLFTFRGRGDDVIVLSNGEKFQPVTAESVVQSHPDVDGALVVGTGRF
+                     QPVLIIEPRKHPDDPERLINSIWPAVEAANKESAAHGRIFKGKVLLTSPEKPFVRTSKG
+                     TIIRARSAALYEGEVEELFAEAAKNPDIRALSQEEVQSFDALRKAVGQYIRPVIPDLSP
+                     DSDGDVEDFFSFGLDSVRTLELSNGLRALLRPHVTSNDLTAISSRLIYAYPSIETLSRQ
+                     LCKLLPSQDLESTDNTSSERSTRMAAMLERYADDLPNRSPLLPENKDVSLVHVYDHGQG
+                     LCIALTGSTGSLGSQLLCALLADRRIGSVVCLNRAYDGQQRTLQRLGELRTTIDMSKVE
+                     FYKVDFESIKLGLQEDTYHALLARVDVIVHNAWRVDFNQALQSFEPQIRGVRHLIDWAA
+                     NSGRRPRLSFVSSISSVAQWSDSYPNKQEIPESSLTEVDYNVALPMGYGESKHVAERLL
+                     AIAADVARITVDVLRLGQVAGPISPNAGSWNRSEWFPALIETSKSTNRIPDRLPEVNWV
+                     PVDVLAGIIVDLLHHEHGGCKTFNLLNPHTRPWEELTSTIQRNIGGNVVPFKAWIQDLQ
+                     SVDSSDPSEVKSKPALKILDWFVGLEQSMSSGRSQPSFRTVNGIEASRIMAELQPVSDA
+                     WMEHWLKSLPLES"
+     aSDomain        complement(20367..21095)
+                     /aSDomain="TD"
+                     /aSTool="nrps_pks_domains"
+                     /database="nrpspksdomains.hmm"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksdomains_FUN_007858_TD.1"
+                     /evalue="1.10E-37"
+                     /label="FUN_007858_TD.1"
+                     /locus_tag="FUN_007858"
+                     /protein_end="940"
+                     /protein_start="697"
+                     /score="121.4"
+                     /tool="antismash"
+                     /translation="ALTGSTGSLGSQLLCALLADRRIGSVVCLNRAYDGQQRTLQRLGE
+                     LRTTIDMSKVEFYKVDFESIKLGLQEDTYHALLARVDVIVHNAWRVDFNQALQSFEPQI
+                     RGVRHLIDWAANSGRRPRLSFVSSISSVAQWSDSYPNKQEIPESSLTEVDYNVALPMGY
+                     GESKHVAERLLAIAADVARITVDVLRLGQVAGPISPNAGSWNRSEWFPALIETSKSTNR
+                     IPDRLPEVNWVPVDVLAGIIV"
+     aSModule        complement(20367..23238)
+                     /complete
+                     /domains="nrpspksdomains_FUN_007858_AMP-binding.1"
+                     /domains="nrpspksdomains_FUN_007858_ACP.1"
+                     /domains="nrpspksdomains_FUN_007858_TD.1"
+                     /final_module
+                     /locus_tags="FUN_007858"
+                     /monomer_pairings="X -> X"
+                     /starter_module
+                     /tool="antismash"
+                     /type="nrps"
+     PFAM_domain     complement(20376..21092)
+                     /aSDomain="NAD_binding_4"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF07993.15"
+                     /description="Male sterility protein"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007858_0097"
+                     /evalue="5.70E-33"
+                     /label="FUN_007858"
+                     /locus_tag="FUN_007858"
+                     /protein_end="937"
+                     /protein_start="698"
+                     /score="114.3"
+                     /tool="antismash"
+                     /translation="LTGSTGSLGSQLLCALLADRRIGSVVCLNRAYDGQQRTLQRLGEL
+                     RTTIDMSKVEFYKVDFESIKLGLQEDTYHALLARVDVIVHNAWRVDFNQALQSFEPQIR
+                     GVRHLIDWAANSGRRPRLSFVSSISSVAQWSDSYPNKQEIPESSLTEVDYNVALPMGYG
+                     ESKHVAERLLAIAADVARITVDVLRLGQVAGPISPNAGSWNRSEWFPALIETSKSTNRI
+                     PDRLPEVNWVPVDVLAG"
+     PFAM_domain     complement(20376..21092)
+                     /aSDomain="NAD_binding_4"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF07993.15"
+                     /description="Male sterility protein"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007858_0015"
+                     /evalue="5.70E-33"
+                     /label="FUN_007858"
+                     /locus_tag="FUN_007858"
+                     /protein_end="937"
+                     /protein_start="698"
+                     /score="114.3"
+                     /tool="antismash"
+                     /translation="LTGSTGSLGSQLLCALLADRRIGSVVCLNRAYDGQQRTLQRLGEL
+                     RTTIDMSKVEFYKVDFESIKLGLQEDTYHALLARVDVIVHNAWRVDFNQALQSFEPQIR
+                     GVRHLIDWAANSGRRPRLSFVSSISSVAQWSDSYPNKQEIPESSLTEVDYNVALPMGYG
+                     ESKHVAERLLAIAADVARITVDVLRLGQVAGPISPNAGSWNRSEWFPALIETSKSTNRI
+                     PDRLPEVNWVPVDVLAG"
+     aSDomain        complement(21273..21440)
+                     /aSDomain="ACP"
+                     /aSTool="nrps_pks_domains"
+                     /database="nrpspksdomains.hmm"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksdomains_FUN_007858_ACP.1"
+                     /evalue="1.70E-06"
+                     /label="FUN_007858_ACP.1"
+                     /locus_tag="FUN_007858"
+                     /protein_end="638"
+                     /protein_start="582"
+                     /score="20.1"
+                     /tool="antismash"
+                     /translation="EDFFSFGLDSVRTLELSNGLRALLRPHVTSNDLTAISSRLIYAYP
+                     SIETLSRQLCK"
+     PFAM_domain     complement(join(22140..22472,22522..22673,22729..22990,
+                     23044..23238))
+                     /aSDomain="AMP-binding"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00501.31"
+                     /description="AMP-binding enzyme"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007858_0096"
+                     /evalue="1.40E-26"
+                     /label="FUN_007858"
+                     /locus_tag="FUN_007858"
+                     /protein_end="349"
+                     /protein_start="35"
+                     /score="93.2"
+                     /tool="antismash"
+                     /translation="PLYLDGRMEYRTITMRDLSNAVNRAAWWLKENLGQSTDFETLAYM
+                     GPADIRYGIFFIAAIKVGYKFLVPSARNSVSGNVSLFAACQCKKIVCGNDIVKRLGALE
+                     SQILGLQHFVVEELEDLLSSKSPNFPYNKTHAEAVKDPVLICHTSGSTGAPKPIVLPNG
+                     AFSVIDNQRKLSKIEGRQNMDYSLFDLDGNYFVNTFPGFHVGGMVAMAALPIYYNTAIV
+                     MVPHDQPANGQLLAQVLSRVIARAIFSPPTVIEELLETTDGSNKLAKLDFIMYGGGPLS
+                     PMAGQSISESTLCVSVIGSTECGIIPARVPPKE"
+     PFAM_domain     complement(join(22140..22472,22522..22673,22729..22990,
+                     23044..23238))
+                     /aSDomain="AMP-binding"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00501.31"
+                     /description="AMP-binding enzyme"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007858_0014"
+                     /evalue="1.40E-26"
+                     /label="FUN_007858"
+                     /locus_tag="FUN_007858"
+                     /protein_end="349"
+                     /protein_start="35"
+                     /score="93.2"
+                     /tool="antismash"
+                     /translation="PLYLDGRMEYRTITMRDLSNAVNRAAWWLKENLGQSTDFETLAYM
+                     GPADIRYGIFFIAAIKVGYKFLVPSARNSVSGNVSLFAACQCKKIVCGNDIVKRLGALE
+                     SQILGLQHFVVEELEDLLSSKSPNFPYNKTHAEAVKDPVLICHTSGSTGAPKPIVLPNG
+                     AFSVIDNQRKLSKIEGRQNMDYSLFDLDGNYFVNTFPGFHVGGMVAMAALPIYYNTAIV
+                     MVPHDQPANGQLLAQVLSRVIARAIFSPPTVIEELLETTDGSNKLAKLDFIMYGGGPLS
+                     PMAGQSISESTLCVSVIGSTECGIIPARVPPKE"
+     aSDomain        complement(join(22158..22472,22522..22673,22729..22990,
+                     23044..23238))
+                     /aSDomain="AMP-binding"
+                     /aSTool="nrps_pks_domains"
+                     /database="nrpspksdomains.hmm"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksdomains_FUN_007858_AMP-binding.1"
+                     /evalue="9.90E-29"
+                     /label="FUN_007858_AMP-binding.1"
+                     /locus_tag="FUN_007858"
+                     /protein_end="343"
+                     /protein_start="35"
+                     /score="91.9"
+                     /specificity="substrate consensus: X"
+                     /tool="antismash"
+                     /translation="PLYLDGRMEYRTITMRDLSNAVNRAAWWLKENLGQSTDFETLAYM
+                     GPADIRYGIFFIAAIKVGYKFLVPSARNSVSGNVSLFAACQCKKIVCGNDIVKRLGALE
+                     SQILGLQHFVVEELEDLLSSKSPNFPYNKTHAEAVKDPVLICHTSGSTGAPKPIVLPNG
+                     AFSVIDNQRKLSKIEGRQNMDYSLFDLDGNYFVNTFPGFHVGGMVAMAALPIYYNTAIV
+                     MVPHDQPANGQLLAQVLSRVIARAIFSPPTVIEELLETTDGSNKLAKLDFIMYGGGPLS
+                     PMAGQSISESTLCVSVIGSTECGIIPA"
+     CDS_motif       complement(join(22651..22673,22729..22753))
+                     /aSTool="nrps_pks_domains"
+                     /database="abmotifs"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksmotif_FUN_007858_0001"
+                     /evalue="1.20E-03"
+                     /label="NRPS-A_a3"
+                     /locus_tag="FUN_007858"
+                     /protein_end="195"
+                     /protein_start="179"
+                     /score="11.9"
+                     /tool="antismash"
+                     /translation="ICHTSGSTGAPKPIVL"
+     gene            24151..25580
+                     /locus_tag="FUN_007859"
+     mRNA            join(24151..24512,24563..25262,25311..25580)
+                     /locus_tag="FUN_007859"
+                     /product="hypothetical protein"
+     CDS             join(24151..24512,24563..25262,25311..25580)
+                     /codon_start=1
+                     /locus_tag="FUN_007859"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007859-T1"
+                     /transl_table=1
+                     /translation="MPQILKRPADKTDAATSTSLDVPKIVKGVIDDIRVRGDEAVRAYS
+                     IQFDKWSPDSFRLSLSELEKIIATVPEQIIEDIKTVQANVRKFALAQRKSLVDFEMEIR
+                     PGVSLGQKNIPIAAVGAYIPGGRYALLASAHMTICTAKAAGVQRVIACTPPLQGKIPAA
+                     TVAAMHLAGADEIYILGGVQAVAAMSVGTELIKKVDFVAGPGNSFVAEAKRQLFGEIGI
+                     DLPAGPTEILIVADDKADPFTIATDLLSQAEHGPDTPAVLITTCLTVGQRSISEVERLL
+                     EILPTAQLAGTSWKMHGEVIVVDSLDEAYRLADQFASEHVQILTENPREALEKMSHYGA
+                     LFLGEKTCVSYGDKCIGTNHVLPTRNAAKFTGGLWVGKFLKTVTYQEVKSNQESGSLGR
+                     LCGRAARAENFEGHARSGDLRAYKYLHDSFEWIDGSPKANGVHA"
+     PFAM_domain     join(24202..24512,24563..25262,25311..25508)
+                     /aSDomain="Histidinol_dh"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00815.23"
+                     /db_xref="GO:0016616"
+                     /db_xref="GO:0046872"
+                     /db_xref="GO:0051287"
+                     /description="Histidinol dehydrogenase"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007859_0098"
+                     /evalue="6.60E-135"
+                     /gene_ontologies="GO:0016616: oxidoreductase activity,
+                     acting on the CH-OH group of donors, NAD or NADP as
+                     acceptor"
+                     /gene_ontologies="GO:0046872: metal ion binding"
+                     /gene_ontologies="GO:0051287: NAD binding"
+                     /label="FUN_007859"
+                     /locus_tag="FUN_007859"
+                     /protein_end="420"
+                     /protein_start="17"
+                     /score="450.4"
+                     /tool="antismash"
+                     /translation="TSLDVPKIVKGVIDDIRVRGDEAVRAYSIQFDKWSPDSFRLSLSE
+                     LEKIIATVPEQIIEDIKTVQANVRKFALAQRKSLVDFEMEIRPGVSLGQKNIPIAAVGA
+                     YIPGGRYALLASAHMTICTAKAAGVQRVIACTPPLQGKIPAATVAAMHLAGADEIYILG
+                     GVQAVAAMSVGTELIKKVDFVAGPGNSFVAEAKRQLFGEIGIDLPAGPTEILIVADDKA
+                     DPFTIATDLLSQAEHGPDTPAVLITTCLTVGQRSISEVERLLEILPTAQLAGTSWKMHG
+                     EVIVVDSLDEAYRLADQFASEHVQILTENPREALEKMSHYGALFLGEKTCVSYGDKCIG
+                     TNHVLPTRNAAKFTGGLWVGKFLKTVTYQEVKSNQESGSLGRLCGRAARAENFEGHARS
+                     GDLR"
+     PFAM_domain     join(24202..24512,24563..25262,25311..25508)
+                     /aSDomain="Histidinol_dh"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00815.23"
+                     /db_xref="GO:0016616"
+                     /db_xref="GO:0046872"
+                     /db_xref="GO:0051287"
+                     /description="Histidinol dehydrogenase"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007859_0016"
+                     /evalue="6.60E-135"
+                     /gene_ontologies="GO:0016616: oxidoreductase activity,
+                     acting on the CH-OH group of donors, NAD or NADP as
+                     acceptor"
+                     /gene_ontologies="GO:0046872: metal ion binding"
+                     /gene_ontologies="GO:0051287: NAD binding"
+                     /label="FUN_007859"
+                     /locus_tag="FUN_007859"
+                     /protein_end="420"
+                     /protein_start="17"
+                     /score="450.4"
+                     /tool="antismash"
+                     /translation="TSLDVPKIVKGVIDDIRVRGDEAVRAYSIQFDKWSPDSFRLSLSE
+                     LEKIIATVPEQIIEDIKTVQANVRKFALAQRKSLVDFEMEIRPGVSLGQKNIPIAAVGA
+                     YIPGGRYALLASAHMTICTAKAAGVQRVIACTPPLQGKIPAATVAAMHLAGADEIYILG
+                     GVQAVAAMSVGTELIKKVDFVAGPGNSFVAEAKRQLFGEIGIDLPAGPTEILIVADDKA
+                     DPFTIATDLLSQAEHGPDTPAVLITTCLTVGQRSISEVERLLEILPTAQLAGTSWKMHG
+                     EVIVVDSLDEAYRLADQFASEHVQILTENPREALEKMSHYGALFLGEKTCVSYGDKCIG
+                     TNHVLPTRNAAKFTGGLWVGKFLKTVTYQEVKSNQESGSLGRLCGRAARAENFEGHARS
+                     GDLR"
+     gene            complement(25733..26730)
+                     /locus_tag="FUN_007860"
+     mRNA            complement(join(25733..25819,25880..25960,26031..26138,
+                     26200..26730))
+                     /locus_tag="FUN_007860"
+                     /product="hypothetical protein"
+     CDS             complement(join(25733..25819,25880..25960,26031..26138,
+                     26200..26730))
+                     /NRPS_PKS="Domain: PKS_KR (4-186). E-value: 5.6e-10. Score:
+                     31.3. Matches aSDomain: nrpspksdomains_FUN_007860_PKS_KR.1"
+                     /codon_start=1
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1001:short-chain dehydrogenase/reductase SDR (Score:
+                     136.2; E-value: 2.2e-41)"
+                     /gene_kind="biosynthetic-additional"
+                     /locus_tag="FUN_007860"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007860-T1"
+                     /transl_table=1
+                     /translation="MGSRVALVTASSAGLGAAIAKSIVEDFRVVINYHGDAARAETTVE
+                     QLKALVETRSSHEKLSDEVTMAPAEDLRTPRVLALRADMSSRTSIAQLVKDVVDQMGRL
+                     DVVISNAGWTRIRDFQDLDDNVDEEDWDECWQVNVKSHLWLLHASRQYLESSPNGAFIS
+                     VASVAGVKPSGSSIAYAVTKAAQIHLVKCLAAVVSPLVRVNCVSPGILMTDWGRQFPED
+                     TLTVAKEKTLLKRFATVQDVAEQVKSMVLSNSITGVNMVVDAGFSL"
+     PFAM_domain     complement(join(25739..25819,25880..25960,26031..26138,
+                     26200..26535))
+                     /aSDomain="adh_short_C2"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF13561.9"
+                     /description="Enoyl-(Acyl carrier protein) reductase"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007860_0099"
+                     /evalue="1.90E-34"
+                     /label="FUN_007860"
+                     /locus_tag="FUN_007860"
+                     /protein_end="267"
+                     /protein_start="65"
+                     /score="119.4"
+                     /tool="antismash"
+                     /translation="MAPAEDLRTPRVLALRADMSSRTSIAQLVKDVVDQMGRLDVVISN
+                     AGWTRIRDFQDLDDNVDEEDWDECWQVNVKSHLWLLHASRQYLESSPNGAFISVASVAG
+                     VKPSGSSIAYAVTKAAQIHLVKCLAAVVSPLVRVNCVSPGILMTDWGRQFPEDTLTVAK
+                     EKTLLKRFATVQDVAEQVKSMVLSNSITGVNMVVDAGFS"
+     PFAM_domain     complement(join(25739..25819,25880..25960,26031..26138,
+                     26200..26535))
+                     /aSDomain="adh_short_C2"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF13561.9"
+                     /description="Enoyl-(Acyl carrier protein) reductase"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007860_0017"
+                     /evalue="1.90E-34"
+                     /label="FUN_007860"
+                     /locus_tag="FUN_007860"
+                     /protein_end="267"
+                     /protein_start="65"
+                     /score="119.4"
+                     /tool="antismash"
+                     /translation="MAPAEDLRTPRVLALRADMSSRTSIAQLVKDVVDQMGRLDVVISN
+                     AGWTRIRDFQDLDDNVDEEDWDECWQVNVKSHLWLLHASRQYLESSPNGAFISVASVAG
+                     VKPSGSSIAYAVTKAAQIHLVKCLAAVVSPLVRVNCVSPGILMTDWGRQFPEDTLTVAK
+                     EKTLLKRFATVQDVAEQVKSMVLSNSITGVNMVVDAGFS"
+     aSDomain        complement(join(26112..26138,26200..26718))
+                     /aSDomain="PKS_KR"
+                     /aSTool="nrps_pks_domains"
+                     /database="nrpspksdomains.hmm"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksdomains_FUN_007860_PKS_KR.1"
+                     /evalue="5.60E-10"
+                     /label="FUN_007860_PKS_KR.1"
+                     /locus_tag="FUN_007860"
+                     /protein_end="186"
+                     /protein_start="4"
+                     /score="31.3"
+                     /specificity="KR activity: inactive"
+                     /specificity="KR stereochemistry: C2"
+                     /tool="antismash"
+                     /translation="VALVTASSAGLGAAIAKSIVEDFRVVINYHGDAARAETTVEQLKA
+                     LVETRSSHEKLSDEVTMAPAEDLRTPRVLALRADMSSRTSIAQLVKDVVDQMGRLDVVI
+                     SNAGWTRIRDFQDLDDNVDEEDWDECWQVNVKSHLWLLHASRQYLESSPNGAFISVASV
+                     AGVKPSGSSIAYAVTKAAQ"
+     gene            complement(29830..32778)
+                     /locus_tag="FUN_007861"
+     mRNA            complement(join(29830..31825,31933..32362,32409..32500,
+                     32569..32583,32702..32778))
+                     /locus_tag="FUN_007861"
+                     /product="hypothetical protein"
+     CDS             complement(join(29830..31825,31933..32362,32409..32500,
+                     32569..32583,32702..32778))
+                     /codon_start=1
+                     /locus_tag="FUN_007861"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007861-T1"
+                     /transl_table=1
+                     /translation="MLGNHSSYENADEPARAEYSCMFCKKRKVKCDRTLPSCSICRKTQ
+                     QECQYPSDGGKPGPKLGTTRRKRPRAGSVDKQSSRKSTQECFTALASHERGASNVEAVT
+                     NATLLPSVANADNEPGAAAQSPSQKPYESYPLTPATTPLDVRTLAYIMHPSHDTAAISP
+                     LLKDFDGPTHGTARWDVGSGTGNKIAQACTLLGISRQSLQPYLNLYFDNMTAFSLFHQP
+                     SFGETLRNIGSVTQLAALLASMLAFSARFRSSTEECVQAGQPDSLNDMLGRPLPPLYFE
+                     NLSQLCVDKALEEYSDSTPSLPVLQALVLLTFQQLIKGARGSAWRRLGVCIRVAYELNL
+                     HHVDRYNTPEEDDPQIWCKIEERRRAWWAIWEMDVFASMIKRCPITIDWTDQETRFPVP
+                     DDDWYQLRFSSSCFLELKPMDRLKALQQCGTQSPKSWFIVLDSLMRDGHTLSKFRSPRP
+                     GIGKPGSSRSTWRTPDKDNSETLAILNNTLRCFCMALPKSLRQPGGSMAFTSTDPAAVV
+                     ATRRLQSAQYSIHVTIQLTRMMLHHQDAYYGAQQDLQLTDSRFAQEQERRAAIENQSLS
+                     LHLGPTRKGLQQFIEAADELLRIVSCSSEDHVRYVNPFLASIIWYGAVVHLGWKILAPP
+                     STNLDWVESKFAVMHMILGKFAEFWDLPRALQENLASVEEKLSLFTRPQTRKLSRGWAA
+                     VDGHSSKPATGAKRSAGSQESSSEDSSMGRRAAAESFPTGRHGSQPLQSSSKENPSIAE
+                     PDPKDRTPFDFDPLDGRDSGVCSNDYVQGGEQAFEPGLVPTLGGDMLVKDSSFDNGEFL
+                     FDESCLMDMDIVTSNGTSASVARENNPLRPGLWDDLQWDMNSATDPGRLLLNIMDYN"
+     PFAM_domain     complement(31222..31824)
+                     /aSDomain="Fungal_trans"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF04082.21"
+                     /db_xref="GO:0003677"
+                     /db_xref="GO:0006351"
+                     /db_xref="GO:0008270"
+                     /description="Fungal specific transcription factor domain"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007861_0101"
+                     /evalue="3.00E-22"
+                     /gene_ontologies="GO:0003677: DNA binding"
+                     /gene_ontologies="GO:0006351: DNA-templated transcription"
+                     /gene_ontologies="GO:0008270: zinc ion binding"
+                     /label="FUN_007861"
+                     /locus_tag="FUN_007861"
+                     /protein_end="406"
+                     /protein_start="205"
+                     /score="79.1"
+                     /tool="antismash"
+                     /translation="LNLYFDNMTAFSLFHQPSFGETLRNIGSVTQLAALLASMLAFSAR
+                     FRSSTEECVQAGQPDSLNDMLGRPLPPLYFENLSQLCVDKALEEYSDSTPSLPVLQALV
+                     LLTFQQLIKGARGSAWRRLGVCIRVAYELNLHHVDRYNTPEEDDPQIWCKIEERRRAWW
+                     AIWEMDVFASMIKRCPITIDWTDQETRFPVPDDDWYQL"
+     PFAM_domain     complement(31222..31824)
+                     /aSDomain="Fungal_trans"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF04082.21"
+                     /db_xref="GO:0003677"
+                     /db_xref="GO:0006351"
+                     /db_xref="GO:0008270"
+                     /description="Fungal specific transcription factor domain"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007861_0019"
+                     /evalue="3.00E-22"
+                     /gene_ontologies="GO:0003677: DNA binding"
+                     /gene_ontologies="GO:0006351: DNA-templated transcription"
+                     /gene_ontologies="GO:0008270: zinc ion binding"
+                     /label="FUN_007861"
+                     /locus_tag="FUN_007861"
+                     /protein_end="406"
+                     /protein_start="205"
+                     /score="79.1"
+                     /tool="antismash"
+                     /translation="LNLYFDNMTAFSLFHQPSFGETLRNIGSVTQLAALLASMLAFSAR
+                     FRSSTEECVQAGQPDSLNDMLGRPLPPLYFENLSQLCVDKALEEYSDSTPSLPVLQALV
+                     LLTFQQLIKGARGSAWRRLGVCIRVAYELNLHHVDRYNTPEEDDPQIWCKIEERRRAWW
+                     AIWEMDVFASMIKRCPITIDWTDQETRFPVPDDDWYQL"
+     PFAM_domain     complement(join(32440..32500,32569..32583,32702..32721))
+                     /aSDomain="Zn_clus"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00172.21"
+                     /db_xref="GO:0000981"
+                     /db_xref="GO:0006355"
+                     /db_xref="GO:0008270"
+                     /description="Fungal Zn(2)-Cys(6) binuclear cluster domain"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007861_0100"
+                     /evalue="1.40E-07"
+                     /gene_ontologies="GO:0000981: DNA-binding transcription
+                     factor activity, RNA polymerase II-specific"
+                     /gene_ontologies="GO:0006355: regulation of DNA-templated
+                     transcription"
+                     /gene_ontologies="GO:0008270: zinc ion binding"
+                     /label="FUN_007861"
+                     /locus_tag="FUN_007861"
+                     /protein_end="51"
+                     /protein_start="19"
+                     /score="31.7"
+                     /tool="antismash"
+                     /translation="SCMFCKKRKVKCDRTLPSCSICRKTQQECQYP"
+     PFAM_domain     complement(join(32440..32500,32569..32583,32702..32721))
+                     /aSDomain="Zn_clus"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00172.21"
+                     /db_xref="GO:0000981"
+                     /db_xref="GO:0006355"
+                     /db_xref="GO:0008270"
+                     /description="Fungal Zn(2)-Cys(6) binuclear cluster domain"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007861_0018"
+                     /evalue="1.40E-07"
+                     /gene_ontologies="GO:0000981: DNA-binding transcription
+                     factor activity, RNA polymerase II-specific"
+                     /gene_ontologies="GO:0006355: regulation of DNA-templated
+                     transcription"
+                     /gene_ontologies="GO:0008270: zinc ion binding"
+                     /label="FUN_007861"
+                     /locus_tag="FUN_007861"
+                     /protein_end="51"
+                     /protein_start="19"
+                     /score="31.7"
+                     /tool="antismash"
+                     /translation="SCMFCKKRKVKCDRTLPSCSICRKTQQECQYP"
+     assembly_gap    33137..33178
+                     /estimated_length=42
+                     /gap_type="within scaffold"
+                     /linkage_evidence="paired-ends"
+     gene            34378..35533
+                     /locus_tag="FUN_007862"
+     mRNA            join(34378..34567,34626..35533)
+                     /locus_tag="FUN_007862"
+                     /product="hypothetical protein"
+     CDS             join(34378..34567,34626..35533)
+                     /NRPS_PKS="Domain: PKS_ER (26-290). E-value: 8e-09. Score:
+                     26.9. Matches aSDomain: nrpspksdomains_FUN_007862_PKS_ER.1"
+                     /codon_start=1
+                     /gene_functions="biosynthetic-additional
+                     (rule-based-clusters) ADH_N"
+                     /gene_functions="biosynthetic-additional
+                     (rule-based-clusters) ADH_zinc_N"
+                     /gene_functions="biosynthetic-additional (smcogs)
+                     SMCOG1040:alcohol dehydrogenase (Score: 245.9; E-value:
+                     8.7e-75)"
+                     /gene_kind="biosynthetic-additional"
+                     /locus_tag="FUN_007862"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007862-T1"
+                     /sec_met_domain="ADH_N (E-value: 1.9e-24, bitscore: 80.4,
+                     seeds: 66, tool: rule-based-clusters)"
+                     /sec_met_domain="ADH_zinc_N (E-value: 6.7e-19, bitscore:
+                     62.9, seeds: 86, tool: rule-based-clusters)"
+                     /transl_table=1
+                     /translation="MAHDHHEPDYKFRGWMGLDESSVDGNMVFQEYEPKPLEESDVDIK
+                     VTHCGVCGSDVHTLRSGWGPTLYPCVTGHEIVGIVVRAGSKVEGGLKLGDRVGVGAQSM
+                     SCLQPDCEQCSNNMECYCQNAMIPTYNSIYPGGAKSYGGFADYWRGPSHFVVKIPDAIP
+                     SDVAAPMLCAGIATFSPLKKYGAGPGKTVGIIGLGGLGHFGIMGAKALECDKVVAISRS
+                     SAKKEDALKLGATDFVATADGADWAKTWSNTLDLILCTVSSANLPLTQYLQLLRVNGQF
+                     IQLGSPDESLPSFNAFALTAKGAKMGGSSIGSPSEIREMLDFFARKGVRTWNTNLPMQQ
+                     ANKAILDLEAGKARYRYVLVNENHV"
+     aSDomain        join(34456..34567,34626..35305)
+                     /aSDomain="PKS_ER"
+                     /aSTool="nrps_pks_domains"
+                     /database="nrpspksdomains.hmm"
+                     /detection="hmmscan"
+                     /domain_id="nrpspksdomains_FUN_007862_PKS_ER.1"
+                     /evalue="8.00E-09"
+                     /label="FUN_007862_PKS_ER.1"
+                     /locus_tag="FUN_007862"
+                     /protein_end="290"
+                     /protein_start="26"
+                     /score="26.9"
+                     /tool="antismash"
+                     /translation="MVFQEYEPKPLEESDVDIKVTHCGVCGSDVHTLRSGWGPTLYPCV
+                     TGHEIVGIVVRAGSKVEGGLKLGDRVGVGAQSMSCLQPDCEQCSNNMECYCQNAMIPTY
+                     NSIYPGGAKSYGGFADYWRGPSHFVVKIPDAIPSDVAAPMLCAGIATFSPLKKYGAGPG
+                     KTVGIIGLGGLGHFGIMGAKALECDKVVAISRSSAKKEDALKLGATDFVATADGADWAK
+                     TWSNTLDLILCTVSSANLPLTQYLQLLRVNGQFIQLGSPDES"
+     PFAM_domain     join(34495..34567,34626..34909)
+                     /aSDomain="ADH_N"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF08240.15"
+                     /description="Alcohol dehydrogenase GroES-like domain"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007862_0102"
+                     /evalue="8.80E-23"
+                     /label="FUN_007862"
+                     /locus_tag="FUN_007862"
+                     /protein_end="158"
+                     /protein_start="39"
+                     /score="80.4"
+                     /tool="antismash"
+                     /translation="SDVDIKVTHCGVCGSDVHTLRSGWGPTLYPCVTGHEIVGIVVRAG
+                     SKVEGGLKLGDRVGVGAQSMSCLQPDCEQCSNNMECYCQNAMIPTYNSIYPGGAKSYGG
+                     FADYWRGPSHFVVKI"
+     PFAM_domain     join(34495..34567,34626..34909)
+                     /aSDomain="ADH_N"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF08240.15"
+                     /description="Alcohol dehydrogenase GroES-like domain"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007862_0020"
+                     /evalue="8.80E-23"
+                     /label="FUN_007862"
+                     /locus_tag="FUN_007862"
+                     /protein_end="158"
+                     /protein_start="39"
+                     /score="80.4"
+                     /tool="antismash"
+                     /translation="SDVDIKVTHCGVCGSDVHTLRSGWGPTLYPCVTGHEIVGIVVRAG
+                     SKVEGGLKLGDRVGVGAQSMSCLQPDCEQCSNNMECYCQNAMIPTYNSIYPGGAKSYGG
+                     FADYWRGPSHFVVKI"
+     PFAM_domain     35030..35410
+                     /aSDomain="ADH_zinc_N"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00107.29"
+                     /description="Zinc-binding dehydrogenase"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007862_0103"
+                     /evalue="3.10E-17"
+                     /label="FUN_007862"
+                     /locus_tag="FUN_007862"
+                     /protein_end="325"
+                     /protein_start="198"
+                     /score="62.9"
+                     /tool="antismash"
+                     /translation="GLGHFGIMGAKALECDKVVAISRSSAKKEDALKLGATDFVATADG
+                     ADWAKTWSNTLDLILCTVSSANLPLTQYLQLLRVNGQFIQLGSPDESLPSFNAFALTAK
+                     GAKMGGSSIGSPSEIREMLDFFA"
+     PFAM_domain     35030..35410
+                     /aSDomain="ADH_zinc_N"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00107.29"
+                     /description="Zinc-binding dehydrogenase"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007862_0021"
+                     /evalue="3.10E-17"
+                     /label="FUN_007862"
+                     /locus_tag="FUN_007862"
+                     /protein_end="325"
+                     /protein_start="198"
+                     /score="62.9"
+                     /tool="antismash"
+                     /translation="GLGHFGIMGAKALECDKVVAISRSSAKKEDALKLGATDFVATADG
+                     ADWAKTWSNTLDLILCTVSSANLPLTQYLQLLRVNGQFIQLGSPDESLPSFNAFALTAK
+                     GAKMGGSSIGSPSEIREMLDFFA"
+     gene            complement(36313..38391)
+                     /locus_tag="FUN_007863"
+     mRNA            complement(join(36313..36983,37106..37186,37245..38391))
+                     /locus_tag="FUN_007863"
+                     /product="hypothetical protein"
+     CDS             complement(join(36313..36983,37106..37186,37245..38391))
+                     /codon_start=1
+                     /gene_functions="transport (smcogs) SMCOG1000:ABC
+                     transporter ATP-binding protein (Score: 124.9; E-value:
+                     7e-38)"
+                     /gene_kind="transport"
+                     /locus_tag="FUN_007863"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007863-T1"
+                     /transl_table=1
+                     /translation="MASDPATNVASNMEKGGNLSDRLPKTSVNTLSWSDVGAIVKDQKT
+                     KKPLPILSSNHGIAKAGDVVALMGPSGSGKTTLLNVLAHRTSSMKGEIQGKIMINGRST
+                     TTTAIQKISTYVEQEDAMIGILTTRETIDFAARLSLPANMPKSERLNRVNELIQSFGLQ
+                     RQADTIVGTPLRKGLSGGQKRRLSVASQLVTSPRIVFLDEPTSGLDSAASFEVMKYIRE
+                     VAKLHHLIVIASIHQPSTTTFQLFDQLMLLSKGKTCYFGPASGVEAYFAKIGHVIPLHT
+                     NPAEFLLDLVNSDFIHGGEFAEGRLQHVHDSWTASDERNALEASIANCCDKDVGTSNIP
+                     TIWKNPVYISYVLLHRNFIKSYRDLIAYGTRVAMYFGLAIMMGTVWLRLSYNQTSIQPF
+                     INAIFFGGAFMSFMAVAYVPSIIEDLHSFRKERANGLYGPLPFTIANALVGIPWLFAIS
+                     LMFSIVTYWLGNFHATASGFWMWVLWLFLDLLAAEGLVVLVSSIFPIFVVALAITAFAN
+                     GLWMSVGGFLVPMNTLNVFWKYVFHYIDYQAYVFQGMMVNQFRSTIWNCEKLASGYQCM
+                     YSSDLQSQGQIRGTAVLEAYNYPHTDKKVGEWIGIMFAIIIAYRLLGYGALSLKRH"
+     PFAM_domain     complement(join(36535..36983,37106..37186,37245..37338))
+                     /aSDomain="ABC2_membrane"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF01061.27"
+                     /db_xref="GO:0016020"
+                     /db_xref="GO:0140359"
+                     /description="ABC-2 type transporter"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007863_0106"
+                     /evalue="1.20E-27"
+                     /gene_ontologies="GO:0016020: membrane"
+                     /gene_ontologies="GO:0140359: ABC-type transporter
+                     activity"
+                     /label="FUN_007863"
+                     /locus_tag="FUN_007863"
+                     /protein_end="559"
+                     /protein_start="351"
+                     /score="96.9"
+                     /tool="antismash"
+                     /translation="VLLHRNFIKSYRDLIAYGTRVAMYFGLAIMMGTVWLRLSYNQTSI
+                     QPFINAIFFGGAFMSFMAVAYVPSIIEDLHSFRKERANGLYGPLPFTIANALVGIPWLF
+                     AISLMFSIVTYWLGNFHATASGFWMWVLWLFLDLLAAEGLVVLVSSIFPIFVVALAITA
+                     FANGLWMSVGGFLVPMNTLNVFWKYVFHYIDYQAYVFQGMMVNQF"
+     PFAM_domain     complement(join(36535..36983,37106..37186,37245..37338))
+                     /aSDomain="ABC2_membrane"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF01061.27"
+                     /db_xref="GO:0016020"
+                     /db_xref="GO:0140359"
+                     /description="ABC-2 type transporter"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007863_0024"
+                     /evalue="1.20E-27"
+                     /gene_ontologies="GO:0016020: membrane"
+                     /gene_ontologies="GO:0140359: ABC-type transporter
+                     activity"
+                     /label="FUN_007863"
+                     /locus_tag="FUN_007863"
+                     /protein_end="559"
+                     /protein_start="351"
+                     /score="96.9"
+                     /tool="antismash"
+                     /translation="VLLHRNFIKSYRDLIAYGTRVAMYFGLAIMMGTVWLRLSYNQTSI
+                     QPFINAIFFGGAFMSFMAVAYVPSIIEDLHSFRKERANGLYGPLPFTIANALVGIPWLF
+                     AISLMFSIVTYWLGNFHATASGFWMWVLWLFLDLLAAEGLVVLVSSIFPIFVVALAITA
+                     FANGLWMSVGGFLVPMNTLNVFWKYVFHYIDYQAYVFQGMMVNQF"
+     PFAM_domain     complement(37516..37686)
+                     /aSDomain="ABC2_membrane_7"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF19055.3"
+                     /db_xref="GO:0140359"
+                     /description="ABC-2 type transporter"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007863_0105"
+                     /evalue="1.20E-12"
+                     /gene_ontologies="GO:0140359: ABC-type transporter
+                     activity"
+                     /label="FUN_007863"
+                     /locus_tag="FUN_007863"
+                     /protein_end="292"
+                     /protein_start="235"
+                     /score="47.5"
+                     /tool="antismash"
+                     /translation="HQPSTTTFQLFDQLMLLSKGKTCYFGPASGVEAYFAKIGHVIPLH
+                     TNPAEFLLDLVN"
+     PFAM_domain     complement(37516..37686)
+                     /aSDomain="ABC2_membrane_7"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF19055.3"
+                     /db_xref="GO:0140359"
+                     /description="ABC-2 type transporter"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007863_0023"
+                     /evalue="1.20E-12"
+                     /gene_ontologies="GO:0140359: ABC-type transporter
+                     activity"
+                     /label="FUN_007863"
+                     /locus_tag="FUN_007863"
+                     /protein_end="292"
+                     /protein_start="235"
+                     /score="47.5"
+                     /tool="antismash"
+                     /translation="HQPSTTTFQLFDQLMLLSKGKTCYFGPASGVEAYFAKIGHVIPLH
+                     TNPAEFLLDLVN"
+     PFAM_domain     complement(37774..38214)
+                     /aSDomain="ABC_tran"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00005.30"
+                     /db_xref="GO:0005524"
+                     /description="ABC transporter"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007863_0104"
+                     /evalue="3.00E-24"
+                     /gene_ontologies="GO:0005524: ATP binding"
+                     /label="FUN_007863"
+                     /locus_tag="FUN_007863"
+                     /protein_end="206"
+                     /protein_start="59"
+                     /score="86.2"
+                     /tool="antismash"
+                     /translation="KAGDVVALMGPSGSGKTTLLNVLAHRTSSMKGEIQGKIMINGRST
+                     TTTAIQKISTYVEQEDAMIGILTTRETIDFAARLSLPANMPKSERLNRVNELIQSFGLQ
+                     RQADTIVGTPLRKGLSGGQKRRLSVASQLVTSPRIVFLDEPTS"
+     PFAM_domain     complement(37774..38214)
+                     /aSDomain="ABC_tran"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00005.30"
+                     /db_xref="GO:0005524"
+                     /description="ABC transporter"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007863_0022"
+                     /evalue="3.00E-24"
+                     /gene_ontologies="GO:0005524: ATP binding"
+                     /label="FUN_007863"
+                     /locus_tag="FUN_007863"
+                     /protein_end="206"
+                     /protein_start="59"
+                     /score="86.2"
+                     /tool="antismash"
+                     /translation="KAGDVVALMGPSGSGKTTLLNVLAHRTSSMKGEIQGKIMINGRST
+                     TTTAIQKISTYVEQEDAMIGILTTRETIDFAARLSLPANMPKSERLNRVNELIQSFGLQ
+                     RQADTIVGTPLRKGLSGGQKRRLSVASQLVTSPRIVFLDEPTS"
+     gene            complement(39657..40502)
+                     /locus_tag="FUN_007864"
+     mRNA            complement(join(39657..40238,40290..40361,40418..40426,
+                     40479..40502))
+                     /locus_tag="FUN_007864"
+                     /product="hypothetical protein"
+     CDS             complement(join(39657..40238,40290..40361,40418..40426,
+                     40479..40502))
+                     /codon_start=1
+                     /locus_tag="FUN_007864"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007864-T1"
+                     /transl_table=1
+                     /translation="MANKQGKMQNLINYRMRVTLNDGRQMTGQMLAFDKHMNLVLADTE
+                     EFRKVKRKQNRPSAPAAPGSAAATVESEEKRTLGLLILRGTNIVSCSVEGPPPSDPSSR
+                     LGQSAPGGAPATLQAGTGISRPAGRGLPVGLGGPAAGVGGPAPPGGFGFPPGGFPGGAP
+                     PPGFGGRGGPGVPAAGGPPPGFGGPPPGFGGPPGGPPAGFQPPPGFQGGPPGQGRGFPP
+                     PGFGGR"
+     PFAM_domain     complement(join(40068..40238,40290..40361,40418..40426,
+                     40479..40481))
+                     /aSDomain="LSM"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF01423.25"
+                     /description="LSM domain"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007864_0107"
+                     /evalue="7.20E-20"
+                     /label="FUN_007864"
+                     /locus_tag="FUN_007864"
+                     /protein_end="92"
+                     /protein_start="7"
+                     /score="70.6"
+                     /tool="antismash"
+                     /translation="MQNLINYRMRVTLNDGRQMTGQMLAFDKHMNLVLADTEEFRKVKR
+                     KQNRPSAPAAPGSAAATVESEEKRTLGLLILRGTNIVSCS"
+     PFAM_domain     complement(join(40068..40238,40290..40361,40418..40426,
+                     40479..40481))
+                     /aSDomain="LSM"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF01423.25"
+                     /description="LSM domain"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007864_0025"
+                     /evalue="7.20E-20"
+                     /label="FUN_007864"
+                     /locus_tag="FUN_007864"
+                     /protein_end="92"
+                     /protein_start="7"
+                     /score="70.6"
+                     /tool="antismash"
+                     /translation="MQNLINYRMRVTLNDGRQMTGQMLAFDKHMNLVLADTEEFRKVKR
+                     KQNRPSAPAAPGSAAATVESEEKRTLGLLILRGTNIVSCS"
+     gene            40957..41541
+                     /locus_tag="FUN_007865"
+     mRNA            join(40957..41107,41165..41541)
+                     /locus_tag="FUN_007865"
+                     /product="hypothetical protein"
+     CDS             join(40957..41107,41165..41541)
+                     /codon_start=1
+                     /locus_tag="FUN_007865"
+                     /product="hypothetical protein"
+                     /protein_id="ncbi_FUN_007865-T1"
+                     /transl_table=1
+                     /translation="MAEGNDKSSNPMRELRIDKLVLNISVGESGDRLTRAAKVLEQLSG
+                     QTPVYSKARYTVRSFGIRRNEKIAVHVTVRGPKAEEILERGLKVKEYELRKKNFSETGN
+                     FGFGISEHIDLGIKYDPAIGIYGMDFYCCMSRPGARIAKRRRAQAKVGRNHQVHKDDTV
+                     KWFKGRFEGIVR"
+     PFAM_domain     join(40984..41107,41165..41202)
+                     /aSDomain="Ribosomal_L5"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00281.22"
+                     /description="Ribosomal protein L5"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007865_0108"
+                     /evalue="8.90E-21"
+                     /label="FUN_007865"
+                     /locus_tag="FUN_007865"
+                     /protein_end="63"
+                     /protein_start="9"
+                     /score="74.1"
+                     /tool="antismash"
+                     /translation="NPMRELRIDKLVLNISVGESGDRLTRAAKVLEQLSGQTPVYSKAR
+                     YTVRSFGIR"
+     PFAM_domain     join(40984..41107,41165..41202)
+                     /aSDomain="Ribosomal_L5"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00281.22"
+                     /description="Ribosomal protein L5"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007865_0026"
+                     /evalue="8.90E-21"
+                     /label="FUN_007865"
+                     /locus_tag="FUN_007865"
+                     /protein_end="63"
+                     /protein_start="9"
+                     /score="74.1"
+                     /tool="antismash"
+                     /translation="NPMRELRIDKLVLNISVGESGDRLTRAAKVLEQLSGQTPVYSKAR
+                     YTVRSFGIR"
+     PFAM_domain     41212..41457
+                     /aSDomain="Ribosomal_L5_C"
+                     /aSTool="fullhmmer"
+                     /database="35.0"
+                     /db_xref="PF00673.24"
+                     /description="ribosomal L5P family C-terminus"
+                     /detection="hmmscan"
+                     /domain_id="fullhmmer_FUN_007865_0109"
+                     /evalue="5.60E-22"
+                     /label="FUN_007865"
+                     /locus_tag="FUN_007865"
+                     /protein_end="148"
+                     /protein_start="66"
+                     /score="77.9"
+                     /tool="antismash"
+                     /translation="KIAVHVTVRGPKAEEILERGLKVKEYELRKKNFSETGNFGFGISE
+                     HIDLGIKYDPAIGIYGMDFYCCMSRPGARIAKRRRAQ"
+     PFAM_domain     41212..41457
+                     /aSDomain="Ribosomal_L5_C"
+                     /aSTool="clusterhmmer"
+                     /database="35.0"
+                     /db_xref="PF00673.24"
+                     /description="ribosomal L5P family C-terminus"
+                     /detection="hmmscan"
+                     /domain_id="clusterhmmer_FUN_007865_0027"
+                     /evalue="5.60E-22"
+                     /label="FUN_007865"
+                     /locus_tag="FUN_007865"
+                     /protein_end="148"
+                     /protein_start="66"
+                     /score="77.9"
+                     /tool="antismash"
+                     /translation="KIAVHVTVRGPKAEEILERGLKVKEYELRKKNFSETGNFGFGISE
+                     HIDLGIKYDPAIGIYGMDFYCCMSRPGARIAKRRRAQ"
+ORIGIN
+        1 cgctctctcg cgaagcttca ttcttccgtg ccttctgatc cagcttctca gtctcacttt
+       61 tgaagagtac cgtatcattc ttctcgccct gatccattat gaactccgaa accaagccta
+      121 tggatggccc tgctgaaatg gtggatctca cccgcgcagt gactttcgaa cctctacctg
+      181 accctatcaa ggttgagggt gggcttatag ttgacacaga gaacctggcc agcactgaag
+      241 gcttgaagtt gtcaagagat ggccatgtga gcatactcct ttctacctag ttgacacaat
+      301 ccacatgctg acctgtctct gcacatcaga ccgtgttgat tcctcagcca accgactctg
+      361 aggcggattg ccttaactgg tccacgacaa aaaaacacct cattctcttc actattgcgt
+      421 gggacgctct ttgtgctgac tttgttggtg caatcggctc agcgcctatc atcttccagg
+      481 cggcagagtg gcaaatgtca ttcaacaagg ctaatcagcc caacgccatc accgttcttc
+      541 tcctgtgggt gcttttacac acttcattgc atccaagcaa gtactatttt ctgtccaagg
+      601 ggtatctccg gtctcatatg ggtgccaatg tcttcctact gggacagagc gccggtgctg
+      661 ttctggacgg aggtcatcgg cttcttcttc acagtgggca ctgcactgtg caacacgtac
+      721 gaaacgttct tcgcaatgcg ggtcttgagt gctatcttcc tcactgcctc tcagacagtc
+      781 tcactggcat tgttaaaaga catcttcttt ttccatgaga gagctcgaaa gattggcctc
+      841 tgggctgctc tttacaccgc ttcgccttat ctgggtccgc agttgggtag cttcgtggtt
+      901 ggaaagacgc tggactggca caacgtctat tggatggcag cgggttgtgt ggcaatacag
+      961 ctactgctgc tggtgctctt cctcgacgaa acatggtata accgaacgct acatagccac
+     1021 gagcagccgc acagatctca aaccactttt ggtcgtttgg gtcgtctaac cggtgcgtgg
+     1081 caaatccaac accacaaaag atacttctcc accgtttcgg cgacataccg cgaactactc
+     1141 ttcgtgattc tgcaaccaca tttcacattg attgccatct tatagtgagt cttcgtgttt
+     1201 acgactcttt tgaatcagct aacagcttct tagtttcctg gtcttcatgt gggctgtcgg
+     1261 aattaacgtc acaaccgggg ttgtttttgc tactcctgca agctatggcg gctatggata
+     1321 caacacgatc cagctcggat gtctctattt ctcacccaac atttccaggg agtccgtttg
+     1381 ctatatgaac ccccgaagga ctaacgttct cggcctgccc gatagaagtg gccgggtcgc
+     1441 tacctttttc actgaaggca aatatgtgtc ctgactgtgt cacatccgtt gtgctgccct
+     1501 cccgtcatac tctcatgcag cagtttcttc tttcgaggca ccagctcgct cgccctgacc
+     1561 tttggcgcta gggatcttct caacgtgaat agtttcgttc ttcaaggcga aggcggtatc
+     1621 ggcgtcaact tcgacaagtc cgtgtccatc ttgtgcaaaa tggaccacaa cctcatcgcc
+     1681 gaaaagtgca ccaatctcct ccaaggtctt cccagtcgtc tcgggtaaca tgaagaataa
+     1741 ggcaaccata caagcgacgg tcacacagac aaagaccagg tagtacctcc aaccgatatt
+     1801 tgcaaaggct gtaggggcac cggcagtgta gataattgta gtgacgaagt aggtgaacag
+     1861 agcgacagta agacctttcg ctctgatcgt agtgggaaat atttctgaga caatctgcaa
+     1921 catggtcagc tgttgccagg gggtgagaac agacacatgt cgtggaaact tacgacaaac
+     1981 tgagtcgggt cgatgaacat gccaacgcca aatgcataca tcatgatgaa gaagattgtc
+     2041 gccttgttcg ctgcgctgtt gggcgtttca gcaaatttcc agatgaggag ggacgttgca
+     2101 agcaggcatg atgaacacca ggccaatcca ataactgccg ggcatgatca ttagtaatgg
+     2161 tctcctaacc ctatttttaa agtctggcac ttacgcatca atggtctcct tcccactttg
+     2221 tcgattactg ctgcgttcac gaaattgaag ccaacagcaa tgatgacata gatgccgtac
+     2281 aataaaagag ccttggatcc ggtgaagcct atagactgcg ccaccaagat caggtaggtc
+     2341 gtgatgccat taatgccggc tgaccctacg gcaaaaatga ccagtatggc cagtaaggtt
+     2401 cgttttctcc atgaaggatg tgtgaacatt ttaaggtaag tagccttgaa ttgcttatca
+     2461 tgttcgacct gcgccttgat ttggatgaat tcggcatgtg ctgcggtgtc tctgggatcg
+     2521 gaaaggtcat ggtgtacttt ctggatgaca acccatgcct cgtccagccg atcattccat
+     2581 atcagccatc tcggagactc aggaatccag taacatgcga tgaccaagcc gagaggtgca
+     2641 ataggacaca agcataaggg catacgccac tggacgacat cgttggtggt gaaaaaacaa
+     2701 ccataaccaa tccaggcgga gctgtttgct gttagttatg ggatcagaag tgggaaatct
+     2761 ggattctcac gagaggtagc ccagggagaa gctgcaacca gtggcggcgc tgaggaggcc
+     2821 tcttcgatgc ggcggagcca cttctgcaat gtagagggga accagtgcca acaattggcc
+     2881 cactcctaag ccagtaatga agcggaagac aaatagcatg ggaatgttcc aggctgcggc
+     2941 aacgacggtc gttcccaccg tagcgatggc gcctccgatc gcaagggaga ttcgtcgacc
+     3001 aaagcgatcg gaggtccagc cttgcagaat agctccaaat gcggctccag cacagaataa
+     3061 tgcactgatg gcgcctagga tggaggctgt cttgctggat gcggctgtcg accccaggtc
+     3121 agcgcgatac accagactgc gagcaacgtg actcacggtt caacttgaag aaagtaaaga
+     3181 atccaggctc tccaatagat gtgacaaaca ccgcgaacga gaagccatag gaatatgccc
+     3241 ccagtgccga agcgagaacg atccagatgt tgtaggacgt gagacgcaac atcttgtctg
+     3301 tgtgatagta cttcggtagc ttccttgggc gtgcgtgatc gattgagtgg tagttgatat
+     3361 gcgtatgcta tggtcctttc aacccttgca ggggtatcga gtagataagg acagcataga
+     3421 atatcggttg caaacacgga cacgatgaac cccgaattag ttcgaccgag catgtctggg
+     3481 gaccccgcga tgcggctcga cggagggtct ggtcaattcc tcggtccatc cagaattcgc
+     3541 ccgagatctg acattcctaa agtctccacc ttccgatgca aaggactttt caaacaagtc
+     3601 ttgcgctgaa cggcaagctt gttttttggc aatcaatgct gcttcaatgg cctaatgttt
+     3661 ctgtccggtg tcaagccgcc ttgagcctga cagtttctgc cgcaaccccc caccgagtct
+     3721 acggcggcag agcttgactg catcggtatt ccggccgaga ggttgcgctt ggaaacagta
+     3781 tttaaactta ttttatcttg tgtaatggca attagtgacg agggctagga tcgcggttac
+     3841 tggaagcact cgtcacgatg agcaccaaca gagtatacaa gctcgatggc accggacgtc
+     3901 tacacgggcg tatcgccatt gtcaccggct catcttctgg tttaggcaga gagattgctc
+     3961 tggccattgc tcgtgagggt gcgtctgttg tctgctcgga cttgagggag gctgcacgtc
+     4021 cggacgggtt cgaggaagac aaggaaatac ccacgcatga agtcatcaaa aataatggtg
+     4081 gcagagctgt tttcaagaag tgcgacctta gtcatacttc ggaaattgtt gccgtcatac
+     4141 aatttgcggt agaggtgagg ctgttttgat tgggcattta cgatggactt actgaccaat
+     4201 atacagacat ggggtaagct agatatcctc gtcaacaatg ctggcttatg gatgcctcta
+     4261 cgcgactttg tagaggagtc ggaggaacaa tgggatgcta tgtttgctat caatgcaaaa
+     4321 ggtactcgta ccgctatgca agaggctatc aaacaatacc tccgtcagcc aatcgatgaa
+     4381 atctcgggct ctcgaggacg cattgttagt atctcatcgg ctgctggtgg gcgtacagca
+     4441 attcggcgtg aggctactta cgctgcgagc aaagcagctg tagctatgtt gactcagaac
+     4501 gtggctctcg atcacgccaa ggactacatt aatatcaatg gagtgtgtcc aggtgtggtc
+     4561 aagagcggtg cggctggtat caatttccgc actccagaga ttatcactga gatgcggaaa
+     4621 accacaccct ggcccaggtt aggagaaccg tcagacatag ccaaagcggt cgtcttcctg
+     4681 tgtagtgacg atgcacaatg gattacaggg caaaatctgg cggttgacgg cggtttcacg
+     4741 atcggaatac cattgtaaac tattctaaat caagaaccgg catgaaacaa tacatacaca
+     4801 tttggtaacc tagtcagcat tttgctcgca gcagctctat cctttgctac cggacagttt
+     4861 ggcgaaagtg cgccccctaa atcgccaaca tcccgcgcag gctagacggc ataactgctt
+     4921 agctgctttt gctcggcttc ccttcagcgg atgcaccggt cgaaacaggc gaggcgtatt
+     4981 cggtcatttc tagcgtcgtt gccgggatct tctttcgtgt gcacaaggtc aatatgcgtg
+     5041 gaaatgatgt gccccgtccg agcagaggaa ttctcccgta tgtggattgc ccgacaaaca
+     5101 cgccggggct ttggtggatc ccatgatctg caaattttac cgtcattagt gtaccgatac
+     5161 tgctgttgtt tgtctttcgc actgtagaat ctataaggtg ttgagatagc caatagtaag
+     5221 cctctaaggc cagttccagg tctcttgtta gcagagaatc tttcggcgca atgaccatct
+     5281 ttggaaacca agggtaaggg cgacgtctac actctgtggc atgatagtat ttcctaactt
+     5341 cagagtagtg ttgctctgat aacgggtgct gggggggcac ttggtcgggg tattgctctt
+     5401 caattcgccc gagacggtgt cagacgtatt gccggcttag atctatcgca aaacgggctg
+     5461 gctgcaacag ccaaagctgt ggaaagcgaa gtcccagaga tcgaatttct gcctgtcacg
+     5521 gtggatataa gtgatgaaag gcagatcgca gatgcgttcc gacaggttgt ggataggttt
+     5581 ggcaggatcg actatgcgat caataatgca gcaatcgcgt cgccctttgt aacaaccggg
+     5641 gacgctgagg tgcaggactt cgacagagtt cagaatatta atctcaaggg cacatggcta
+     5701 tgtgaacgag aggagctgag acaaatgatg aagcaagaac cacttccacc gatgggagag
+     5761 tcctcgtgag catttccaaa agccttcagc ggtcattttg cggaactcaa cagcacaaac
+     5821 agaaaacatt tggcctttct gcgtgtagag ctgactgtgt tgcacgcgta cagaaccgga
+     5881 agagttccgg tgagagggtc gatagtagtt gttgcatcgc tcttgggact tagagccatg
+     5941 cctctggacg ggctctatac catttcgaag cacggtaagt ccacagagct cttcaaagca
+     6001 tcataacaaa cctgactgaa actaaccctc ttcaattcag gaattttggg tatggtgagg
+     6061 actgacggtg ttgactacgc gacaaagggt attcggatta atgcgatctg cccagggtga
+     6121 gaatactgaa acccggcacc ggcagtggac cgactcacta acaagtccta gtttcattga
+     6181 tactcctctc gttactcccc ctatcagaaa gcttcttcaa ccacaaatcg acaaaactcc
+     6241 gatgggacgt atggcgaatc cccaagaggt ggcagatgcg gctgtgtatc tagcaagtga
+     6301 tcgagccagc tacattacag gaacagtgct ctctgtaagt acaataaaac gaaaaccatc
+     6361 tcccagacct gctgacgtta gtataggttg atggaggcta taacgcacag tgaatgtgtc
+     6421 gaagcataag ttgagtatta cagactttca atagaatgag aaatgacata tacagagcct
+     6481 ttcgtggtga cataatacaa gccatgcttc ggtgtcctga atgtcaacag ctaagagtag
+     6541 gaaattcgac gagatcgtgt agtgcaactc tggctcgcac attcatcaag ctgcagcggc
+     6601 aaaaacaccc tgctaagcag gagtgttcac tcttcgtata gaacgcaatg tagacgttga
+     6661 acgaatagag cacatgcgtt aaccctagtt caggtgatca tgtacccaag agtgatactg
+     6721 cccgtgaaag tctacaccat ggtatcactt tccaaagatg ttctcagact atttagatag
+     6781 ttcgaccatg gctggagaca gttgctggtt tgatgttttg agcccttata ccattctgat
+     6841 accacagcta gattcttgat atcgctccgt agaagggtac ttctgcttta aatatcgaaa
+     6901 atcacgggcc cagcaccgaa gcactctcaa gtagctccgt tcatctggtc taaatgtata
+     6961 gaactatgcc ttcaacgttg tctagaattt atgcaagaga acatagtgag gtattccacc
+     7021 gagctacgac caagcgtctt cttgcaactt gttcgccgat ctcatctcct tcactatgga
+     7081 gcaggcttct acaagcaaca aacctcgttg ctcggcgatt ataccttcta gaagattgct
+     7141 gacgtctttg gccattgtgg catcaccaca gatgtaaaaa gctgcgccgg ttcgcagcaa
+     7201 ggcatcaatc tctgctgcac ggtgtcgtat cttgtcttgg acatacacct tgctgcctgt
+     7261 gtcgacgcga gagaacgcag tgatcatctt gaacttatca ccaagtactc tcccaaattc
+     7321 ctggaatctc acttagcact ctggccgtag atcatatcga agtggcacat acctcccagt
+     7381 ctttctcata gatgaagtca tctttgttgc ggcaaccgta aaacagcatg gatactccga
+     7441 catccttccc cgccttgtgt tgagcagcac gctcttgcat aaaagccctg aagggcgcga
+     7501 ccccagtccc ggggcccacc ataatcactg ggacttttgg atcgtttggc aacctgaatg
+     7561 atgacgggcg gatgtatgct gggactcgaa gtccctggcg agagttgcga ataagctggt
+     7621 tgggaaagag accagtatac tctacctcag ggcttcgctc gtcgcttaga atctgctgca
+     7681 gcgcaagaag atgcttggtt gccacgccgt taaaggtaaa ttcagtatcc aaaatagcgt
+     7741 gggtctcgac cttcgtggta atggtgaagc gattgcttgt gacgacggga gaagacgata
+     7801 ttgaataaag gcgtggctgc aaagtcaaaa ggccttcaac cagcatggta aacggcacca
+     7861 tcttccaagc cgcgcctcca ctcacggtct gcaatgtctg cgcaagattc agctgccgct
+     7921 gagtaacata gctgtggaaa taatctttgt ctgttccgag cttttccatt tcttttttgg
+     7981 cttctgggga cggtgcgtac tcgctcagtt gttgaatgaa ttgacgtgac actggagctc
+     8041 cgatttccag cttgtgccgc acgatggtgt cgtaagtcgt cggcacaggg aaagaaactt
+     8101 tggcagtcct ctcgaggggt ttgatgtcga tcacggtatc acgctttgcg gtcaacccaa
+     8161 acatttccag gaatctgtcc acttctgtct tggagttagt tggcatcaga gagacgtgat
+     8221 cacccgtttc gtatgtgaga cctgagtctc ccaggtcgaa ctccacgtga atacaatttc
+     8281 ggtccctcgc tttgaagagc tgatgagagg cagtgatagg ggccaggaag ggattatgtg
+     8341 cgttgaaagg ggcctgcaga atgccttgta gatgtaactg attcggctcc ccgaggtaga
+     8401 cctttggatc gtccttattg aggtcgtggc ggtctatgat agtgaacacc ggctcataaa
+     8461 tgaccttttt ctcttcgaga ttcatatgtt ttgccaatgc tgcccacatt gtttccttcc
+     8521 aggcaaggaa gtcctcttcg gtggttttct ctccatcatc gcctcggcca gccggacaga
+     8581 tacggtgacc acctagacgc tccagagtga catcgacctt ggaagaaaca gcgttaaagt
+     8641 gctcgtacgt ggaattaccc aggccaaaag agaggaagct taaatttggt aagcttgaag
+     8701 aaccgtcctc gaaattcagg ttatcggcag taatgtatcg ataaaagtct tgtgcgttgt
+     8761 ctgttggctc tccttcgcca aatgtcgaga ggatgaacat gacgaccttg tcgacaggga
+     8821 tctgattgag ggtttcgtag tcgtagtctt ccaggttgcc gaccatcgtc ttgagaccaa
+     8881 atctggagtg gccttccttg gccaatcgag cagcgatgtc ctcggcaatt ccggtttgtg
+     8941 ttccaaagag gataacacag tttttatctg catctgcgat cttccgagca atgtctcgcg
+     9001 tctccccctc cgccaacgtc cttctgtagc cgtatgcctt ctgggcgttc ttctcctttg
+     9061 agcttaatct ttctcgggac gaccaaaacg cgtacactag aaagagggct agcacagtga
+     9121 aaatggtggg atccttcaag gaagagagcg aggatgacag aaaggatgat acatcgttgt
+     9181 tggctcgtgg gccaagcctt gaatgcagga tgtcggtgaa ggaggcggaa tccatgacgc
+     9241 tttatgtcgg agttcagtga ggattgttta atgcttattg aaacgccgag aagctagtaa
+     9301 tgacagtgaa tcacagaaag ggattggata tctgttagaa ggtgatagag cactggcagc
+     9361 gcttgagaac ctttacaggc tcaatgttct tcaacagcaa cgtcaatcga gaagaagtgg
+     9421 cagcgcatgt taaggttgcg ttctatctaa tcatttctag ttacggcacc tgtgtagaaa
+     9481 ggaggtgggg ttgtgggatc cgtatcgcgt gatgttttgc gtaggaacac aaacagttgc
+     9541 tgagttctgt gctatgccct cagtacgggt ccggggattc gaagcgggat cgaaaatgat
+     9601 gttcgtccga gacgaccccg catccaagtt gagaccacag taacaagtga cagcagtgtg
+     9661 aaggacgggc gttcatcggc cgaattccat ggcatcgaac accagactga gctttttcgg
+     9721 caaaagcact gcatgacgag catagtggtg aaagggctga tttcggttgg caatactgca
+     9781 cacgttagct acccgtgagc caactccgga agcgttgttg ccgctgagta tcatgccagc
+     9841 ctcgtgtcct tttgttatga cggcttgcca ttgcccgaac cttggggtta cgggctcaaa
+     9901 aacatcgcgc gatcgaggtg tcagaccaca tgtatttcct aactgtcgca ggtcggtcct
+     9961 tcgttcaatg attcattcat accaacaggt agagactgtc gcgatatttc aactcgatgg
+    10021 cgatatgccg ttggtatatt aggacatcgg aaaccataag tctactgtcg caaaactatg
+    10081 ttccctaaca ttattaatag atctgttagc tttggccgat gattacagtt gaacacctaa
+    10141 tataaagttt ttttcaggtt taccatggat gcttgggaac gaattgactc cattcctgcc
+    10201 agcttctacg tgaacttgga cacggtaacc tcgacacggt aacctgtagg ttaggaaaga
+    10261 atgcttgtgt ctgtttgtac ttctcggaag tgtttcggtg ctgtcaatta gacgagacaa
+    10321 tgcaatatat acgacattcc cagtaggttt gcaatctgat tgctcttatg atgcagcttc
+    10381 ggtaacctca ctcaaagggt gccaaatctc tcatcgcacc ctcgaagctg cgcttgatga
+    10441 tctcaacatg ggctttgctc cttggcttga aaacaacctc aaaaggagtg ggagcgtgca
+    10501 aaagccctgt ctggtaagcc tcggggtcga gcgaaatagt tctgccattt gcgtcgaccg
+    10561 gctcttggat ctcgaatgcc cagatcagct tcgccacaat tctccattga tttcgttcgg
+    10621 caagatggac tccagggcac attctgcggc ccgccccata agcatagtga tgttcagcga
+    10681 ctgtcagcaa acaccatgta caagacgagg aaaacttatc tcgattctta aaatctgcgc
+    10741 ttcccgcgta gtcgttggcc aatttatggt gattgatata gcgatctggg ttgaacgtga
+    10801 atggatcatc gtacccgtcc cgctcggaat gatggactgc ccagatcgga aggaacacgg
+    10861 tagaatcctt aggaatgaac atgccttcat accagtcgtc ttcggctgta cgacgaggta
+    10921 agcctgttgc tacactgttg tacatgattc agtatatctc cacgcagatg taaacttgaa
+    10981 cttacgctgg cctccacctc atgccttctt tgacgattga gttgatgtag ggtagctttg
+    11041 caaagtctgc ccattccggc attctgtgga gatgatgagc ccatacagcc ttacaggact
+    11101 cttctgcaag taacctacct ctcattgcca cacgccgcgt ccaactgctc tttagccttc
+    11161 tgctgcaccc aaggattttt agcaagcgct agagtcattg tcaacatgga agaggacgtg
+    11221 gtctccgctc ctccttcgac caattctcca aagagctgat ccagtgcatg ttgtgacatg
+    11281 gggaaacctt tttcgctgta ctcgtccaac aacctgtctg ccagcgagat ccgatgatct
+    11341 ccccgggcac gacgttcgtc aaccaaacgt cgagctttcg tccagatagc gtgcatcgaa
+    11401 tttccggctg ttctagctcg tctcttccag aacgcgaacc tctccggtac taatttcagg
+    11461 aaggggtatt cgtccacggg agggttcgcg cctggctcca gagcctctcc gaactgcagt
+    11521 aacagtcaat agatcttccc gaagcttagg atagccaatc taacaaggtt gagcgcatcg
+    11581 tatacagcct attcttctta gcaggagata aaccacagtt gcactcaatg gcacttacgt
+    11641 gaccccaaaa gttctcgaac gtcggccctc gttggccata tatcaggata cacgatattg
+    11701 aagaggtggt tcgtcttata tggttgtaaa aattcttggg gtccgtcaaa agttgatgca
+    11761 acaataccgt caccctatga aatctcagta agctggactt gggggcatca ctgtttaacg
+    11821 aactcggcat cttggacaat agccgccttt tcatcaagaa ttcgcggctg aaggacagtt
+    11881 gttagaagcg ttgctcgtca tatatctggt ccccaactta ccgagaaatt gtgcgtggcg
+    11941 attcggcgtt tctccctggt ctcgacggtg tttgaagcga aaactatgct atcacccgaa
+    12001 gtgatgatat ctgcgacgta gtttttcgga cgctcagcgt atattagtcc ttttttgtcc
+    12061 cacaagtcat ggattgcctt cttgtcgcaa agcacaatca cgttcctcgg tccaaatttc
+    12121 aaggagtaga cgccaccata ctggaggctc caatctttaa atctaggaca gactcgatca
+    12181 ggatttgtcc agtacaaagg gaccaaggtt acaacttact gtttgtaaag cccggtgacg
+    12241 gggatttggt gcagattgcc cagtaggggt attgttggag ggccaggtgg catgttagga
+    12301 tggcggctgc cgatccgcaa gaatttgtaa acaccatata gaacaacaag cgcgatgcag
+    12361 actcgactga gagtgagctc aggcatcgtg gccagaatgt gccggtgatc aaatgctgcc
+    12421 atatctctgc ttgacttcag aatgaacaac tttcagcgac aggaagtggt tgttccgata
+    12481 aatgtccaca cgaaaaccat cggcgcaata gagcggcttc acgtgaatca tacgaataga
+    12541 cagctctcca ccacgggcct atctccacaa gacggtcgtg gatgtcgcgt ccggggtgcg
+    12601 gatgaattca cgcggtgcat tatcggccga ttctgtggtt attgtcggct cagaaccaag
+    12661 aagcacgggg acggagaatc tccgcccgtg acgatcacaa cccatttccc ctacagcgcc
+    12721 caatatacgt cacaacatcg tcgctccaga gtgtggagat gttacaggcc atcgagctaa
+    12781 gtagattgag gtccggcgta aaaagtgcga aggagcccct tcacggccgt ccaattgcta
+    12841 ctcggttaag agaagatatc cagtgaacca atatcaccaa ccaccatgac ttcaaaaacc
+    12901 tcgaacgagg gctggtatgt cgaggtatgg ctcttctaat ccagtgtatg actttgttgg
+    12961 gcaccgtgct catacatttg cagaccgatt attcaaccgt ggaagatgcc cttaagaaga
+    13021 tgacctttcc gccaagcaaa gtgagcatac tatgattaaa cctcagtaaa agtaccttcc
+    13081 tttagggctg acaaagtatc ctagttacat aaaaaggagc tccttgctga agaagaagaa
+    13141 attctaaagc atatctgcgg ctggtcacat gtgatgaaca aactcttcaa tgagtcgatc
+    13201 gaaccaggga ggccgttcta ccttttcgac gatgctatga cttacgacat ttacggcaac
+    13261 actattcgag gagcattctt ggagcacttt aacgagacgt tccactactt ttcgaagtcc
+    13321 agatttgaga tgaaagacct cgagcctgtg gcgacctcaa agacaacggg atatatcacc
+    13381 atgatgcagc gtcttgtagg agggacgtct gatgatggta aaccttttga gatgacgtat
+    13441 cgacttactt atctgcttgc caaaattgat ggcgcctgga agttcattca tgagcacgtc
+    13501 tcatttccgg tggagatggc taccatgaaa gcagatccaa cctgtaccat cgatccactc
+    13561 aaagctttcc gcgggatcga gaattgatcg catgattagc taggcttcga tctccagata
+    13621 caatcactat ttaccagctt ttgaggctag caggatgcct gttatatcga aaaagcgtca
+    13681 gattcatgcg atccctgttc aagaaatatt tggctatctt gtttagcagg ccacagatca
+    13741 tactacgagt attttgtgtg tgctagttca caaggactgt gtggtcacaa gtgaagcaca
+    13801 aaatggttgc catccatgaa aaatagaccc acgttcagcc attcacggct tctgcagcgc
+    13861 tcgttgcagg tccgaacttg agagtccatt gttcgtgcct ggcagcggta aagcttggcc
+    13921 aaagatcaag ttgtcgtagc cgatcatcat acggaccggc ctttccaacc agtttccctc
+    13981 gtcaactgtg aagccatatt agtgatgttt cctatgtcat gcgaagccga cagtggcgta
+    14041 gtgggttatc aagatggctt acgattcata tcttccacgt attctgggct cttgaagaaa
+    14101 ctgatagcgt tgtcaaggga gttgaccaaa atttcgctgc atccatcgaa atccaatagc
+    14161 tccatacctt cgacgcaagt ctctgccgct gacttgagtt gaggggtttg gtgatactat
+    14221 ggcataccca gcctctgtca gccaatttgc taacaccagg gtcaaacaac ggatggttta
+    14281 cctgcgtgta ccgcgcgatg taaagcccaa acggttcaca cgccacggcg agatcagcat
+    14341 gcacctatcc cagacaatgg atcaatgcgt gccgcaaaaa ggcaaggttg cccaccagca
+    14401 gtgcttagga caacagaggc agatggagtg caaagaaagc ctacagtttc ccagtgcttg
+    14461 tggaaatcct cgtaactgat atctgctctc ttcttaaaaa agaaagtcaa cttgacgtat
+    14521 ggctggtggt tgggcttggc ctctggtgac aaacgatcga aaacgaaatc atgctgaagc
+    14581 gggaatgaag gggcccccat cctgaggtcg tgacctggta acaactgaca gaagcgattg
+    14641 agatttggct gcacaccaaa aagaacacac gcgaacaaag cgtatatgta aaccaagtgc
+    14701 ctatccgcgc ggggtcgaca gtggagcagc ctttggcgga ccgatttcat gtccaaagcg
+    14761 aaagtggggc caaataggcg gcccattcgg ccaaatagtc attgatactg acactcaaga
+    14821 gcctgtgtca agcacagcaa ctgatagaga gacttcacgg ctgacagaac accaactcta
+    14881 ccataacaag tgtttgcaag cgggcagaag tttcataggt agtgttctaa ttctgaagca
+    14941 attgacatgg aggcctgttg accaaagtcc ctttaccatg catggccatc aatctttgag
+    15001 ctcttcccat ggtttcaaaa actctttagc cgcagcaatc tctcgcttta tagtctgtac
+    15061 atgttgaggg ctccgtggag tcacttggac gttgtatggt aggggagcct gtaggatacc
+    15121 acgattatat gcatctgggt ccaggctgat aacctttccc gttttagggt cgagaggttc
+    15181 cgcgaattcg aaagcccaga gcaattttgc tgtgacgcgc cacatatttc tctcagcaaa
+    15241 gtgcatgcct tccttcagtt agcaagcatg tatctttgtc agtatggatg tccttgctca
+    15301 cctgggcata ttctccttcc tgcgccataa ccataatgat cacgattcgc ccaatcagga
+    15361 ctgccagcat agtcattggc tagtttgctg tgtcccacat atctctcggg tctaaattca
+    15421 ttctcgtcgt caaattcatc gccatggtgt aacgcccaaa caggaacgat gatggtcgag
+    15481 tctttaggaa tcagcatccc ttggtagtaa tcatctgtac agcggctgtt agcgcgcgtg
+    15541 gtcttcgcag agggcatcgg cagtgccaac cttcgcgcac tcgatgtggt gagcccgtca
+    15601 cagcgacagg cctccatcgc atgccctcct taacgatcgc gttgatatag ggtatatcct
+    15661 tgaaatccga ccacagaggg aatctttcgg ttccacaaac cttgtcgatc tcttcttgag
+    15721 cacgcttttg cacacgtggg tttttggcaa atgccatgac aagtgtaaga agttgagctg
+    15781 ctgtggtgtc tgcagcgcct tcgacaagtt caccgacaag attgttgaaa gagtgctggc
+    15841 ttataggcat accatctttc cactcatcaa gtagagtatc agtgatacag tctctgcgca
+    15901 agccgtgcgt gcgtcttttt tggactctgt tgactgcttc tccccagacc ttgtccatag
+    15961 tttgcccagc aaggattgct cgccgcttcc atggtgccaa ccacagtggt acccattgca
+    16021 ggagggggta ttcatccacc ggcggatttg caccaggctc cattgcctca gtccactgga
+    16081 agaaagttaa taaagtagtt attccagctt aattctctcc acatcacctt tgacatgacg
+    16141 tcgtatacac catgagccca aaaggagtca aatgttgctc ctcgagagcc gaagatgaga
+    16201 accgaagcga ctgatgctgt atatcggcga atgtgattgt agaagccttt gggatcatta
+    16261 agaaggtcag ccatcagcat cgttgcttca gcctcttgga ctttaaagtg cttctcgtcc
+    16321 agctgtttcg gtgaaaagtt gtgagctacc accttgcgct tcagtcgcca gtggtcgtcc
+    16381 atctgctcaa gagcgatcat gtctcctttg gtcagtagct ggcctacata tgtatgcggc
+    16441 cggtcagagt aaatgttgct ttttttatca agaagcgcat gaatggcttt acgatcacat
+    16501 aggacgatca tgttcgatgg tccgaacttg agcgagaaga caggtccgta ctccttcgcc
+    16561 catgatctga atctgtatgt gaggtgttag atgtgtacac gtccatcatt ccgttatcgg
+    16621 atcatctctc actgcttgaa aagcccctca ggtggtacta agtgtgcatt cccaaggatg
+    16681 ggtattgttg gtggtccttt gggcatgcgt gggtcacgtt tgcctatctg caacacacga
+    16741 tatacaccaa ccgccaacaa aacagttatc agccacaaaa atgtcgacat ctttgatctt
+    16801 gagacgaggt aaaaatgttg caagagaccg tgtagtttcg tgatactcga ccatatgaat
+    16861 atatcgactt gatgtcaacg atgccgtaat caaagcaagg ctacgggtac attgcctgat
+    16921 gtgcacatgg gcctacgggc gatctccaac gacgattgcg ggcggttttc ggccacaaca
+    16981 catgagccac ggggccaccc attccacccg agaatagata tcaccgaact tgctgtgtgg
+    17041 gcgcccagtt tagcatcatt gagtattgca cggcagccac gaccgacagt gctctgtaca
+    17101 cgctgtctac ctgtcgattg aaatatatat agccatgaga catgcgcact tgcaacctgc
+    17161 tcaggattcg ttcactatgt ggagactagc tacaagaaat atggagtaca caaggtcagg
+    17221 aagcttcctc atgctcgttg ttagctccca ctctagctga ctcacttcgt gacacaggtt
+    17281 gggcacctcg gggctcaaga tttctccaat aatcttgggc acaatgggtt ttggaaatcc
+    17341 gaaatgggaa ggatgggtaa tggacgaaga ccactcgctt cccatcctgg aacatgctta
+    17401 taattgtggg ataaatacat gggacacggt gagtgaactt ggctcgtggc cactgactga
+    17461 ggcctcaact gtgcaagtct aatatgatta tgacaggctg acttttattc ccacggtgat
+    17521 agtgaaagaa tcatcggcaa ggctttgaag gcgtacaaaa ttcctcgaga gaacgtcacc
+    17581 attctcacca aatgttattt cggtgtgagc catgatggaa atcaattgcc cttggcagat
+    17641 tgcgttacca ataacggtcc tatggtcaac cgagtgggct taagccggaa gcatatcttt
+    17701 gacgcagtcg acgcaagcgt gtccaggctt gggacttaca tcgatctgct ccaaatacac
+    17761 cgactagatc gagacccacc catggaggag atcatgggtg ccctcaatga tgtggtgcag
+    17821 tctggcaagg tgcgctacat tggtgcaagc agcgtaagtg tctttccacc cgtctatggc
+    17881 ggacgtgcta cgttctttct tacattgtgc acagatggct gcgtgggagt ttcaaaagat
+    17941 gcagaacata gcggaagccc gtggctggca tcgttttgtc agcatgcaga actacctgaa
+    18001 tttgctctat cgagaagaag aacgcgagat gataccatat tgtaaggcta caggtgttgg
+    18061 tgtcattcct tggtcccctg ttgcgcgtgg catattgggg agaccttggg gttctgctgc
+    18121 taccaagcgt gaaggtactg acgcatactt atccacactg ataacacgag aaagcgaggc
+    18181 agacaaagcc atcgtcgatc gtgttgagca gctcgcaaag agaatcggtg tgccaatggc
+    18241 atccgtggcc acagcgtggg ttttgagtaa aggtttaaat cccgtccttg gtctgtcatc
+    18301 tcgggaaagg attgacaaag ctatcgaggc gacaaggctc caactctcca aggaagacat
+    18361 tgagtatctt gaggaaccat atcagcccaa aaatgtaacc ggttactgag tgacgggtgc
+    18421 taaacttggt gcacatggca actatcgcga aggactatgt tgacaggttg aagtgggaaa
+    18481 tcatgaacgg acggaataat tgtacacagt agaaacagct tgacaatctc cgaagggtga
+    18541 gtccaatggc tgttccgtcc ttcgcatatg gcaattgccc gagaaaagca ggcgacatct
+    18601 atctacaata aagcttcctc ggtattccgg cgcttggtat cttttcctga cacagtagct
+    18661 gctatccagg cgaacggtgg tgttgaagag ccctttcatg cggtattgac ttcatggcta
+    18721 cctgcaggct tctaacatag ccttagtcct tcttggactc gaactgtagc gtctctccac
+    18781 aacggggcgt cccttccaag ccattgactg aatttgcaac taattcaccc gaatatgaag
+    18841 tgggaccccg gacgcagaag cggcttgcgg ggtagttgaa aatccgtccg tcacggtgga
+    18901 cgatggagat gacttcatca cggcgaacaa tgggccgaag aacgactggc ttcctctcta
+    18961 aaatgcgtcc cgacaactca agtttcggag gaagatccaa tccacactgt aaagcacaag
+    19021 gcttggagaa tggcatcgct cgcaggaaaa gttgtttccg tcactggcgc cgcctccgga
+    19081 ataggcctgg caacggccag aaccctctac gcccgagggg cgctgctggc attgtgcgat
+    19141 gtgcgcaagg atgcgttgga ccaggctatc ccagagatca cagcttcaga acaatcatcc
+    19201 agcagaagca gaatcaccac atcggcagtg gacattcgcc acagcagcca agtcaacgaa
+    19261 tgggtccagt cgacaagatc acactatggc cggatagatg gcgccgctaa tgttgccggc
+    19321 attctgggca aatcctttgg cgtcggcgat ctgacacaaa tagacgacga ggagttcgac
+    19381 aaggtgacaa gcgtcaacct gaaaggcctg ttcaattgca tgcgcgctca actaaaagtt
+    19441 atgaagagcg gagccagcat agtcaatgcc tcaagtacga cgggcttgga agggcacccg
+    19501 atgaactctg tttactccgc gacgaagcac gcagtgatcg gcttgtcaaa gagtgcagca
+    19561 ggcgagtttg gagcacgcgg aatacgcgta aattgcgttg ccccgtaaga gattcccttc
+    19621 tctagacgac ctaatcgaag cctgatttcc atggctaaca aattgacagg ggcatcttcg
+    19681 caacaccaat ggtaggctcc atagggaagt tggacaaaga taacatgtcg tcggtttttg
+    19741 cacgagtgcc gttgaatcgc atgggcgacc ctgcagaggc tgcaaatgtg ttttgttttc
+    19801 ttttgagcga cgagtccagc ttcatgaccg gcacagccac cgtcgtggac ggcggcatgc
+    19861 tgtgctaact ggtcggatca ctacagaagt gctccattca ttggtagata aagattctat
+    19921 ggagccaggg acgcagacaa gtattgcaat caccctggac tcttattgga caaaccgccg
+    19981 tcgaaatcca ccactaagtc tcagctctcc agcggcagac tctttagcca atgctccatc
+    20041 catgcgtcac tgaccggctg tagctctgcc ataatcctgc tcgcctcaat gccgttgaca
+    20101 gtcctgaagc ttggttggct cctgccagac gacattgact gttcgaggcc aacgaaccag
+    20161 tccaagattt tcagcgctgg tttagatttc acttcagaag ggtccgaaga gtcgacgctt
+    20221 tgcaagtcct ggatccatgc tttgaatggc accacattac ctccaatgtt ccgttgtata
+    20281 gtggatgtca gctcttccca cggccgcgta tgtgggttca gtaggttgaa ggtcttacaa
+    20341 cctccgtgtt catgatggag caagtcgaca ataatgccag ccaacacatc cacgggcacc
+    20401 caattcactt ccggcagcct gtctggtatg cgatttgtgg atttggatgt ctcgatgagt
+    20461 gccggaaacc attcacttct attccaggag cctgcgttcg gtgagattgg ccctgcaact
+    20521 tgcccaaggc gtagcacgtc gacagtgatt ctggccacgt ctgcagcaat agcaagaaga
+    20581 cgctcagcaa catgcttgga ctccccgtac cccattggca gcgccacatt gtagtcgact
+    20641 tctgtcaaag agctctcagg aatttcctgc ttgttggggt atgaatctga ccattgggcg
+    20701 accgacgaga ttgaagatac gaacgacaga cgtgggcgtc ggccgctatt tgctgcccag
+    20761 tcgatcagat gacgaacgcc gcgtatctga ggttcgaagg attgaagtgc ttggttaaag
+    20821 tctactctcc acgcattgtg gacgattacg tcgactctgg ccagaagagc gtgataagta
+    20881 tcctcctgca gaccaagctt gatcgattca aagtcgacct tgtagaactc gaccttggac
+    20941 atatcaattg tcgttcgtag ctctcctaaa cgctgaagtg tccgctgttg gccatcatat
+    21001 gctcgattaa ggcagaccac acttccgatt ctccggtcag cgagaagggc acacaggagc
+    21061 tgggatccta aagagccggt ggaacctgtc aaggcgatac ataatccttg tccgtgatca
+    21121 tagacgtgga caaggcttac gtccttgttt tctggcagca gcgggctcct atttggtaga
+    21181 tcatctgcat agcgttcgag cattgcagcc atgcgagtcg aacgctctga cgaggtatta
+    21241 tcagtggatt caagatcctg tgatggcaaa agtttgcaca gctgcctcga aagggtttcg
+    21301 atggaagggt aagcatagat gagtctggaa gatatagctg taagatcatt agaggtgaca
+    21361 tgaggccgaa gtagagcacg aagtccattt gagagctcaa gggtccggac tgagtccaat
+    21421 ccgaagctga aaaagtcttc gacgtcgcca tctgagtctg gtgataggtc tggtatgaca
+    21481 ggcctgatat attgccccac tgcttttctg agagcatcaa agctctgcac ttcttcttgc
+    21541 gataaagcgc gaatgtctgg atttttggcc gcctcagcaa agagctcttc cacttctccc
+    21601 tcgtataaag cggcagatct cgcacgaatg attgtgccct tgctggttct cacgaagggt
+    21661 ttctcaggtg aggtaagaag gactttacct ttaaagatcc tgccgtgagc tgcagattct
+    21721 ttattggcag cttctacggc cggccagatg ctgttgataa gtctttcagg gtcatctggg
+    21781 tgtttccgtg gttcgatgat caggacaggc tgaaaccggc cggtgcctac cacaagggcc
+    21841 ccgtccacat ctgggtggct ctgcacgacg ctttctgccg tgacaggctg gaatttctcg
+    21901 ccgttgctca gcacgataac atcgtcgcct ctacctctga aagtaaataa cttacagttc
+    21961 tctggatgct gcttatagtg atcgttggta tgccatacct caacatcagg aaaggtgtgg
+    22021 taaattgtat gtatccaagc catctgagga ggattcggta tcgttagctc atatatgtcg
+    22081 tcggctatat ggaccatttc tgctttgtat tccggatgga actcgaaata gttccatgct
+    22141 tccttaggag gcacccgagc cggaattatg ccacactcag tagagccgat gactgatacg
+    22201 cataaagtag actcgctgat actttggcca gccataggag atagtggacc acctccgtac
+    22261 atgatgaagt cgagcttggc aagcttgttg gacccatcgg tcgtttcaag tagctcttcg
+    22321 atcaccgttg ggggcgagaa gatggcgcga gctattactc gtgacagcac ttgagctaac
+    22381 aactgaccat ttgccggttg gtcatgcggc accattacta ttgctgtgtt gtagtagatc
+    22441 ggcagtgccg ccatggctac catgccgccc acctgtatgt tatcgtcagt catgcccttg
+    22501 actagcgaga gcgaggctta catgaaatcc ggggaaagta ttcacaaagt aatttccatc
+    22561 aagatcgaat aaagaatagt ccatattttg tcggccctcg atcttcgaca gtttgcgctg
+    22621 attgtcgatg acactgaacg caccgttggg aaggacgatg ggcttgggag ctcctaaagc
+    22681 tgcgttagct acaaacaaag gatacagtca gtaaagccat ccaccgacct gttgagcctg
+    22741 atgtatgaca tatgagcacc ggatccttta cagcttcagc atgcgttttg ttgtatggaa
+    22801 agtttgggga ttttgacgat agcagatctt ccaattcttc cacaacgaag tgctgaagac
+    22861 ctaatatctg tgattctaat gctccgagcc gtttcacaat gtcgttgcca caaactattt
+    22921 ttttgcactg acaggctgca aacaaagaca cattgccaga cacggaatta cgtgctgaag
+    22981 gcaccaaaaa ctaccggcac gatagtcagc gaggatttca acaaaatgcg tcacgacaag
+    23041 taccttatag ccgaccttga tggcagcgat aaagaatatt ccgtagcgaa tgtctgctgg
+    23101 tcccatgtat gcaagggtct caaagtctgt agactggccc aagttctctt tcaaccacca
+    23161 ggcagcacgg ttgacggcat tagacaaatc acgcatcgtg attgttcggt attccatgcg
+    23221 tccatccagg tataacggca ctaatgcata cgcccgttct gggttggaat gagcgtaggc
+    23281 gtcgacaatg tgagggatca gtctctcccc atgacatcca ccaggaatct cgaccgtagg
+    23341 catattgcaa ctatttagag tgcctgaata ttcaagattc aggtagattg gtaaagcaat
+    23401 tcaataggaa tctttgccaa attccctaca agcttctgca gacaggactg ggtcatggaa
+    23461 cagactgaga cggctcgtga atttgattcc gcaatatatt cgtattcctc cagataccgt
+    23521 tgcgggtagg agcctggaaa tatagagact ctcagccagg ctatcattca ggtctcacaa
+    23581 tagcacggca gcatcacggc atacgttatt ggttgatttg acctgacaat cggtgggtac
+    23641 cctcccctcc acctcccccg taccctcaag ggttaggcgt gttgagcaga acggagaaga
+    23701 aaatcgggtg cggcagcact atgatttccc caaacatcaa cttgaccgcc ccgcgtccca
+    23761 ttcggcactc ggccctactt tgaacttgat cttagtaata tagacggaca ttgtatagac
+    23821 cttggacgca aactcgggcg tttattgtcg ggtcaatttg gattggatct ggcaaggcac
+    23881 aaactttaaa tggcggcctc gtgttcgaac gcacagttcc ccgggtctgg catcggggtc
+    23941 ccgcgccgtg cgtgaaagtg gaggtggtag aatggtgcag ccaaagcatt ctaggatcac
+    24001 gactcgagta cttggagcac cgtgaccggc tacattgcct gcaaaggtcc cagaagtttt
+    24061 acaaatctga agtcatctgc cttccttcaa tagcagaaaa cggtcagccg caatacaata
+    24121 tttgcacttt cgctaagatc atcgccaacc atgccacaaa tcttgaagcg tccggccgac
+    24181 aagaccgatg ctgcaacgtc gacttctctt gacgtgccaa agattgtcaa aggcgtcatc
+    24241 gatgacattc gcgtccgtgg tgacgaggct gttcgggcat attcgatcca attcgacaag
+    24301 tggtcgccgg actcgtttcg actatcatta tcagagcttg agaagatcat agccacggtg
+    24361 ccagagcaga tcatagaaga catcaaaaca gttcaagcaa acgtcagaaa gttcgcgctt
+    24421 gcgcaacgta aatcattggt cgactttgag atggaaatac ggccaggtgt ttctctgggt
+    24481 cagaagaata tccccatcgc tgctgtgggc gcgtaagtac aaaggtccaa tgttcgctcc
+    24541 actgtggcta aggtgatgtt agttatatac ctggagggcg ctatgccttg ttagcttcgg
+    24601 ctcacatgac aatctgcaca gccaaagctg ccggagtaca acgagtcatc gcctgcactc
+    24661 cccctcttca gggcaagatc cctgctgcta cagtcgccgc aatgcatctg gccggtgccg
+    24721 acgagatcta catcttaggt ggtgtccaag ctgtcgcagc catgtccgtt ggcactgaac
+    24781 ttatcaagaa agtggacttc gtcgccgggc caggcaattc attcgttgcc gaagccaaac
+    24841 gacagctttt tggggagatc ggaatcgatt tgcccgctgg acccacggaa attttgatcg
+    24901 tggcagatga caaagctgat ccattcacaa ttgcgacgga tctactatcg caggccgagc
+    24961 atggcccaga tacgccggca gtattaatta caacatgcct gaccgttgga cagaggtcca
+    25021 tatcagaggt tgaaagacta cttgaaattc taccaaccgc gcagctggca ggcacgtcgt
+    25081 ggaagatgca cggtgaagtc attgtcgtcg actctttgga cgaggcttac cgcctcgctg
+    25141 atcaattcgc cagtgagcat gttcagatcc tgacagaaaa cccccgtgag gctcttgaga
+    25201 agatgtcaca ctatggcgcg ctctttttag gagagaagac ttgcgtatca tatggtgaca
+    25261 aggtaagtgg gatcccttca atcgcagaag agcttgctaa ttactcgtag tgtatcggta
+    25321 ccaatcatgt cttacccacc cgtaatgcgg ccaagttcac tgggggctta tgggtgggca
+    25381 agttcctgaa gactgtgact taccaggagg tcaagtcgaa ccaggagagt ggaagtctgg
+    25441 gtaggctctg tggtcgcgct gcacgggccg aaaattttga aggccatgct cggtctggag
+    25501 atttacgggc atataagtac ttgcacgaca gctttgagtg gattgacggg tctccgaaag
+    25561 caaatggcgt ccatgcttag gtatcaatct cagagtaacc acatacccta gcaagactga
+    25621 ggctagaggc catgcagata tatttcaatg ctttatgcat gcttacttgc aaaaccgttg
+    25681 aaccacacta ttgacgaggt acttgaaaca tgtcggccat ctatagttat gttcacaaac
+    25741 tgaacccggc gtccacaacc atattcacgc cagtgattga attgcttaaa accatcgact
+    25801 tgacctgttc cgccacatcc tacttcaatg agcacaagag ccttcattca accatggtat
+    25861 ttgtgggggg ctaacatacc tgtacagtcg cgaatcgctt cagcagagtc ttctctttgg
+    25921 caactgtcaa cgtatcctcc gggaattggc gaccccagtc ctgtacccct tttagaatgt
+    25981 tttctgatga agcctagttg gtatccgggc tatggtggtg tgtcacttac tgtcataaga
+    26041 atccctggag acacacagtt cactctgaca agaggcgaca ccactgccgc aagacacttc
+    26101 actagatgga tttgggcagc tttggtcaca gcataagcct tgctgtggtg tcagcattcc
+    26161 ctccaataaa cagtgaccga aattgaggga actacttacg atggagctac cactaggctt
+    26221 cacaccggcc acgcttgcta cgctgataaa ggccccgttt gggcttgact ctagatactg
+    26281 tcttgaggca tgcagcagcc aaaggtggct cttgacgttc acttgccagc attcatccca
+    26341 gtcttcctcg tcgacgttgt catccagatc ttgaaagtct cttattcgag tccatccagc
+    26401 attggaaatt accacgtcca atcgtcccat ctggtccacg acatctttga caagctgtgc
+    26461 gattgaggtg cggctgctca tgtctgcccg tagggctaga acccgggggg tcctgagatc
+    26521 ttcggcgggt gccatggtca cctcgtcaga tagcttctca tgagatgacc tggtttccac
+    26581 aagggcttta agttgttcca cggtcgtttc tgccctcgct gcatctccgt ggtagttaat
+    26641 caccacacgg aagtcctcca cgatggactt tgcgatcgcc gctccgagcc ctgcagaaga
+    26701 cgctgtcaca agagcaactc ttgaacccat cctttatttg atgcccagtt accgccgagc
+    26761 tcgacacagt aggtcagacg cgctgttcgc cgagaacgat tgacttttca tgttaggaca
+    26821 gagttgcttt tgcgtccgag catgggatag ctcggagcct cccttcatga agcaaggctc
+    26881 ataatgctat tgcagcagga caatagatcc acttgcgcag ctgacctgga ccgggcataa
+    26941 agcaaacatc gagagtgcga tcgacacaaa cccgtcaggt ttggctagga cacaaagaat
+    27001 tacaactatc ggtccttgca actcagaaag gttgtgctga ctaccggaga cgtatgggac
+    27061 ggacggatca ataatgactc cgcatcggtc gcgggctttc gctcaacgtc acgggccatc
+    27121 ctgacagaat agcgacgcag ccctgggatg aaactgaaac cgcattagca gtaagaaaga
+    27181 ccttcgtatg gatgtccttg gtgtttgatc actcccgact agttccgtga tccgccattt
+    27241 cagaaggaca cacaggacca tgttttgtct ttgcaacacc gcttccggcg ccatgatctc
+    27301 ggacgaatcc acccattcat taacgattac taatgctggc ctacaatttg gtggatcagt
+    27361 ggtctaatac tactgttgtt cccgccctgg ttgagtgata atctagcagt cccacggagc
+    27421 aagaattatg tgaagtagta gaattgtgcg aacttgcact gctgtgaaca agagctggga
+    27481 caggccataa agccagattt tgtgaacgat ttcaagcagt gaagccagat cacctgcacc
+    27541 atttcaaagt cggtctcttc gataatgtct tcttctgcga gtactccgat cctccagatc
+    27601 atcacgatcc cacatcgacc gaccccaacc tctgcagaga ttgaccagga gttagcccct
+    27661 gccctttcca tcctgacggg cgctcctggt ctcgttgctg cctggcaagg gcgtcgtcac
+    27721 gaggacaaat atacgatcct tctgctactg ctgtggtcag atctctcggc ttcgcgatcc
+    27781 ttctttactt caccttcata caatgacttc aatcgtgtcg ctcagccagc actcaggggc
+    27841 cggaaaataa cctggcagca gcacgctccc gcagggcagt gggacttgag cgacttggca
+    27901 catctcagat cagtgattga gtcaccttgc gttgaagttg ctttgacgaa ggtagtcgag
+    27961 ggcggagtag caggctatta cgacggcttt aggcgagtgg tatcgaaggt actcgatgca
+    28021 gagcccgggt gcgacggatg gtggattagt ccgctcatag agaaccccca agatcaactt
+    28081 cttttgatca attggaaatc tcacagtgta tgtcccgttc ttactttgtg cttcatatgc
+    28141 cggaattggt accctctgcc caagattgac accgctaata tctgtgctgc aggcacatca
+    28201 tgaagtattc gagaggaggc cagggtttca gcagtgcatt gacactttga aagattacta
+    28261 tgcagaattt gtgataccta ctcatgttgt ggagttgagt cccctgttcg gaagcttgcc
+    28321 ttgatgtctt cgagatcacg taagagagcg aatgaagtcg gcttgcgatg gaacgtttgt
+    28381 caaatcggga tatcgtcaga cttcttttta gacgatgtaa catatagaac agtcagtgac
+    28441 tgggttatag gctcgatatt ggtttgacag caacaccaga accgtcgatg cctgaccagt
+    28501 atagtacagt catatcaggg aaacacggga tcatatgtga ggaggtttat cccctcgttc
+    28561 aacttcgaaa gtatctgtac ataaagcggg ctaatcaccg aggcgtctgc gtctttgagc
+    28621 gagcggtgag attcattgga gaagcaaacc acgtcaaagg tttcttgata ctgtctgtcg
+    28681 gactatgccc gcctacggtc cttgatggac atagccggcg cggtactcct cagacacgga
+    28741 cccgtactca gctaagtcgt ccgagaatca tcagtacagc cattttcgcc gaggatggag
+    28801 acaagccggt ttctcttcgg ccacggtgtg ccccacccca tatggtctaa gagattacaa
+    28861 gcaacagaga atggccaaat acaagcgtgc tcccattcat tccatttgtc agcttcagtc
+    28921 ttacgaagcg ctcgtttgtg aaattactac aactccgcca tttcttgaac caactgtact
+    28981 caagttgccg ccatagtcgc atgttgttga agtaatttca tattgtgtgc ttgcgaccga
+    29041 atctatctgc tggacggtgc aatggggcgg gaaaagcatt tcacaatcgc tgaggtggcg
+    29101 cgacatgctc agcacgacga tatctatctg atttatgaga acagcgttta cgatgtcact
+    29161 cgattcctgg acgagcaccc gtaagtgtct actttcaggg tgtatgcgca atcatcttgg
+    29221 tgctttagcc cagagactcc tgttgagcgt ggaagttagc taatagatgg acaccatgct
+    29281 tagaggtgga gtggaagtga tcaatgacta cgctggaaaa gatgcgaccg aggcattcga
+    29341 tgaagttgga cattctaagg aagctcatca acaactggaa gaactgttgc taggacgtct
+    29401 ggaccaagca gtatgtgtgc atgtttccgc cctggtgtca tgtggttact cctgtggctg
+    29461 cctcaccgca cgccttacct ctcagttata cctcaacttc aaaggcgctt cgctgattca
+    29521 caccttttct tagtccgcag ccacggcgac agctgctcga tccatcaaaa agaaggcgaa
+    29581 caaggcggcg ttcaaccctg caatcctcta tagctttgcc attgctactg gtgcgacggc
+    29641 tatggcggga tattggtact ttcaagttcg cgtgtaaccg aaacaacacg aaaagctctc
+    29701 atcgccagaa agatcaataa cggcagaacc attggcattt ggggatattt atgtgaagct
+    29761 tgataacctt ccagggtaca aagtataaca acctttcgct accagcagta cttcaaatcc
+    29821 gaatgagtcc taattatagt ccatgatgtt tagtagaagt cttcctgggt cggttgcgga
+    29881 attcatgtcc cattgcaaat cgtcccatag cccgggccga agggggttgt tttctcgtgc
+    29941 cacagaagca gatgtcccgt ttgaggtaac tatatccata tccatcaaac aggattcgtc
+    30001 gaacaggaac tcaccattgt caaagctgct gtctttgaca agcatatcgc caccgagagt
+    30061 tggtacaagg cccggttcga aggcttgctc tccgccctga acgtagtcgt tgctgcaaac
+    30121 gcccgagtct ctcccatcaa gcgggtcgaa gtcaaacggc gtccggtctt tgggatctgg
+    30181 ctctgcgata ctgggatttt cttttgatga ggattgtagt ggctgagaac catgtcgacc
+    30241 cgttgggaaa gactctgccg ctgcacgacg ccccatcgaa ctgtcttcgc tggatgattc
+    30301 ttgagaacct gccgaccgtt tggcaccagt tgcaggctta ctgctgtgcc catccacggc
+    30361 cgcccaaccg cgcgatagct tgcgagtttg cggtctggta aacaggctta atttctcctc
+    30421 taccgacgca agattttctt gcagtgcacg aggcaaatcc cagaattctg caaatttgcc
+    30481 caatatcatg tgcatgaccg cgaacttgga ctcgacccag tctaaattcg tgcttggtgg
+    30541 tgcaaggatc ttccatccaa gatgtaccac tgcaccatac caaatgatgc ttgcaaggaa
+    30601 aggatttaca tatcgaacat ggtcttcaga gctgcacgac acgatccgaa gcagctcatc
+    30661 agctgcctcg atgaattgct ggaggccttt tctcgttgga cctagatgaa gactcaacga
+    30721 ctgattctcg attgccgctc gtcgttcttg ttcttgggca aacctcgagt cagtaagctg
+    30781 taaatcttgc tgggcgccgt agtacgcatc ttgatggtga agcatcatgc gcgtgagttg
+    30841 gatcgtgacg tgaatgctgt actgcgcgct ctggagccgt ctggttgcaa ccactgcagc
+    30901 cggatcagtg gaagtaaagg ccatcgatcc acctggttgg cgtagacttt tgggcaaagc
+    30961 catgcagaaa caacgcaatg tgttgttcag aatagccagt gtctcactat tgtccttgtc
+    31021 aggagttctc cacgtgctgc gtgatgaacc tggtttgcct attccaggcc gagggcttct
+    31081 gaacttggaa agggtgtgac cgtcccgcat gagagaatcc aacacgatga accaagattt
+    31141 cgggctttgc gtgccacatt gttgcagcgc tttcaaccga tccattggtt tcaattcaag
+    31201 aaagcagctg gagctgaaac gtaattggta ccagtcatca tccggcaccg gaaatcgtgt
+    31261 ctcctggtcg gtccagtcaa tggtaatggg acagcgtttg atcatactgg caaaaacatc
+    31321 catttcccaa attgcccacc aggcacgtcg ccgctcctca atcttacacc atatttgggg
+    31381 gtcatcctcc tccggggtgt tatatcggtc aacgtgatgg agattgagct cgtatgcgac
+    31441 gcgaatgcag acacccagtc gccgccaagc acttccgcga gcgcctttga tcagttgttg
+    31501 aaaggtgagc agcaccaagg cttgtagcac aggcagagac ggggtgctat ccgaatactc
+    31561 ctccagcgcc ttatcaacgc acaattgcga taaattctcg aaatataatg gaggaagtgg
+    31621 ccgtccgagc atgtcattca ggctgtcggg ttgccctgcc tggacacact cttcggtgct
+    31681 tgatctgaat cgtgcggaga atgcaagcat ggaagcgagc agtgccgcca gttgagttac
+    31741 agaaccaatg tttcgcaacg tttccccaaa tgaaggctgg tgaaacagcg agaatgcggt
+    31801 catgttatca aagtagaggt tgagactgta aaaatgtcag agctgagcct ggtgtccact
+    31861 cgtccaacgc gtataaggtg caccatcttt ttcaaactga gagctcccaa gtgctgacga
+    31921 ggggtaacat actatggctg aagggactgt ctcgaaatcc ctagtagagt acaggcctgg
+    31981 gctatcttgt taccagtgcc agagccgacg tcccaccttg ctgtaccgtg cgttggccca
+    32041 tcgaaatctt ttagtagcgg agaaattgca gcggtatcgt gagaaggatg catgatataa
+    32101 gccaaggtgc gtacgtcgag tggtgttgtg gcaggagtaa gtgggtagct ctcatagggt
+    32161 ttttgacttg ggctttgggc agcagcacca ggctcgttat ctgcatttgc aacacttggc
+    32221 agcagagtgg cattcgtgac tgcttccaca ttggaggctc cgcgctcgtg tgacgcgaga
+    32281 gcagtaaagc actcctgggt agatttccga ctggactgct tgtcgactga gccggctctg
+    32341 ggccttttcc gtcgcgtagt acctgcgcac tagcatgagt gggagcaata cttcatgggc
+    32401 gaacttacca agctttggcc caggtttacc tccgtctgag ggatattggc attcttgctg
+    32461 cgtctttcga catatcgagc aagacggcaa cgttcgatca ctgcatcgag cagtatccac
+    32521 tcagccaatc gttcctacaa tagttggtct tcgggctgtc ggacgtacca tttcaccttt
+    32581 ctcctgatga ggattcaatg tcagcctcga acattctctt cggtaaattt caacggagct
+    32641 tgctttatgc caggatagcg gtgtgtgaga tgcaagcatg tatgtcactt gaggtacata
+    32701 cttcttgcag aacatgcacg agtactcagc ccgagccggc tcatccgcat tttcatatga
+    32761 tgaatgattg cccagcatga tcgcgccaag cgaattgttc gtctgcggca taattgggca
+    32821 ggatcaactg agtgaagtga tcggtttgcg caggtgcgca cgaagatatg gctaccgtca
+    32881 gacttttcgc gacctaggta actcatgaaa gcaagcagga cagattcaca agacacgaag
+    32941 cagaagaaga aaattgggat ccgtcctttt ggcataaaag ttgggaagga tctgagatgg
+    33001 gaagcgggtc agtcactggg gttggcctgg ggtgacgagc acttgcacga tgttgacccg
+    33061 ctccaattaa ctaacttagc cacttatggg atcctagagg cgcccgctag tccactattc
+    33121 gtagagttta cagcagnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnngc
+    33181 attgagcaga acacaagtga gcagatagag gttccctacg tagtattgca ttcaatctcg
+    33241 ggagaatcac cctcgccacg cccatttcga cctcgatttg aggtgatatc gcagtggtca
+    33301 ctcagatcgg ggttgcggcg cacagtcctc agcaatcctt gggaacaaaa gtatcacgga
+    33361 ggcgctatcc ctaagttaga gcgtgccgca cccaagacca gttttcggcg ttggcacggt
+    33421 cgatttcact cacgggcgaa ttcgattatt cgcccgatat cgatccgtga ctctcttgta
+    33481 caatgtcatc tcgtcaccct cctgctgatt ccgactttag gtgcgtcgta cataaacaag
+    33541 agtagactac tgtaaggggc gggctttcgg gatactaaca tgcaggattt tcatgaccac
+    33601 gcacaaccag gtaccatcca acgcaaactt tcttttggct gcaaccacaa tcgtagtgat
+    33661 cttgcagcga acctgtcgga tcgggccaga tgatcttctg actgatcgag cttcatttct
+    33721 tgtttggact gacctcttgc ttaagaccaa tgttgtgttc tgacttcttg gtctcatggc
+    33781 acatgcagac tcgtgtgcct gtacgagtag tttttcctcc tcgactagaa attgcgactg
+    33841 cttggtcgct cgtgctgaaa ttgtgtcaaa agcatcaaga actgaggagg cttctaaagt
+    33901 atgaaggaag aatatgtaca gtgcttgatc caggcgtacg gagcgatctt cacacccggt
+    33961 cctgtgcatt ctggccgggt gcccaggggc aaccatgccg gacccccaga gcatgcctcc
+    34021 ttgccaagtc ttgtaagacc gaccacacgg aaaaaacagc tcctgtctcc tgtggggttg
+    34081 atctaatctg ttgctgagaa ttatataggt tctctgggtg agaattagcg gcaggctcgg
+    34141 ggtaaattgc gttggtccat agaatggccc gaagatgcga ctccaggcag tctctggccg
+    34201 actgacctcg ggcaaactag tggcccgcgt ggattcagaa gaaataagta gaccaacgtc
+    34261 ttacggtgcc cattgtctga agtcgaccct acgctcttgt gagtgaaggg ctaacaccct
+    34321 cctggagcct acagtccact gtcaagaccg ccggcaaccg ccggcaagca aaccacaatg
+    34381 gcgcacgatc atcatgagcc agactacaaa ttccgaggat ggatgggcct ggatgaaagc
+    34441 tcggtggatg gaaacatggt gtttcaagag tatgaaccta aaccacttga agaaagcgat
+    34501 gtagacatca aggtcacaca ttgtggggtg tgcggctcag atgttcatac acttcgttct
+    34561 ggctggggta tgcatgtcca ttgatatacc ttgcaccact tgaataggga ctgatgttgc
+    34621 tccaggcccg acattatacc cctgcgttac gggacacgag atcgttggaa tagttgtgcg
+    34681 tgctgggtcg aaagtcgagg gcgggcttaa gctcggagac cgtgtcggcg ttggcgcaca
+    34741 gagtatgtct tgcctccagc ctgattgcga gcagtgctcg aacaatatgg aatgttattg
+    34801 ccagaatgcc atgattccaa cctataatag catttaccca gggggggcca aatcctatgg
+    34861 tggctttgcg gattattggc gaggtccatc acatttcgtg gtcaagatcc ccgacgccat
+    34921 tccatcagac gttgctgcac ccatgctctg tgcgggtata gcgacttttt caccgctcaa
+    34981 gaagtatggt gccggaccgg gcaaaaccgt tggtatcata ggtctaggcg ggcttggtca
+    35041 cttcgggatc atgggtgcaa aagctttgga atgcgacaag gtggtcgcaa tttctcgctc
+    35101 atcggctaag aaggaggacg cgttgaagct cggtgcgact gatttcgtgg ccacggcgga
+    35161 cggtgcagat tgggcaaaga cttggtccaa cacgctcgac ctaattctgt gcaccgtttc
+    35221 atccgccaat ctaccattga cacagtatct gcaactgctt cgggtcaacg gtcagttcat
+    35281 ccagctgggc tcaccagatg aatcgctacc atccttcaat gcatttgcac tgacggccaa
+    35341 aggggcgaaa atgggaggga gcagtatcgg cagtccctca gagattcgag agatgttgga
+    35401 ctttttcgcc aggaagggtg tgcggacatg gaacacgaac ctgcctatgc agcaggcaaa
+    35461 taaggcgatc ctagaccttg aagcggggaa agcaagatat aggtacgttc tcgtcaacga
+    35521 gaaccacgtg tgatggtggc agattgttgt gttgtgcaat ctctcctgct cgttctccga
+    35581 gaagtccatg taaggaattg agcaatgtac tcgaaaaggc actgatttga ctttgatcag
+    35641 gggggtgtag actaggagat cttttgacag cgaatggagg cgcctcggct gtcagacgca
+    35701 ttggttccgt agtagggcga ttttcttcct ttttctctca gcttttgggc gacgactaag
+    35761 ttcagcctgc tctcagatga gtcttgtttg ttttgctcgt taagagtgtc gagtggcgat
+    35821 catcttttgt atggtgatag catacagata gtgaacaaag ttgggaagct tgacgtgaat
+    35881 cgtgaatgcc gagaaataaa gcgccaaacc tctgcgcagg agataatcca tccccataag
+    35941 agagctggaa gttggtgtgt ttcccatcta ctgataagga atcaccaaga taagtgaaag
+    36001 agaccttttg accccgacaa tcctggggtt atcacaacaa ccagggaaga catgagttgt
+    36061 tcgtatgcaa tcaggaagtg actggtccat taagccgaat gtttacctag ataccaatac
+    36121 acttccgcaa ggcagaacag cccggagtgt cgtaagcatt caggtgttgt gccgatttct
+    36181 acatcgcgat ggggaaagat acatacatcg ccggatgcat gatggaaaga cacgacatgc
+    36241 caatgctcgg ggatcagccc actgtgcgcc aggcttcacg aattggccaa ttggcttcgg
+    36301 gctgctagtc aatcagtgcc tcttcaagga caaggcacca tagcccaaca gacggtatgc
+    36361 aatgataatt gcgaacataa tcccaatcca ctccccaacc tttttgtccg tgtgcgggta
+    36421 attgtacgct tccaggacgg cggtaccacg gatctgaccc tgagattgca ggtcgctgga
+    36481 gtacatgcac tgataccccg aggccaactt ctcgcagttc cagatggtag atctgaattg
+    36541 gttgaccatc atgccctgaa acacgtaggc ctggtagtcg atatagtgaa agacgtattt
+    36601 ccagaagacg ttcagtgtgt tcatgggcac gaggaaaccg ccgacgctca tccacaaccc
+    36661 gttcgcaaag gccgtgattg ccaaagccac cacgaagatg ggaaagatac tggaaaccag
+    36721 gaccacaagg ccctcggcgg cgagaaggtc gaggaaaagc cataggaccc acatccaaaa
+    36781 cccgctcgct gtagcgtgaa agttacccag ccagtaagtc acaatggaga acatgaggga
+    36841 aatggcgaag agccagggga tgccgaccag agcattggca atggtgaagg gtaagggacc
+    36901 gtagaggcca ttcgctcgct ctttccggaa agagtgtagg tcttcaataa tcgaaggcac
+    36961 gtatgcgaca gccatgaagg acactattca atgcccacca ggtcagcttc tagaagcggt
+    37021 aggacaattg gccgtaagga agaatgccct tcgaaaaggt atcatggcat ggtcagtacc
+    37081 aagttctcgg aaaagtgcga cttactgaat gctccaccaa agaagatggc gttgatgaat
+    37141 ggttggatcg atgtttggtt gtacgacaga cgcagccaga cagttcctat tgttgaatta
+    37201 gtcttgggaa agaatagcca agggcagatg taaaggctgc atacccatca ttatggccag
+    37261 accaaagtac atggctactc gcgtgccgta tgcgataaga tcgcggtatg atttgataaa
+    37321 gttgcggtgc aggaggacat aggaaatata gactgggttc ttccaaatgg tcgggatgtt
+    37381 ggaggtccca acatctttgt cgcagcagtt ggcgatcgat gcttccaggg cattgcgctc
+    37441 gtcggaggcc gtccacgaat catggacatg ctgaagccgg ccttctgcaa attctccgcc
+    37501 gtgtatgaag tcgctattga caagatcaag gagaaactct gcgggattgg tgtgcaacgg
+    37561 aatcacatgt ccgatcttcg caaaatatgc ttcaacacca gaggcaggtc caaagtagca
+    37621 cgttttgccc ttggaaagga gcatcagctg atcaaagagc tggaaagtgg ttgtcgaagg
+    37681 ctggtggatg gacgcaatga caatcaaatg atgtagcttc gcgacttcac ggatgtattt
+    37741 catgacttcg aagctcgcag ccgagtcaag accacttgtt ggttcgtcca gaaacactat
+    37801 gcgcggagat gtcacaagtt gactggccac gctcaatcgg cgtttttgtc caccactgag
+    37861 accctttcga agaggcgtgc caacgatggt atcggcttgt cgttgtaggc cgaaggactg
+    37921 gatcaattca ttcactctat ttagtcgctc acttttaggc atgtttgctg gaagagagag
+    37981 tcgtgcagcg aagtcgatgg tctctcgcgt ggtcaatatg ccgatcatag cgtcttcctg
+    38041 ttccacgtac gtcgagattt tctgaatagc agtggtggtt gtagatcgac cattgatcat
+    38101 aatctttccc tggatctcgc ctttcatact ggacgttcgg tgagctagaa cattcaacag
+    38161 tgttgtcttc ccgcttccac tcggtcccat gagcgcaaca acatcgccag ctttagcgat
+    38221 accatggttc gaactgagga tcggcaatgg ctttttcgtc ttctggtctt tgacaatggc
+    38281 cccaacatcc gaccaagaaa gggtattaac ggacgtcttt ggcagacgat cactgagatt
+    38341 tcctcccttc tccatattgc tggccacatt ggtggctggg tctgatgcca tcattgcatt
+    38401 ttgggtacgg tgtttgcgtg agaggtctgg ccacaatcaa gcacaagcgt ggctatcttt
+    38461 tatagtaggc gatgtaggct cctccatcag acttaagatg gaaggcctga aatctcccct
+    38521 gagactccat aagattactc acaggaacca cgagggactt ttggcccctc ggggatcaga
+    38581 tcgaaccctg tgtgtgtgca gagttgcgct gctgtcgcga agagcccgaa gtgcccgacc
+    38641 ccttgacgca acccctgtta acatcttcgc aattcgcggc gcatcttatt tccagcggca
+    38701 aagggcatga gggcagccta ctggacatgt actagccact ttgcgacctc ttctgaaatg
+    38761 cgtgtacaaa gaaaggtgac cgtataacca agctcgccaa atgatcacaa cacagtgaca
+    38821 gccagtatat tccccatgtg gttagagcct gacgagctga attttctggg gctggacccc
+    38881 gatctgcgtt ctcatggaga gtatcatagt aagttactac ctaaagacga acatacacgc
+    38941 tatgtagaaa tacagtatgc aagtgtgttc cagcatgctc cccacaactc aagttcgaca
+    39001 ctgtgcactc ctaaggaaat tgaaaggata catctttggc agtggcaagg ctgaggaatg
+    39061 aggggtttcc ggaagatgaa gagtgtggca gactacctaa acagtaaaca ttgaaatagc
+    39121 aaacagtttg attgcatgat agagattgct attcagcttc acaaagccca agaccggcct
+    39181 cgttcaactc cttgcgctct ctgtcttctt taatcaactt gcatcacaag ccctccggct
+    39241 caagctatgt cccagcacct tcggccttga tggctagagg gactcttcag tggcgggccg
+    39301 gttcttgcaa cgagctcctt atcttgaaca gaccaatcga ggtgtctgtt ccctcttgtt
+    39361 gatgctgccg tagggccggc aggtgtcgca gggcgacaat cctcccagca acaatacgac
+    39421 gatcaagtca cggttctcgg ccagaagaat gcctccaagt gcccttctgc aaaacatccg
+    39481 cgatcggggg agattccttc actgacactg ggttacccct gccactctgg ttggtgacgg
+    39541 tcacgcgtgc gcgaacatag tcgagctgcg gaccgtttta ttcgtgagcg tatcatcgtg
+    39601 cggtagccag ctccttccta agaaagctcg aatctttcgc aagcttatga cgacatctag
+    39661 cgacctccaa agcctggtgg tgggaagcct cttccttgtc ccggaggtcc accttgaaag
+    39721 cccggcggcg gctgaaatcc agcaggaggg ccacctggcg gaccaccgaa tcctggcggg
+    39781 ggtcctccaa agcccggcgg cggaccacct gccgcaggta cacctggtcc tcctcttcct
+    39841 ccaaatcctg gcgggggtgc gccgcctgga aatccaccag gcgggaatcc aaaacctcct
+    39901 gggggagccg gaccaccaac accagctgct gggccgccta agccgactgg caaccctcgt
+    39961 cccgctggcc ttgatatacc cgttcctgct tgtagagtcg ccggagcacc tccaggtgcg
+    40021 gactggccaa gacgtgacga cgggtcagac ggtggagggc cttcgacgct gcagctgacg
+    40081 atatttgttc ctctcaagat cagcagtcct aatgttcgct tctcttcgga ttcgacggtc
+    40141 gctgctgctg agccgggtgc tgcaggcgca gatggtcggt tttgcttgcg cttgacttta
+    40201 cggaactctt ctgtgtcggc gagtacgagg ttcatgtgct ggttaacatt agtaagtgaa
+    40261 cgaaaaggaa acagcgggag aaagtgtacc ttatcgaatg caagcatctg tcctgtcatc
+    40321 tgtcgaccat cgttcaacgt tacacgcatg cgataattga tctggtatct tggtcagttt
+    40381 atgcatttga ggcgcatgaa gcgttgatta ttcgtaccag attttgctgt tcgatgttag
+    40441 cattcggact tcccaaacaa taaacaacca tgtctcacca ttttaccctg tttgttggcc
+    40501 atgctggcgg tttctgcgca cgaatgcgac ttgacctccc cagacgaaag tgttttgaat
+    40561 gggtcaaaaa agtgatatcg acgcagttca gagccgcagc ttgactacgt ctgccaaacg
+    40621 atggctgcag cgactctcgg agaagagtgc aaccgcaggc tcgaaatagc agtgtgtttg
+    40681 atgtgcttat agcagtggtg tggttgtgtc aaattgaagt tctccaggcg cagtttgggc
+    40741 atgctttggt cgcgaggctt tcaaaaaact agctccatcg cccaatcggg actagtgccc
+    40801 aaccgccgac aaatctgcca agaccagttt ttggcgcacg actcgatttt gatgcgaatc
+    40861 cacacagagt tcaatcagac accaacaaac caaaccgcaa tcaccttgaa gactctgtcg
+    40921 cactcgttaa acccaccact gaataaatca ttcaagatgg cggaaggcaa cgacaagagc
+    40981 tcaaacccca tgcgggagct gcgcatcgac aagctcgtcc tgaacatctc ggtcggcgag
+    41041 tctggcgatc gtctcactcg tgctgcaaag gtgttggaac aactgtccgg tcaaaccccc
+    41101 gtctacagta cgaatcgcat cccatacaga tattgctgac cacgtactga cacttcgtca
+    41161 acaggcaagg cccgatacac cgtccgatcc ttcggtatcc gtcgtaacga aaagatcgca
+    41221 gtccacgtca ccgtccgagg ccccaaggcc gaagaaatcc tcgagcgtgg cctcaaggtc
+    41281 aaggaatacg aactccgcaa gaagaacttc agcgagaccg gcaactttgg cttcggtatc
+    41341 tcggaacaca tcgatctggg tatcaagtac gatcccgcca ttggtatcta cggaatggac
+    41401 ttctactgct gcatgtcacg accgggtgcg agaattgcga agcgaagacg ggcccaggcc
+    41461 aaggttggcc gaaaccacca ggtccacaag gacgacactg ttaagtggtt caagggtcga
+    41521 ttcgagggta tcgtgcgata aagtgcgggc accaagaaag actttgcggc gcggaaagca
+    41581 tcaaaatgag gaacaattta ccggcgtcac ctttggtcag agagagcctg ccttcgacag
+    41641 agtcgtcagg gctgatcaag ctgttcaatt ccctgcgcaa gggcgatgat ttgtccatag
+    41701 caaggtgatt cttgtcagct atgtatcaaa gcatgaattc tgcatacgca ggaatgcttc
+    41761 aatgaaatgc atgaacagcc aactcgttgc ttgtacgctt attcaggtga aaggcgttca
+    41821 ttgaaacaca cacacttagt tttcctaatc caatagcaat gagcttggat gcattgcatg
+    41881 tccgactttc acacaatccc ttgcccccaa cgccacgctt ttcaatacac atctcagtca
+    41941 tatatcctca tatttacatc agctcacaca agctgttaaa tggcccacgt gattgatatg
+    42001 agagaacatt gtggccttgt cggcctcata ctattgtacg tggtatacaa ttggaataca
+    42061 cccgtctcgg ttagacgctc ttttgactgc atctgctcac gaatttcgag tcaagaaatc
+    42121 tcccttcgaa ctggatgaga agactctgct gatcatgaag ggaagcctcc aggaaggtcg
+    42181 gcggtaattt ctgacgaact tgaggtggct ttcggtaatg atggggaccg atcctccgac
+    42241 ccaagaatgg gtgtgtttgg ctcgctggcc ccagagacgc tgatcatggg tagattgagc
+    42301 tgcggcaacc gcggtgcgct actggacacc ctagttggct ctccggaagc tcgagcagcg
+    42361 gcattgctgg cagcacgggc tactgcagcc tcgtatgatg gagcatcacc ccattccgaa
+    42421 acttcatagg ctggagggtg actgccaccg gccacatcca gtggcggtat tcgtgattct
+    42481 ccaacatctt cagaaccagt actctcggcc ggcgtgtacc tgttcgctgt aggcgaggag
+    42541 ttcgaggtac cgctttgtcc ttcactatgt gagcttcgcg ggcgtgctgc gtcgtccatg
+    42601 actgttgagc ctggtgtaat ttggcgaatg agatctgagc cgtttgtgga tacactgaga
+    42661 tcgctgatag atcgctctcg agtacgcggt tgtgatagat tgccgatcga agtagcatcc
+    42721 gagtactgtc gaggccgtcc tgcagtctcg cccatcgggg ccgctccact caacaagccg
+    42781 cctcgctcgg actcgttgct gttggctcgc aatctggtgc cgtcgtgtcg aacctggccc
+    42841 agtgagccgt atgcaacact cgaaactcgg ctctcgcgtc ctcgtgactg atgctctgcg
+    42901 atgagtgtcg cagccgaaac gtccgcgact gcattgagtg agacggcact ttcactggcc
+    42961 cgctgtcggg attctcgtct cagctcttcc aatcgagcat tgtctcctcg ttcgcgggct
+    43021 tctcttctct cacgccttcg ctcttccctt tctgcaagct cgcgacggcg agccacgcgg
+    43081 atctggtaca aggattccat ttggtcttca cgttgtgctt cctgttcgtc tacggtctcc
+    43141 ggaaactcaa caaccgtatc catacctgct ctttcaccct cacggccaat gacctcttct
+    43201 gattctttgg gggtacgcga gtatgctgga agagtgatga cgcttctaac gctggtgttc
+    43261 cggtcgaccc cggtgcctgc ttgaatgttg ttgccagtgt aagcggtatt gctggacgaa
+    43321 aggtctctgt tgcgaacggc cga
+//
