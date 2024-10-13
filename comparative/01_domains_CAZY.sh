@@ -2,6 +2,8 @@
 #SBATCH -N 1 -c 24 -n 1 -p short --mem=12G 
 #SBATCH --job-name=CAZY --time 2:00:00
 #SBATCH --output=logs/domains.CAZY.%a.log
+#SBATCH --array=1-8
+
 module load workspace/scratch
 export OMPI_TMPDIR=$SCRATCH
 hostname
@@ -24,11 +26,11 @@ if [ ! $PROTEINS ]; then
  PROTEINS=pep
 fi
 
-module load db-cazy
+module load run_dbcan/4.0
 
 if [ ! $CAZY_DB ]; then
- echo "Need a CAZY_DB env variable either from config.txt or 'module load db-cazy'"
-g exit
+ echo "Need a CAZY_DB env variable either from config.txt or 'module load dbcan'"
+exit
 fi
 CPUS=${SLURM_CPUS_ON_NODE}
 if [ ! $CPUS ]; then
