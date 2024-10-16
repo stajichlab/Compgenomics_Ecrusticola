@@ -13,7 +13,7 @@ path2mcscanx <- "/opt/linux/rocky/8.x/x86_64/pkgs/MCScanX/r51_g97e74f4"
 		genomeIDs = c('Exophiala_alcalophila',
 		'Exophiala_crusticola',
 		'Exophiala_lecanii_corni',
-		'Exophiala_mesophila',
+		'Exophiala_mesophila'
 		),
 		outgroup = NULL,
 		ploidy = rep(1,1,1,1,1,1,1,1,1),
