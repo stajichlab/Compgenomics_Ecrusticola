@@ -1,15 +1,14 @@
 ```{r}
 library(tidyverse)
-#library('fmsb')
+library('fmsb')
 library(grid)
 library(broom)
 library(gridExtra)
-#install.packages('ComplexUpset')
-#library(ComplexUpset)
+library(ComplexUpset)
 library(UpSetR)
-#library(ggforestplot)
+library(ggforestplot)
 library(viridis)
-#library(colorblindr)
+library(colorblindr)
 ```
 
 ```{r}
@@ -120,9 +119,10 @@ UpSetR::upset(fromList(mer.upset.dat), sets=mer.phylo, mb.ratio = c(0.55, 0.45),
 # Close the device
 dev.off()
 
+grid.text("MEROPS UpSet Plot", x = 0.65, y=0.95, gp=gpar(fontsize=20))
 ```
 
-grid.text("MEROPS UpSet Plot", x = 0.65, y=0.95, gp=gpar(fontsize=20))
+```{r}
 #MEROPS enrichment
 enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.01){
   out=data.frame()
@@ -144,16 +144,24 @@ enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.01){
   }
   return(out)
 } #Enrichment function
+str(enrich)
+```
 
+```{r}
 
 merops.res=enrich(merops.dat, var="MERNUM", group="Genome")
+head(merops.res)
+
 
 merops.res2 = merops.res %>%
   group_by(group1, group2) %>%
   summarize(Domains=toString(Domain)) %>%
   pivot_wider(id_cols=group1, names_from=group2, values_from=Domains)
+  head(merops.res2)
+```
 
 merops.res3=merops.res2[match(rev(mer.phylo), merops.res2$group1),]
+
 
 res4=merops.res3[,match(c("group1", intersect(rev(mer.phylo), colnames(merops.res3))), colnames(merops.res3)),]
 
