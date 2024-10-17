@@ -14,10 +14,10 @@ library(viridis)
 
 ```{r}
 
-pdf("plots/MEROPS_plots.pdf")
+#pdf("plots/MEROPS_plots.pdf")
 
 ####MEROPS analysis####
-mer.key <- read.delim("./lib/merops_lib.families.tab", header=FALSE)
+mer.key <- read.delim("../lib/merops_lib.families.tab", header=FALSE)
 head(mer.key)
 
 ```
@@ -54,9 +54,10 @@ head(merops.raw)
 ```
 
 ```{r}
+# changed accession to V3
 merops=merops.raw %>%
-  select(V1, V2, Genome) %>%
-  rename(Name=`V1`, MERNUM=`V2`) %>%
+  select(V1, V2, V3, Genome) %>%
+  rename(Name=`V1`, MERNUM=`V2`, Accession=`V3`) %>%
   separate(Name, into=c("Strain"), sep="\\|")
 head(merops)
 ```
@@ -65,41 +66,61 @@ head(merops)
 # REMOVED COUNT, NOT NEEDED
 merops.counts=merops %>%
   group_by(Genome, MERNUM) %>%
-#  summarize(Count=n_distinct(Accession)) %>%
+  summarize(Count=n_distinct(Accession)) %>%
   group_by(Genome) %>%
-#  mutate(n=sum(Count)) %>%
+  mutate(n=sum(Count)) %>%
   group_by(MERNUM) %>%
   mutate(n_Genomes=length(unique(Genome)), Genomes=toString(unique(Genome))) %>%
   left_join(mer.key2)
 head(merops.counts)
 ```
 
+```{r}
+#BREAK HERE?
 merops.composition=merops.counts %>%
   group_by(Genome) %>%
   summarize(n=sum(n_Genomes), MEROPSs=list(unique(MERNUM)), Families=list(unique(Family)))
+  head(merops.composition, 20)
+```
+
+```{r}
 
 merops.unique=merops.counts %>%
   filter(n_Genomes==1) %>%
   group_by(Genome) %>%
   summarize(n=n_distinct(MERNUM), MEROPS=list(unique(MERNUM)), Families=list(unique(Family)))
+  head(merops.unique)
+```
 
+
+```{r}
 
 merops.family=merops.counts %>%
   group_by()
+  head(merops.family)
+
+```
+```{r}
 
 merops.dat=merops.counts %>%
   filter(n_Genomes>1) %>%
   select(-n_Genomes)
+  head(merops.dat)
 
 mer.phylo=levels(as.factor(merops.dat$Genome))[c(1, 2, 5, 6, 7, 8, 3, 4)]
+```
 
+```{r}
+# Open a PDF device
+pdf("merops_upset_plot.pdf", width=10, height=8)
 
-mer.upset.dat=merops.composition$MEROPSs
-names(mer.upset.dat)=merops.composition$Genome
+# Generate the plot
+UpSetR::upset(fromList(mer.upset.dat), sets=mer.phylo, mb.ratio = c(0.55, 0.45), order.by = "freq", keep.order = TRUE)
 
-mer.uplt=UpSetR::upset(fromList(mer.upset.dat), sets=mer.phylo, mb.ratio = c(0.55, 0.45), order.by = "freq", keep.order = TRUE)
+# Close the device
+dev.off()
 
-mer.uplt
+```
 
 grid.text("MEROPS UpSet Plot", x = 0.65, y=0.95, gp=gpar(fontsize=20))
 #MEROPS enrichment
