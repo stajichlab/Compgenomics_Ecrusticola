@@ -1,0 +1,90 @@
+```{r}
+library(ggplot2)
+library(cowplot)
+library(dplyr)
+library(tidyverse)
+library(readr)
+summaryfolder = "summary"
+```
+
+```{r}
+read_counts <- function(type) {
+  fname = file.path(summaryfolder,sprintf("%s_%s.tsv",type,"counts"))
+  tbl <- read_tsv(fname)
+  return(tbl)
+}
+```
+
+```{r}
+
+types <- c("CAZY","MEROPS","Pfam")
+
+d <- lapply(types,read_counts)
+
+CAZY <- pivot_longer(data = d[[1]], 
+                     cols = -c(1:1),
+                     names_to = "Species", 
+                     values_to = "Abundance")
+# log normalize
+CAZY$Abundance <- log(CAZY$Abundance + 1)
+
+MEROPS <- pivot_longer(data = d[[2]], 
+                     cols = -c(1:1),
+                     names_to = "Species", 
+                     values_to = "Abundance")
+# log normalize
+MEROPS$Abundance <- log(MEROPS$Abundance + 1)
+
+Pfam <- pivot_longer(data = d[[3]], 
+                       cols = -c(1:2),
+                       names_to = "Species", 
+                       values_to = "Abundance")
+                       # log normalize
+Pfam$Abundance <- log(Pfam$Abundance + 1)
+
+```
+```{r}
+CAZY.heatmap <- ggplot(data = CAZY, mapping = aes(x = Species,
+        y = DOMAIN,
+        fill = Abundance)) +
+  geom_tile() +
+  scale_fill_gradient(low = "black", high = "yellow") +
+  xlab(label = "Species") + 
+  theme(axis.text.x = element_text(angle = -90, hjust = 0, size = 8),  # Reduce text size
+    axis.text.y = element_text(size = 8))  # Reduce text size
+
+# Save the heatmap as a PNG file
+ggsave(filename = "CAZY_heatmap.png", plot = CAZY.heatmap, width = 10, height = 8, dpi = 300)
+
+CAZY.heatmap
+```
+
+```{r}
+MEROPS.heatmap <- ggplot(data = MEROPS, mapping = aes(x = Species,
+              y = DOMAIN,
+              fill = Abundance)) +
+  geom_tile() +
+  scale_fill_gradient(low = "black", high = "yellow") +
+  xlab(label = "Species") + 
+  theme(axis.text.x = element_text(angle = -90, hjust = 0, size = 8),  # Reduce text size
+    axis.text.y = element_text(size = 8))  # Reduce text size
+# Save the heatmap as a PNG file
+ggsave(filename = "MEROPS_heatmap.png", plot = MEROPS.heatmap, width = 10, height = 8, dpi = 300)
+
+MEROPS.heatmap
+```
+
+```{r}
+Pfam.heatmap <- ggplot(data = Pfam, mapping = aes(x = Species,
+              y = DOMAIN,
+              fill = Abundance)) +
+  geom_tile() +
+  scale_fill_gradient(low = "black", high = "yellow") +
+  xlab(label = "Species") + 
+  theme(axis.text.x = element_text(angle = -90, hjust = 0, size = 8),  # Reduce text size
+    axis.text.y = element_text(size = 8))  # Reduce text size
+# Save the heatmap as a PNG file
+ggsave(filename = "Pfam_heatmap.png", plot = Pfam.heatmap, width = 10, height = 8, dpi = 300)
+
+Pfam.heatmap
+```
