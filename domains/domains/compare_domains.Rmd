@@ -124,7 +124,7 @@ grid.text("MEROPS UpSet Plot", x = 0.65, y=0.95, gp=gpar(fontsize=20))
 
 ```{r}
 #MEROPS enrichment
-enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.95) {
+enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.05) {
   out = data.frame()
   vars = unique(dat[[var]])
   len = length(vars)
@@ -214,6 +214,8 @@ merops.res.stat.meta2=merops.res.stat.meta %>% left_join(mer.key2, by=c("Domain"
 head(merops.res.stat.meta2)
 
 ```
+```{r}
+# useless for my purposes
 Metallo.enrichment=merops.res.stat.meta2[merops.res.stat.meta2$Genome=="EMU" & merops.res.stat.meta2$Family=="M16A",]$Domain
 
 merops.res.stat.meta.metallo=merops.res.stat.meta2 %>%
@@ -221,7 +223,10 @@ merops.res.stat.meta.metallo=merops.res.stat.meta2 %>%
   filter(Genome %in% c("PFO", "CTH", "SCA", "ZRA", "EMA", "EMU")) %>%
   group_by(Genome) %>%
   summarize(mn=mean(Count), md=median(Count))
+  head(merops.res.stat.meta.metallo)
+```
 
+```{r}
 #MEROPS clustering
 merops.dist=merops.res.stat.meta %>%
   select(Domain, Genome, sig_n) %>%
@@ -229,22 +234,43 @@ merops.dist=merops.res.stat.meta %>%
   mutate(
     across(where(is.numeric), ~replace_na(.x, 0))
   )
+  head(merops.dist)
+```
 
+```{r}
 merops.dist2=as.matrix(merops.dist[2:length(merops.dist)])
 names(merops.dist2)=merops.dist$Domain
+head(merops.dist2)
+```
 
+```{r}
 merops.hclust=hclust(d = dist(merops.dist2))
+head(merops.hclust)
+```
 
+```{r}
 merops.hclust2 <- data.frame(Domain=names(merops.dist2),
                              cluster=cutree(merops.hclust, length(merops.dist$Domain)))
+head(merops.hclust2)
+```
 
+```{r}
 merops.clust=left_join(merops.res.stat.meta, merops.hclust2)
+head(merops.clust)
+```
 
+```{r}
 merops.clust$Genome=as.factor(merops.clust$Genome)
 merops.clust$Genome=factor(merops.clust$Genome, levels=levels(merops.clust$Genome)[match(mer.phylo, levels(merops.clust$Genome))])
+head(merops.clust)
+```
 
+```{r}
 merops.list = unique(subset(merops.res.stat.meta, merops.res.stat.meta$Genome=="CTH")$Domain)
+head(merops.list)
+```
 
+```{r}
 Emus.merops.stat=merops.clust %>%
   filter(Domain %in% merops.list) %>%
   filter(Genome=="CTH") %>%
@@ -253,7 +279,10 @@ Emus.merops.stat=merops.clust %>%
   distinct() %>%
   rename("Emus.status"="Direction") %>%
   mutate(Emus.status=as.factor(Emus.status))
+  head(Emus.merops.stat)
+```
 
+```{r}
 Emus.merops.clust=merops.clust %>%
   left_join(Emus.merops.stat) %>%
   mutate(Emus.status=as.character(Emus.status)) %>%
@@ -264,9 +293,12 @@ Emus.merops.clust=merops.clust %>%
   rename(`Domain`="MERNUM") %>% 
   mutate(Direction=as.factor(Direction)) %>%
   mutate(Direction=factor(Direction, levels=levels(Direction)[c(3, 2, 1)]))
-
+  head(Emus.merops.clust)
+```
+```{r}
 #MEROPS visualization
 theme = theme_bw()+theme(text = element_text(size=15), axis.title.x = element_text(size=20), axis.text.x = element_text(size=15), axis.text.y = element_text(size=15), title = element_text(size=20), legend.title = element_text(size=20), legend.text = element_text(size=15), strip.background = element_rect(color="black", fill="white", linewidth=1.5, linetype="solid"))
+
 
 mer.dwn=ggplot(subset(Emus.merops.clust, Emus.status=="Down"), aes(y=reorder(Domain, cluster), x=Genome, color=Direction, size=as.factor(sig_n)))+geom_point(alpha=0.8)+
   theme+geom_stripes(inherit.aes=F, aes(y=reorder(Domain, cluster)), odd = "#33333333", even = "#00000000")+theme(axis.text.x = element_text(angle = 90, vjust=0.5, hjust=0.95))+
@@ -275,23 +307,45 @@ mer.dwn=ggplot(subset(Emus.merops.clust, Emus.status=="Down"), aes(y=reorder(Dom
 
 mer.dwn
 
+# save the plot
+ggsave(file="plots/MEROPS_Down2.png", plot=mer.dwn, width=11, height=10, dpi=300)
+```
+
+```{r}
 mer.up=ggplot(subset(Emus.merops.clust, Emus.status=="Up"), aes(y=reorder(Domain, cluster), x=Genome, color=Direction, size=sig_n))+geom_point(alpha=0.8)+
   theme+geom_stripes(inherit.aes=F, aes(y=reorder(Domain, cluster)), odd = "#33333333", even = "#00000000")+theme(axis.text.x = element_text(angle = 90, vjust=0.5, hjust=0.95))+
 
 mer.up
 
+# save the plot
+ggsave(file="plots/MEROPS_Up.svg", plot=mer.up, width=11, height=10)
+```
+
+```{r}
 mer.dwn2=ggplot(subset(Emus.merops.clust, Emus.status=="Down" & Genome=="CTH"), aes(x=Count, y=reorder(Domain, cluster), fill=Fold))+geom_col()+
   theme+geom_stripes(odd = "#33333333", even = "#00000000")+
   theme(axis.text.y=element_text(size=15), axis.text.x=element_blank(), axis.title.x=element_blank(), axis.ticks.x = element_blank())+theme(legend.position="right")+xlab("Count for EMU only")+facet_grid(~Type, scales="free_x", space="free_x")+coord_flip()+labs(fill="Fold vs.\nmedian")+scale_fill_viridis_c()+ggtitle("MEROPS Down in EMU compared to median")+theme(plot.title = element_text(hjust = 0.5))
 
 mer.dwn2
 
+# save the plot
+
+ggsave(file="plots/MEROPS_Down3.png", plot=mer.dwn2, width=11, height=10, dpi=300)
+```
+
+```{r}
 mer.up2=ggplot(subset(Emus.merops.clust, Emus.status=="Up" & Genome=="CTH"), aes(x=Count, y=reorder(Domain, cluster), fill=Fold))+geom_col()+
   theme+geom_stripes(odd = "#33333333", even = "#00000000")+
   theme(axis.text.y=element_text(size=10), axis.text.x=element_blank(), axis.title.x=element_blank(), axis.ticks.x = element_blank())+theme(legend.position="right")+xlab("Count for EMU only")+facet_grid(~Type, scales="free_x", space="free_x")+coord_flip()+labs(fill="Fold vs.\nmedian")+scale_fill_viridis_c()+ggtitle("MEROPS Up in EMU compared to median")+theme(plot.title = element_text(hjust = 0.5))
 
 mer.up2
 
+# save the plot
+
+ggsave(file="plots/MEROPS_Up.png", plot=mer.up2, width=11, height=10, dpi=300)
+```
+
+```{r}
 Emus.merops.missing=merops.clust %>%
   left_join(Emus.merops.stat) %>%
   mutate(Emus.status=as.character(Emus.status)) %>%
@@ -302,22 +356,42 @@ Emus.merops.missing=merops.clust %>%
   rename("Domain"="MERNUM") %>%
   mutate(Direction=as.factor(Direction)) %>%
   mutate(Direction=factor(Direction, levels=levels(Direction)[c(2, 3, 1)]))
+  head(Emus.merops.missing)
+```
 
+```{r}
 mer.plt3=ggplot(Emus.merops.missing, aes(y=reorder(Domain, rev(cluster)), x=Genome, color=Direction, size=sig_n))+geom_point(alpha=0.8)+
   theme+theme(axis.text.x = element_text(size=15, angle = 90, vjust=0.5, hjust=0.95))+theme(axis.text.y=element_text(size=15))+theme(legend.position="right")+xlab("")+facet_grid(rows="Type", scales="free", space="free")+scale_color_manual(values=c("#127852", "#8B8588", "#FF0000"))+labs(size="Significant\nDifferences")+geom_stripes(inherit.aes=F, aes(y=reorder(Domain, rev(cluster))), odd ="#33333333", even = "#00000000")+scale_x_discrete(limits = rev(mer.phylo))+ylab("MERNUM")+ggtitle("Missing from EMU")+theme(plot.title = element_text(hjust = 0.5))+guides(color = guide_legend(override.aes = list(size=3), order=1))+labs(color="Direction vs.\nmedian")
 
 mer.plt3
 
+# save the plot
+
+ggsave(file="plots/MEROPS_Missing.png", plot=mer.plt3, width=11, height=10, dpi=300)
+```
+
+```{r}
 Emus.merops.unique=merops.counts %>%
   filter(MERNUM %in% unlist(merops.unique[merops.unique$Genome=="CTH",]$MEROPS))  %>%
   left_join(mer.key2) %>%
   rename("Domain"="MERNUM")
+  head(Emus.merops.unique)
 
+```
+
+```{r}
 mer.plt4=ggplot(Emus.merops.unique, aes(x=Domain, y=Count, fill=Type))+geom_col()+scale_fill_viridis_d()+
   theme+theme(axis.text.x = element_text(angle = 90, vjust=0.5))+xlab("MERNUM")+scale_x_discrete(limits = rev(Emus.merops.unique$Domain))+coord_flip()+ggtitle("Unique to EMU")+theme(plot.title = element_text(hjust = 0.5), legend.position="bottom")+labs(fill="Peptidase\ntype")
 
 mer.plt4
 
+# save the plot
+
+ggsave(file="plots/MEROPS_Unique.png", plot=mer.plt4, width=11, height=10, dpi=300)
+
+```
+
+```{r}
 mer.dwn.1=ggplotGrob(mer.dwn)
 mer.dwn.2=ggplotGrob(mer.dwn2)
 
@@ -331,8 +405,13 @@ layout1 <- rbind(c(2),
 
 mer.down.plt=grid.arrange(mer.dwn.1, mer.dwn.2, layout_matrix=layout1, heights=c(0.4, 0.6))
 
-#ggsave(file="plots/MEROPS Down.svg", plot=mer.down.plt, width=11, height=10)
+# save the plot
 
+ggsave(file="plots/MEROPS_Down_plots.png", plot=mer.down.plt, width=11, height=10, dpi=300)
+#ggsave(file="plots/MEROPS Down.svg", plot=mer.down.plt, width=11, height=10)
+```
+
+```{r}
 mer.up.1=ggplotGrob(mer.up)
 mer.up.2=ggplotGrob(mer.up2)
 
@@ -344,14 +423,20 @@ mer.up.2$widths= maxWidth
 mer.up.plt=grid.arrange(mer.up.1, mer.up.2, layout_matrix=layout1, heights=c(0.4, 0.6))
 
 #ggsave(file="plots/MEROPS Up.svg", plot=mer.up.plt, width=11, height=10)
+```
 
+```{r}
 mer3=ggplotGrob(mer.plt3)
 mer4=ggplotGrob(mer.plt4)
 
 layout2 <- rbind(c(1,2))
 
-grid.arrange(mer4, mer3, layout_matrix=layout2, widths=c(0.4, 0.6))
-ggsave(file="plots/MEROPS_Down.png", plot=mer.down.plt, width=11, height=10, dpi=300)
+f <- grid.arrange(mer4, mer3, layout_matrix=layout2, widths=c(0.4, 0.6))
+
+# save the plot
+
+ggsave(file="plots/MEROPS_blah.png", plot=f, width=11, height=10, dpi=300)
+
 ```
 
 ```{r}
