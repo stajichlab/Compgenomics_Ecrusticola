@@ -71,7 +71,7 @@ merops.counts=merops %>%
   group_by(MERNUM) %>%
   mutate(n_Genomes=length(unique(Genome)), Genomes=toString(unique(Genome))) %>%
   left_join(mer.key2)
-head(merops.counts)
+head(merops.counts, 40)
 ```
 
 ```{r}
@@ -88,7 +88,7 @@ merops.unique=merops.counts %>%
   filter(n_Genomes==1) %>%
   group_by(Genome) %>%
   summarize(n=n_distinct(MERNUM), MEROPS=list(unique(MERNUM)), Families=list(unique(Family)))
-  head(merops.unique)
+print(merops.unique)
 ```
 
 
@@ -104,7 +104,7 @@ merops.family=merops.counts %>%
 merops.dat=merops.counts %>%
   filter(n_Genomes>1) %>%
   select(-n_Genomes)
-  head(merops.dat)
+  head(merops.dat, 40)
 
 mer.phylo=levels(as.factor(merops.dat$Genome))[c(1, 2, 5, 6, 7, 8, 3, 4)]
 ```
@@ -124,51 +124,64 @@ grid.text("MEROPS UpSet Plot", x = 0.65, y=0.95, gp=gpar(fontsize=20))
 
 ```{r}
 #MEROPS enrichment
-enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.01){
-  out=data.frame()
-  vars=unique(dat[[var]])
-  len=length(vars)
-  for(i in 1:len){
-    sub=vars[i]
-    #print(sub)
-    tmp=dat[dat[[var]]==sub,]
-    Ct=tmp$Count
-    num=tmp$n
-    names(Ct)=tmp[[group]]
-    test=broom::tidy(pairwise.fisher.test(Ct, num, p.adjust.method="bonferroni"))
-    if(dim(test)[1]>0){
-      test2=data.frame(test) %>%
-        filter(p.value<thresh) %>%
-        mutate(Domain=sub)}else(test2=NA)
-    out=rbind(out, test2)
+enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.95) {
+  out = data.frame()
+  vars = unique(dat[[var]])
+  len = length(vars)
+
+  for(i in 1:len) {
+    sub = vars[i]
+    tmp = dat[dat[[var]] == sub, ]
+    Ct = tmp$Count
+    num = tmp$n
+    names(Ct) = tmp[[group]]
+
+    if (length(Ct) > 0 && length(num) > 0) {
+      test = broom::tidy(pairwise.fisher.test(Ct, num, p.adjust.method="bonferroni"))
+      if(dim(test)[1] > 0) {
+        test2 = data.frame(test) %>%
+          filter(p.value < thresh) %>%
+          mutate(Domain = sub)
+      } else {
+        test2 = data.frame(Domain = sub, p.value = NA)
+      }
+    } else {
+      print(paste("Skipping MERNUM:", sub, "due to empty counts or numbers"))
+      test2 = data.frame(Domain = sub, p.value = NA)
+    }
+
+    out = rbind(out, test2)
   }
   return(out)
-} #Enrichment function
-str(enrich)
+}
+
+merops.res=enrich(merops.dat, var="MERNUM", group="Genome")
+head(merops.res, 100)
 ```
 
 ```{r}
-
-merops.res=enrich(merops.dat, var="MERNUM", group="Genome")
-head(merops.res)
-
-
 merops.res2 = merops.res %>%
   group_by(group1, group2) %>%
   summarize(Domains=toString(Domain)) %>%
   pivot_wider(id_cols=group1, names_from=group2, values_from=Domains)
   head(merops.res2)
-```
 
 merops.res3=merops.res2[match(rev(mer.phylo), merops.res2$group1),]
 
 
 res4=merops.res3[,match(c("group1", intersect(rev(mer.phylo), colnames(merops.res3))), colnames(merops.res3)),]
+head(res4)
+```
+
+```{r}
 
 merops.res.stat=data.frame(Genome=c(merops.res$group1, merops.res$group2), Domain=c(merops.res$Domain, merops.res$Domain)) %>%
   group_by(Genome, Domain) %>%
   summarize(sig_n=length(Domain))
+  head(merops.res.stat)
+```
 
+```{r}
 merops.meta=merops.dat %>%
   select(MERNUM, Genome, Count) %>%
   rename(Domain="MERNUM") %>%
@@ -176,9 +189,15 @@ merops.meta=merops.dat %>%
   mutate(avg=median(Count), Fold=ifelse((Count+avg)>0, Count/avg, 0),
          Direction=ifelse(Fold>1 | Fold==Inf, "Up", ifelse(Fold==1 | Fold==0, ifelse(Count<avg, "Down", "Equal"), "Down"))) %>%
   mutate(Fold=ifelse(Direction=="Down", 1/Fold, Fold))
+  merops.meta
+```
 
+```{r}
 merops.res.stat.meta=left_join(merops.res.stat, merops.meta)
+head(merops.res.stat.meta)
+```
 
+```{r}
 merops.res.stat.meta$Genome=as.factor(merops.res.stat.meta$Genome)
 
 merops.res.stat.meta2=merops.res.stat.meta %>% left_join(mer.key2)
@@ -212,11 +231,11 @@ merops.clust=left_join(merops.res.stat.meta, merops.hclust2)
 merops.clust$Genome=as.factor(merops.clust$Genome)
 merops.clust$Genome=factor(merops.clust$Genome, levels=levels(merops.clust$Genome)[match(mer.phylo, levels(merops.clust$Genome))])
 
-merops.list = unique(subset(merops.res.stat.meta, merops.res.stat.meta$Genome=="EMU")$Domain)
+merops.list = unique(subset(merops.res.stat.meta, merops.res.stat.meta$Genome=="CTH")$Domain)
 
 Emus.merops.stat=merops.clust %>%
   filter(Domain %in% merops.list) %>%
-  filter(Genome=="EMU") %>%
+  filter(Genome=="CTH") %>%
   ungroup() %>%
   select(Domain, Direction) %>%
   distinct() %>%
@@ -246,17 +265,16 @@ mer.dwn
 
 mer.up=ggplot(subset(Emus.merops.clust, Emus.status=="Up"), aes(y=reorder(Domain, cluster), x=Genome, color=Direction, size=sig_n))+geom_point(alpha=0.8)+
   theme+geom_stripes(inherit.aes=F, aes(y=reorder(Domain, cluster)), odd = "#33333333", even = "#00000000")+theme(axis.text.x = element_text(angle = 90, vjust=0.5, hjust=0.95))+
-  theme(axis.text.y=element_text(size=15), axis.text.x=element_text(size=10))+theme(legend.position="right")+ylab("MERNUM")+facet_grid(~Type, scales="free_x", space="free_x")+scale_color_manual(values=c("#127852", "#8B8588", "#FF0000"))+labs(color="Direction\nvs. median", size="Significant\nDifferences")+coord_flip()+guides(color = guide_legend(override.aes = list(size=3), order=1))
 
 mer.up
 
-mer.dwn2=ggplot(subset(Emus.merops.clust, Emus.status=="Down" & Genome=="EMU"), aes(x=Count, y=reorder(Domain, cluster), fill=Fold))+geom_col()+
+mer.dwn2=ggplot(subset(Emus.merops.clust, Emus.status=="Down" & Genome=="CTH"), aes(x=Count, y=reorder(Domain, cluster), fill=Fold))+geom_col()+
   theme+geom_stripes(odd = "#33333333", even = "#00000000")+
   theme(axis.text.y=element_text(size=15), axis.text.x=element_blank(), axis.title.x=element_blank(), axis.ticks.x = element_blank())+theme(legend.position="right")+xlab("Count for EMU only")+facet_grid(~Type, scales="free_x", space="free_x")+coord_flip()+labs(fill="Fold vs.\nmedian")+scale_fill_viridis_c()+ggtitle("MEROPS Down in EMU compared to median")+theme(plot.title = element_text(hjust = 0.5))
 
 mer.dwn2
 
-mer.up2=ggplot(subset(Emus.merops.clust, Emus.status=="Up" & Genome=="EMU"), aes(x=Count, y=reorder(Domain, cluster), fill=Fold))+geom_col()+
+mer.up2=ggplot(subset(Emus.merops.clust, Emus.status=="Up" & Genome=="CTH"), aes(x=Count, y=reorder(Domain, cluster), fill=Fold))+geom_col()+
   theme+geom_stripes(odd = "#33333333", even = "#00000000")+
   theme(axis.text.y=element_text(size=10), axis.text.x=element_blank(), axis.title.x=element_blank(), axis.ticks.x = element_blank())+theme(legend.position="right")+xlab("Count for EMU only")+facet_grid(~Type, scales="free_x", space="free_x")+coord_flip()+labs(fill="Fold vs.\nmedian")+scale_fill_viridis_c()+ggtitle("MEROPS Up in EMU compared to median")+theme(plot.title = element_text(hjust = 0.5))
 
@@ -279,7 +297,7 @@ mer.plt3=ggplot(Emus.merops.missing, aes(y=reorder(Domain, rev(cluster)), x=Geno
 mer.plt3
 
 Emus.merops.unique=merops.counts %>%
-  filter(MERNUM %in% unlist(merops.unique[merops.unique$Genome=="EMU",]$MEROPS))  %>%
+  filter(MERNUM %in% unlist(merops.unique[merops.unique$Genome=="CTH",]$MEROPS))  %>%
   left_join(mer.key2) %>%
   rename("Domain"="MERNUM")
 
@@ -320,18 +338,66 @@ mer4=ggplotGrob(mer.plt4)
 
 layout2 <- rbind(c(1,2))
 
-grid.arrange(mer4, layout_matrix=layout2, widths=c(0.4, 0.6))
-
-mer4
+grid.arrange(mer4, mer3, layout_matrix=layout2, widths=c(0.4, 0.6))
+ggsave(file="plots/MEROPS_Down.png", plot=mer.down.plt, width=11, height=10, dpi=300)
 ```
 
+```{r}
+# Define mer4 and mer.up.plt in a single code block
+
+# Create the plots
+mer.dwn.1=ggplotGrob(mer.dwn)
+mer.dwn.2=ggplotGrob(mer.dwn2)
+
+maxWidth <- unit.pmax(mer.dwn.1$widths, mer.dwn.2$widths)
+
+mer.dwn.1$widths= maxWidth
+mer.dwn.2$widths= maxWidth
+
+layout1 <- rbind(c(2),
+                 c(1))
+
+mer.down.plt=grid.arrange(mer.dwn.1, mer.dwn.2, layout_matrix=layout1, heights=c(0.4, 0.6))
+
+#ggsave(file="plots/MEROPS Down.svg", plot=mer.down.plt, width=11, height=10)
+
+mer.up.1=ggplotGrob(mer.up)
+mer.up.2=ggplotGrob(mer.up2)
+
+maxWidth <- unit.pmax(mer.up.1$widths, mer.up.2$widths)
+
+mer.up.1$widths= maxWidth
+mer.up.2$widths= maxWidth
+
+mer.up.plt=grid.arrange(mer.up.1, mer.up.2, layout_matrix=layout1, heights=c(0.4, 0.6))
+
+#ggsave(file="plots/MEROPS Up.svg", plot=mer.up.plt, width=11, height=10)
+
+mer3=ggplotGrob(mer.plt3)
+mer4=ggplotGrob(mer.plt4)
+
+layout2 <- rbind(c(1,2))
+
+grid.arrange(mer4, mer3, layout_matrix=layout2, widths=c(0.4, 0.6))
+
+# Save the plots
+ggsave(file="plots/MEROPS_Down.png", plot=mer.down.plt, width=11, height=10, dpi=300)
+ggsave(file="plots/MEROPS_Up.svg", plot=mer.up.plt, width=11, height=10)
+ggsave(file="plots/MEROPS_Down.png", plot=mer4, width=11, height=10, dpi=300)
+
+```
+
+```{r}
 pdf("plots/CAZY_plots.pdf")
 
 ####CAZY analysis####
+
+chosen=c("Exophiala_alcalophila", "Exophiala_crusticola", "Exophiala_lecanii-corni", "Exophiala_mesophila", "Exophiala_spinifera", "Exophiala_viscosa", "Exophiala_xenobiotica")
+
 cazy.files=data.frame(names=str_replace(list.files("CAZY/"), ".tsv", "")) %>%
   filter(names %in% chosen) %>%
   mutate(loc=paste("CAZY/", names, ".tsv", sep="")) %>%
-  mutate(source=as.character(1:length(loc)), Genome=as.factor(c("CCO", "CTH", "EMA", "EMU", "PFO", "SCA", "ABC", "ZRA")))
+  mutate(source=as.character(1:length(loc)), Genome=as.factor(c("CCO", "CTH", "EMA", "EMU", "PFO", "SCA", "ZRA")))
 
 cazy.raw=cazy.files$loc %>% map_dfr(read.delim, .id="source", header=F) %>%
   left_join(cazy.files %>% select(source, Genome)) %>%
@@ -376,7 +442,7 @@ grid.text("CAZY UpSet Plot",x = 0.65, y=0.95, gp=gpar(fontsize=20))
 
 #CAZY enrichment
 cazy.res=enrich(cazy.dat, var="CAZY", group="Genome")
-
+head(cazy.res)
 cazy.res2 = cazy.res %>%
   group_by(group1, group2) %>%
   summarize(Domains=toString(Domain)) %>%
@@ -489,20 +555,28 @@ cazy.3=ggplotGrob(cazy.plt3)
 cazy.4=ggplotGrob(cazy.plt4)
 
 grid.arrange(cazy.4, cazy.3, layout_matrix=layout2, widths=c(0.4, 0.6))
+```
 
+```{r}
 pdf("plots/Pfam_plots.pdf")
 ####Pfam analysis####
 sigp <- read.table("CAZY/Exophiala_crusticola.run_dbcan/signalp.out", quote="\"", comment.char="")
+head(sigp)
+```
+
+```{r}
 
 #Combining noTm/TM results
 sigp2 = sigp %>%
   select(V1, V12) %>%
   rename(`Name`="V1", `Method`="V12") %>%
-  separate(Name, into=c("Strain", "Accession"), sep="\\|") %>%
-  select(-Strain, -Method) %>%
+  #separate(Name, into=c("Strain", "Accession"), sep="\\|") %>%
+  select(-Name, -Method) %>%
   mutate(Prediction="Secreted") %>%
   distinct()
-
+  head(sigp2, 20)
+```
+```{r}
 pfam.files=data.frame(names=str_replace(list.files("Pfam/"), ".domtbl.gz", "")) %>%
   filter(names %in% chosen) %>%
   mutate(loc=paste("Pfam/", names, ".domtbl.gz", sep="")) %>%
@@ -531,7 +605,9 @@ sigp.pfam=pfam %>%
   group_by(Pfam) %>%
   mutate(Secretion=ifelse(Prediction_n==2, "Both", Predictions)) %>%
   rename("Domain"="Pfam")
-
+  head(sigp.pfam)
+```
+```{r}
 sigp.pfam2 = sigp.pfam %>%
   select(Domain, Secretion)
 
@@ -842,7 +918,7 @@ pfam.t.uplt=UpSetR::upset(fromList(upset.t.dat), sets=pfam.t.phylo, mb.ratio = c
 pfam.t.uplt
 
 grid.text("Pfam UpSet Plot\nTranscriptomes",x = 0.65, y=0.95, gp=gpar(fontsize=20))
-
+```
 #ggsave(file="plots/Transcriptome UpSet Pfam.svg", width=10, height=8)
 
 pdf("plots/Circadian_plots.pdf")
