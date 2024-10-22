@@ -166,9 +166,13 @@ merops.res2 = merops.res %>%
   pivot_wider(id_cols=group1, names_from=group2, values_from=Domains)
   head(merops.res2)
 
+```
+
+```{r}
 merops.res3=merops.res2[match(rev(mer.phylo), merops.res2$group1),]
-
-
+head(merops.res3)
+```
+```{r}
 res4=merops.res3[,match(c("group1", intersect(rev(mer.phylo), colnames(merops.res3))), colnames(merops.res3)),]
 head(res4)
 ```
@@ -200,8 +204,16 @@ head(merops.res.stat.meta)
 ```{r}
 merops.res.stat.meta$Genome=as.factor(merops.res.stat.meta$Genome)
 
-merops.res.stat.meta2=merops.res.stat.meta %>% left_join(mer.key2)
+head(merops.res.stat.meta)
+```
 
+```{r}
+# Fixed the leftjoin
+merops.res.stat.meta2=merops.res.stat.meta %>% left_join(mer.key2, by=c("Domain"="MERNUM"))
+
+head(merops.res.stat.meta2)
+
+```
 Metallo.enrichment=merops.res.stat.meta2[merops.res.stat.meta2$Genome=="EMU" & merops.res.stat.meta2$Family=="M16A",]$Domain
 
 merops.res.stat.meta.metallo=merops.res.stat.meta2 %>%
