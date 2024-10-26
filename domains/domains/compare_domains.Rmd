@@ -130,7 +130,7 @@ ggsave(file="plots/MEROPS_UpSet.png", width=11, height=10, dpi=300)
 
 ```{r}
 #MEROPS enrichment
-enrich = function(dat, var='DOMAIN', group="Genome", thresh=1) {
+enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.05) {
   out = data.frame()
   vars = unique(dat[[var]])
   len = length(vars)
@@ -163,6 +163,99 @@ enrich = function(dat, var='DOMAIN', group="Genome", thresh=1) {
 
 merops.res=enrich(merops.dat, var="MERNUM", group="Genome")
 head(merops.res, 100)
+```
+
+
+```{r}
+enrich_debug = function(dat, var='DOMAIN', group="Genome", thresh=0.05) {
+  # Check input data
+  if (!is.data.frame(dat)) {
+    stop("Input data `dat` must be a data frame.")
+  }
+  if (!(var %in% names(dat)) || !(group %in% names(dat)) || !("Count" %in% names(dat)) || !("n" %in% names(dat))) {
+    stop("The data frame `dat` must contain columns: '", var, "', '", group, "', 'Count', and 'n'.")
+  }
+
+  out = data.frame()
+  vars = unique(dat[[var]])
+  len = length(vars)
+
+  # Check if there are unique values in `var`
+  if (len == 0) {
+    stop(paste("No unique values found in column:", var))
+  }
+
+  print(paste("Number of unique domains:", len))
+
+  for(i in 1:len) {
+    sub = vars[i]
+    print(paste("Processing:", sub))
+
+    # Subset data for the current domain
+    tmp = dat[dat[[var]] == sub, ]
+    if (nrow(tmp) == 0) {
+      print(paste("No data available for", sub, "- skipping."))
+      next
+    }
+
+    print("Subset data:")
+    print(head(tmp))  # Debugging print
+
+    # Extract counts and numbers
+    Ct = tmp$Count
+    num = tmp$n
+    names(Ct) = tmp[[group]]
+
+    print("Counts (Ct):")
+    print(Ct)
+    print("Numbers (num):")
+    print(num)
+
+    # Check if counts and numbers are valid
+    if (length(Ct) > 0 && length(num) > 0) {
+      # Perform pairwise Fisher's exact test with error handling
+      test = tryCatch(
+        broom::tidy(pairwise.fisher.test(Ct, num, p.adjust.method="bonferroni")),
+        error = function(e) {
+          print(paste("Error in pairwise.fisher.test for", sub, ":", e$message))
+          return(data.frame())
+        }
+      )
+
+      # If test results are available, filter by p-value threshold
+      if (nrow(test) > 0) {
+        print("Test results before filtering:")
+        print(test)  # Debugging print
+
+        test2 = test %>%
+          dplyr::filter(p.value < thresh) %>%
+          dplyr::mutate(Domain = sub)
+
+        print("Significant results after filtering:")
+        print(test2)  # Debugging print
+      } else {
+        print(paste("No significant results for", sub))
+        test2 = data.frame(Domain = sub, p.value = NA)
+      }
+    } else {
+      print(paste("Skipping domain:", sub, "due to empty counts or numbers"))
+      test2 = data.frame(Domain = sub, p.value = NA)
+    }
+
+    # Append results
+    out = rbind(out, test2)
+    print("Current output:")
+    print(out)  # Debugging print after each iteration
+  }
+
+  # Final output
+  print("Final output:")
+  print(out)
+  return(out)
+}
+
+# Example usage:
+# merops.res = enrich_debug(merops.dat, var="MERNUM", group="Genome")
 ```
 
 ```{r}
@@ -468,6 +561,7 @@ head(cazy.raw)
 ```
 
 ```{r}
+
 cazy=cazy.raw %>%
   select(V3, V1, Genome) %>%
   rename(Name=`V3`, CAZY=`V1`) %>%
@@ -478,9 +572,12 @@ head(cazy)
 ```
 
 ```{r}
+
+# changed so it uses unique strain, since accession isn't in the Dataframe
+
 cazy.counts=cazy %>%
   group_by(Genome, CAZY) %>%
-  summarize(Count=n_distinct(Accession)) %>%
+  summarize(Count=n_distinct(Strain)) %>%
   group_by(Genome) %>%
   mutate(n=sum(Count)) %>%
   group_by(CAZY) %>%
@@ -520,11 +617,14 @@ head(cazy.upset.dat)
 
 ```{r}
 cazy.uplt=UpSetR::upset(fromList(cazy.upset.dat), sets=cazy.phylo, mb.ratio = c(0.55, 0.45), order.by = "freq", keep.order = TRUE)
-
+#grid.text("CAZY UpSet Plot",x = 0.65, y=0.95, gp=gpar(fontsize=20))
 cazy.uplt
 
+# save as png
 
-grid.text("CAZY UpSet Plot",x = 0.65, y=0.95, gp=gpar(fontsize=20))
+ggsave(file="plots/CAZY_UpSet.png", plot=cazy.uplt, width=11, height=10, dpi=300)
+
+
 ```
 
 ```{r}
@@ -541,13 +641,29 @@ cazy.res2 = cazy.res %>%
   pivot_wider(id_cols=group1, names_from=group2, values_from=Domains)
   head(cazy.res2)
 ```
+
+```{r}
 cazy.res3=cazy.res2[match(rev(cazy.phylo), cazy.res2$group1),]
 
+head(cazy.res3)
+```
+
+```{r}
+
 res4=cazy.res3[,match(c("group1", intersect(rev(cazy.phylo), colnames(cazy.res3))), colnames(cazy.res3)),]
+head(res4)
+```
+
+```{r}
 
 cazy.res.stat=data.frame(Genome=c(cazy.res$group1, cazy.res$group2), Domain=c(cazy.res$Domain, cazy.res$Domain)) %>%
   group_by(Genome, Domain) %>%
   summarize(sig_n=length(Domain))
+
+head(cazy.res.stat)
+```
+
+```{r}
 
 cazy.meta=cazy.dat %>%
   select(CAZY, Genome, Count) %>%
@@ -556,11 +672,17 @@ cazy.meta=cazy.dat %>%
   mutate(avg=median(Count), Fold=ifelse((Count+avg)>0, Count/avg, 0),
          Direction=ifelse(Fold>1 | Fold==Inf, "Up", ifelse(Fold==1 | Fold==0, ifelse(Count<avg, "Down", "Equal"), "Down"))) %>%
   mutate(Fold=ifelse(Direction=="Down", 1/Fold, Fold))
+  head(cazy.meta, 30)
+
+```
+
+```{r}
 
 cazy.res.stat.meta=inner_join(cazy.res.stat, cazy.meta)
 
 cazy.res.stat.meta$Genome=as.factor(cazy.res.stat.meta$Genome)
 head(cazy.res.stat.meta)
+
 ```
 
 ```{r}
@@ -570,22 +692,35 @@ cazy.dist=cazy.res.stat.meta %>%
   pivot_wider(id_cols="Domain", values_from=sig_n, names_from=Genome) %>% mutate(
     across(where(is.numeric), ~replace_na(.x, 0))
   )
+  head(cazy.dist)
+```
 
+```{r}
 cazy.dist2=as.matrix(cazy.dist[2:length(cazy.dist)])
 names(cazy.dist2)=cazy.dist$Domain
-
+head(cazy.dist2)
 cazy.hclust=hclust(d = dist(cazy.dist2))
+head(cazy.hclust)
+```
 
+```{r}
 cazy.hclust2 <- data.frame(Domain=names(cazy.dist2),
                            cluster=cutree(cazy.hclust, length(cazy.dist$Domain)))
 
 cazy.clust=left_join(cazy.res.stat.meta, cazy.hclust2)
+head(cazy.clust)
+```
+
+```{r}
 
 cazy.clust$Genome=as.factor(cazy.clust$Genome)
 cazy.clust$Genome=factor(cazy.clust$Genome, levels=levels(cazy.clust$Genome)[match(cazy.phylo, levels(cazy.clust$Genome))])
 
 cazy.list = unique(subset(cazy.res.stat.meta, cazy.res.stat.meta$Genome=="CTH")$Domain)
+head(cazy.list)
 
+```
+```{r}
 Emus.cazy.stat=cazy.clust %>%
   filter(Domain %in% cazy.list) %>%
   filter(Genome=="CTH") %>%
@@ -602,15 +737,23 @@ Emus.cazy.clust=cazy.clust %>%
   filter(Emus.status!="Equal" & Emus.status!="Missing") %>%
   mutate(Direction=as.factor(Direction)) %>%
   mutate(Direction=factor(Direction, levels=levels(Direction)[c(2, 1, 3)])) 
+  head(Emus.cazy.clust)
+```
 
+```{r}
 #CAZY visualization
 cazy.plt=ggplot(Emus.cazy.clust, aes(y=reorder(Domain, cluster), x=Genome, color=Direction, size=sig_n))+geom_point(alpha=0.8)+
   theme+geom_stripes(inherit.aes=F, aes(y=reorder(Domain, cluster)), odd = "#33333333", even = "#00000000")+theme(axis.text.x = element_text(angle = 90, vjust=0.5, hjust=0.95))+
   theme(axis.text.y=element_text(size=15), axis.text.x=element_text(size=10))+theme(legend.position="right", strip.text.y = element_text(size = 12, color = "black", face = "bold"),strip.background = element_rect(color="black", fill="white", size=1.5, linetype="solid"))+ylab("CAZY")+facet_grid(~Emus.status, scales="free_x", space="free_x")+scale_color_manual(values=c("#127852", "#8B8588", "#FF0000"))+labs(color="Direction\nvs. median", size="Significant\nDifferences")+coord_flip()+guides(colour = guide_legend(override.aes = list(size=3), order=1))
 
+
 cazy.plt
 # save the plot
 ggsave(file="plots/Emus.cazy.clust_plot.png", plot=cazy.plt, width=11, height=10, dpi=300)
+
+```
+
+```{r}
 
 cazy.plt2=ggplot(subset(Emus.cazy.clust, Genome=="CTH"), aes(x=Count, y=reorder(Domain, cluster), fill=Fold))+geom_col()+
   theme+geom_stripes(odd = "#33333333", even = "#00000000")+
@@ -621,6 +764,7 @@ cazy.plt2
 # save the plot
 ggsave(file="plots/Emus.cazy.clust_plot2.png", plot=cazy.plt2, width=11, height=10, dpi=300)
 
+```
 Emus.cazy.missing=cazy.clust %>%
   left_join(Emus.cazy.stat) %>%
   mutate(Emus.status=as.character(Emus.status)) %>%
@@ -673,7 +817,7 @@ ggsave(file="plots/CAZY_plots_multipanel2.png", plot=cazy.1, width=11, height=10
 ```
 
 ```{r}
-pdf("plots/Pfam_plots.pdf")
+#pdf("plots/Pfam_plots.pdf")
 ####Pfam analysis####
 sigp <- read.table("CAZY/Exophiala_crusticola.run_dbcan/signalp.out", quote="\"", comment.char="")
 head(sigp)
@@ -685,32 +829,42 @@ head(sigp)
 sigp2 = sigp %>%
   select(V1, V12) %>%
   rename(`Name`="V1", `Method`="V12") %>%
-  #separate(Name, into=c("Strain", "Accession"), sep="\\|") %>%
-  select(-Name, -Method) %>%
+#  separate(Name, into=c("Strain", "Accession"), sep="\\|") %>%
+#  select(-Name, -Method) %>%
   mutate(Prediction="Secreted") %>%
   distinct()
-  head(sigp2, 20)
+head(sigp2, 20)
 ```
 ```{r}
-pfam.files=data.frame(names=str_replace(list.files("Pfam/"), ".domtbl.gz", "")) %>%
-  filter(names %in% chosen) %>%
-  mutate(loc=paste("Pfam/", names, ".domtbl.gz", sep="")) %>%
-  mutate(source=as.character(1:length(loc)), Genome=as.factor(c("CCO", "CTH", "EMA", "EMU", "PFO", "SCA", "ABC", "ZRA")))
+chosen=c("Exophiala_alcalophila", "Exophiala_crusticola", "Exophiala_lecanii-corni", "Exophiala_mesophila", "Exophiala_sideris", "Exophiala_spinifera", "Exophiala_viscosa", "Exophiala_xenobiotica")
 
+pfam.files=data.frame(names=str_replace(list.files("Pfam/"), ".domtbl", "")) %>%
+  filter(names %in% chosen) %>%
+  mutate(loc=paste("Pfam/", names, ".domtbl", sep="")) %>%
+  mutate(source=as.character(1:length(loc)), Genome=as.factor(c("CCO", "CTH", "EMA", "EMU", "PFO", "SCA", "ABC", "ZRA")))
+head(pfam.files, 20)
+```
+```{r}
 pfam.raw=pfam.files$loc %>% map_dfr(read_table2, .id="source", comment="#", col_names=F) %>%
   left_join(pfam.files %>% select(source, Genome)) %>%
   select(-source)
-
+head(pfam.raw)
+```
+```{r}
 pfam=pfam.raw %>%
   select(X4, X1, Genome) %>%
   rename(Name=`X1`, Pfam=`X4`) %>%
   separate(Name, into=c("Strain", "Accession"), sep="\\|")
+head(pfam, 20)
+```
 
+```{r}
+# change accession to strain
 sigp.pfam=pfam %>%
-  left_join(sigp2) %>%
+  left_join(sigp2, by = c("Strain" = "Name")) %>%
   mutate(Prediction=replace_na(Prediction, "Not Secreted")) %>%
   group_by(Pfam, Prediction) %>%
-  summarize(Accessions_n=length(unique(Accession)), Accessions=toString(unique(Accession))) %>%
+  summarize(Accessions_n=length(unique(Strain)), Accessions=toString(unique(Strain))) %>%
   group_by(Pfam) %>%
   mutate(Prediction_n=n_distinct(Prediction), Predictions=toString(unique(Prediction), sep="\n")) %>%
   pivot_wider(names_from="Prediction", values_from=c("Accessions_n", "Accessions")) %>%
@@ -723,9 +877,15 @@ sigp.pfam=pfam %>%
   head(sigp.pfam)
 ```
 ```{r}
+#pdf("plots/CAZY_plots.pdf")
+
 sigp.pfam2 = sigp.pfam %>%
   select(Domain, Secretion)
+  head(sigp.pfam2)
+```
 
+```{r}
+# break
 pfam.counts.acc=pfam %>%
   group_by(Genome, Pfam) %>%
   summarize(Count=n_distinct(Accession)) %>%
@@ -734,7 +894,13 @@ pfam.counts.acc=pfam %>%
   group_by(Pfam) %>%
   mutate(n_Genomes=n_distinct(Genome), Genomes=toString(unique(Genome))) %>%
   mutate(Method="Accessions")
+  head(pfam.counts.acc, 20)
 
+
+```
+
+```{r}
+# here the counts are more than one
 pfam.counts.dom=pfam %>%
   group_by(Genome, Pfam) %>%
   summarize(Count=length(Accession)) %>%
@@ -743,27 +909,116 @@ pfam.counts.dom=pfam %>%
   group_by(Pfam) %>%
   mutate(n_Genomes=n_distinct(Genome), Genomes=toString(unique(Genome))) %>%
   mutate(Method="Domains")
+  head(pfam.counts.dom)
+
+# print values for ank domain
+pfam.counts.dom %>% filter(Pfam=="Ank")
+```
+### use a single domain to test for fisher's exact test
+```{r}
+# testing
+#pfam.res=enrich(pfam.counts.dom, var="Pfam", group="Genome")
+#head(pfam.res)
+
+# Load necessary packages
+library(dplyr)
+library(broom)
+
+# Define the function
+perform_fishers_test <- function(df, pfam_name) {
+  # Filter the dataframe for the specified Pfam domain
+  filtered_df <- df %>% filter(Pfam == pfam_name)
+  
+  # Initialize a list to store results
+  results_list <- list()
+  
+  # Loop through each genome
+  for (genome in unique(filtered_df$Genome)) {
+    # Subset the data for the current genome
+    genome_data <- filtered_df %>% filter(Genome == genome)
+    
+    # Create the contingency table
+    contingency_table <- matrix(
+      c(
+        genome_data$Count[1],   # Count of the Pfam domain
+        genome_data$n[1] - genome_data$Count[1],  # Non-Pfam domain counts
+        sum(df$Count[df$Genome == genome]),   # Total counts of Pfam domain in genome
+        sum(df$n[df$Genome == genome]) - sum(df$Count[df$Genome == genome])  # Non-Pfam counts in genome
+      ),
+      nrow = 2,
+      byrow = TRUE
+    )
+    
+    # Perform Fisher's exact test
+    fisher_result <- fisher.test(contingency_table)
+    
+    # Store the results
+    results_list[[genome]] <- tibble(
+      Genome = genome,
+      Odds_Ratio = fisher_result$estimate,
+      P_Value = fisher_result$p.value
+    )
+  }
+  
+  # Combine results into a single dataframe
+  results_df <- bind_rows(results_list)
+  
+  # Apply Bonferroni correction
+  results_df <- results_df %>%
+    mutate(
+      P_Value_Bonferroni = p.adjust(P_Value, method = "bonferroni"),
+      Significant = P_Value_Bonferroni < 0.05
+    )
+  
+  return(results_df)
+}
+
+# Example usage:
+ pfam_counts_dom <- pfam.counts.dom  # Replace with your actual dataframe
+ results <- perform_fishers_test(pfam_counts_dom, "Patatin")
+ print(results)
+
+```
+
+```{r}
 
 pfams.combined=bind_rows(pfam.counts.acc, pfam.counts.dom) %>%
   select(Genome, Pfam, Count, Method) %>%
   pivot_wider(names_from="Method", values_from="Count")
+  head(pfams.combined)
+```
+
+```{r}
 
 pfam.genome=pfam %>%
   group_by(Accession, Genome) %>%
   mutate(n=n_distinct(Pfam))
+  head(pfam.genome)
+```
 
+```{r}
 pfam.composition=pfam.counts.acc %>%
   group_by(Genome) %>%
   summarize(n=sum(n_Genomes), pfams=list(unique(Pfam)))
+  head(pfam.composition)
+```
 
+```{r}
 pfam.unique=pfam.counts.acc %>%
   filter(n_Genomes==1) %>%
   group_by(Genome) %>%
   summarize(n=n_distinct(Pfam), pfam=list(unique(Pfam)))
+  head(pfam.unique)
+```
 
+```{r}
 pfam.dat=pfam.counts.acc %>%
   filter(n_Genomes>1) %>%
   select(-n_Genomes) 
+  head(pfam.dat, 30)
+```
+
+```{r}
 
 pfam.phylo=levels(as.factor(pfam.dat$Genome))[c(1, 2, 5, 6, 7, 3, 4)]
 
@@ -775,8 +1030,18 @@ pfam.uplt=UpSetR::upset(fromList(pfam.upset.dat), sets=pfam.phylo, mb.ratio = c(
 pfam.uplt
 grid.text("Pfam UpSet Plot",x = 0.65, y=0.95, gp=gpar(fontsize=20))
 
+# save as pdf
+
+ggsave(file="plots/Pfam_UpSet.pdf", plot=pfam.uplt, width=11, height=10, dpi=300)
+```
+
+```{r}
+
 #Pfam enrichment
 pfam.res=enrich(pfam.dat, var="Pfam", group="Genome")
+head(pfam.res)
+
+
 
 pfam.res2 = pfam.res %>%
   group_by(group1, group2) %>%
@@ -791,26 +1056,52 @@ pfam.res4=pfam.res3[,match(c("group1", intersect(rev(pfam.phylo), colnames(pfam.
 pfam.res.stat=data.frame(Genome=c(pfam.res$group1, pfam.res$group2), Domain=c(pfam.res$Domain, pfam.res$Domain)) %>%
   group_by(Genome, Domain) %>%
   summarize(sig_n=length(Domain))
+```
+# go here 
+```{r}
 
-pfam.meta=pfam.dat %>%
+pfam.meta=pfam.counts.dom %>%
   select(Pfam, Genome, Count) %>%
   rename(Domain="Pfam") %>%
   group_by(Domain) %>%
   mutate(avg=median(Count), Fold=ifelse((Count+avg)>0, Count/avg, 0),
          Direction=ifelse(Fold>1 | Fold==Inf, "Up", ifelse(Fold==1 | Fold==0, ifelse(Count<avg, "Down", "Equal"), "Down"))) %>%
   mutate(Fold=ifelse(Direction=="Down", 1/Fold, Fold))
+  head(pfam.meta, 30)
 
+# print only values above 2 fold in genome CTH
+f <- pfam.meta %>% filter(Genome=="CTH" & Fold>2)
+print(f, n=100)
+library(ggplot2)
+# Create a bar plot
+ggplot(f, aes(x = reorder(Domain, Fold), y = Fold, fill = Direction)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  coord_flip() +  # Flip coordinates for better visibility
+  labs(title = "Gene Regulation in Exophiala crusticola",
+       x = "Protein Domains",
+       y = "Average Expression Value (Fold Change)",
+       fill = "Direction") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("exophiala_crusticola_regulation_plot.png", width = 10, height = 6)
+
+# stopped here
+```
+```{r}
 pfam.res.stat.meta=inner_join(pfam.res.stat, pfam.meta)
 
 pfam.res.stat.meta$Genome=as.factor(pfam.res.stat.meta$Genome)
+```
 
+```{r}
 #Pfam clustering
 pfam.dist=pfam.res.stat.meta %>%
   select(Domain, Genome, sig_n) %>%
   pivot_wider(id_cols="Domain", values_from=sig_n, names_from=Genome) %>% mutate(
     across(where(is.numeric), ~replace_na(.x, 0))
   )
-
+```
 pfam.dist2=as.matrix(pfam.dist[2:length(pfam.dist)])
 names(pfam.dist2)=pfam.dist$Domain
 
