@@ -1009,6 +1009,35 @@ pfam.unique=pfam.counts.acc %>%
   group_by(Genome) %>%
   summarize(n=n_distinct(Pfam), pfam=list(unique(Pfam)))
   head(pfam.unique)
+
+  # plot unique Pfam domains for CTH 
+  d <- pfam.unique %>% filter(Genome=="CTH")
+  print(d, n=100)
+
+# take list of unique Pfam domains for CTH and convert to a dataframe where Pfam domains are rows
+pfam.unique2=pfam.unique %>% filter(Genome=="CTH") %>% select(pfam) %>% unnest(pfam)
+
+# join the pfam domains with the counts from the pfam.counts.dom dataframe, extract only value from Count column
+pfam.unique3=pfam.unique2 %>% left_join(pfam.counts.dom, by=c("pfam"="Pfam"))
+print(pfam.unique3, n=100)
+
+# plot the unique Pfam domains for CTH with counts
+library(ggplot2)
+
+# Create a bar plot
+
+ggplot(pfam.unique3, aes(x = reorder(pfam, Count), y = Count, fill = Genome)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  coord_flip() +  # Flip coordinates for better visibility
+  labs(title = "Unique Pfam Domains in Exophiala crusticola",
+       x = "Protein Domains",
+       y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+  # save the plot
+
+ggsave("exophiala_crusticola_unique_pfam_plot.png", width = 10, height = 6)
 ```
 
 ```{r}
@@ -1079,14 +1108,13 @@ ggplot(f, aes(x = reorder(Domain, Fold), y = Fold, fill = Direction)) +
   coord_flip() +  # Flip coordinates for better visibility
   labs(title = "Gene Regulation in Exophiala crusticola",
        x = "Protein Domains",
-       y = "Average Expression Value (Fold Change)",
+       y = "Fold Change vs Genus Mean",
        fill = "Direction") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ggsave("exophiala_crusticola_regulation_plot.png", width = 10, height = 6)
 
-# stopped here
 ```
 ```{r}
 pfam.res.stat.meta=inner_join(pfam.res.stat, pfam.meta)
