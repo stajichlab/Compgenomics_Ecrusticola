@@ -674,6 +674,24 @@ cazy.meta=cazy.dat %>%
   mutate(Fold=ifelse(Direction=="Down", 1/Fold, Fold))
   head(cazy.meta, 30)
 
+
+# print only values above 2 fold in genome CTH
+d <- cazy.meta %>% filter(Genome=="CTH" & Fold>2)
+print(f, n=100)
+library(ggplot2)
+# Create a bar plot
+ggplot(d, aes(x = reorder(Domain, Fold), y = Fold, fill = Direction)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  coord_flip() +  # Flip coordinates for better visibility
+  labs(title = "CAZy Regulation in Exophiala crusticola",
+       x = "Protein Domains",
+       y = "Fold Change vs Genus Mean",
+       fill = "Direction") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("exophiala_crusticola_CAZY_plot.png", width = 10, height = 6)
+
 ```
 
 ```{r}
