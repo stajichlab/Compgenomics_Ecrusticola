@@ -3,22 +3,31 @@
 library(dplyr)
 library(tidyr)
 library(stats)
+library(tidyverse)
+library('fmsb')
+library(grid)
+library(broom)
+library(gridExtra)
+library(ComplexUpset)
+library(UpSetR)
+library(ggforestplot)
+library(viridis)
+library(colorblindr)
 ```
 
 # Find enrichment or depletion of genes in genome for CAZY, MEROPS and Pfam
-```{R}
-# Sample data: replace with your actual data
-gene_counts <- data.frame(
-  Gene_Category = c("GeneA", "GeneB", "GeneC", "GeneD"),
-  Exophiala_alcalophila = c(10, 5, 2, 100000000),
-  Exophiala_crusticola = c(20, 3, 5, 1),
-  Exophiala_lecanii.corni = c(15, 8, 7, 0),
-  Exophiala_mesophila = c(5, 1, 1, 0),
-  Exophiala_sideris = c(8, 2, 2, 1),
-  Exophiala_spinifera = c(12, 6, 3, 0),
-  Exophiala_viscosa = c(9, 4, 4, 0),
-  Exophiala_xenobiotica = c(7, 2, 3, 1)
-)
+## CAZY 
+### Start by reading in the dbcan results
+```{r}
+
+chosen=c("Exophiala_alcalophila", "Exophiala_crusticola", "Exophiala_lecanii-corni", "Exophiala_mesophila", "Exophiala_spinifera", "Exophiala_viscosa", "Exophiala_xenobiotica")
+
+cazy.files=data.frame(names=str_replace(list.files("CAZY/"), ".tsv", "")) %>%
+  filter(names %in% chosen) %>%
+  mutate(loc=paste("CAZY/", names, ".tsv", sep="")) %>%
+  mutate(source=as.character(1:length(loc)), Genome=as.factor(c("Exophiala_alcalophila", "Exophiala_crusticola", "Exophiala_lecanii-corni", "Exophiala_mesophila", "Exophiala_spinifera", "Exophiala_viscosa", "Exophiala_xenobiotica")))
+head(cazy.files)
+
 ```
 
 ```{R}
