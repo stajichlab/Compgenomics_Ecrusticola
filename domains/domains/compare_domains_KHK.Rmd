@@ -1,0 +1,77 @@
+```{R}
+# Load necessary libraries
+library(dplyr)
+library(tidyr)
+library(stats)
+```
+
+# Find enrichment or depletion of genes in genome for CAZY, MEROPS and Pfam
+```{R}
+# Sample data: replace with your actual data
+gene_counts <- data.frame(
+  Gene_Category = c("GeneA", "GeneB", "GeneC", "GeneD"),
+  Exophiala_alcalophila = c(10, 5, 2, 100000000),
+  Exophiala_crusticola = c(20, 3, 5, 1),
+  Exophiala_lecanii.corni = c(15, 8, 7, 0),
+  Exophiala_mesophila = c(5, 1, 1, 0),
+  Exophiala_sideris = c(8, 2, 2, 1),
+  Exophiala_spinifera = c(12, 6, 3, 0),
+  Exophiala_viscosa = c(9, 4, 4, 0),
+  Exophiala_xenobiotica = c(7, 2, 3, 1)
+)
+```
+
+```{R}
+# Convert to long format
+long_df <- gene_counts %>%
+  pivot_longer(-Gene_Category, names_to = "Genome", values_to = "Count")
+```
+
+```{R}
+# Perform Fisher’s Exact Test for enrichment in each genome
+results <- data.frame()
+for (gene in unique(long_df$Gene_Category)) {
+  for (genome in colnames(gene_counts)[-1]) {
+    observed <- gene_counts %>% filter(Gene_Category == gene) %>% pull(genome)
+    other_genomes <- sum(gene_counts %>% filter(Gene_Category == gene) %>% select(-Gene_Category, -all_of(genome)))
+    other_genes_in_genome <- sum(gene_counts %>% filter(Gene_Category != gene) %>% pull(genome))
+    all_other_genes <- sum(gene_counts %>% filter(Gene_Category != gene) %>% select(-Gene_Category, -all_of(genome)))
+    
+    # Create contingency table
+    contingency_table <- matrix(c(observed, other_genomes, other_genes_in_genome, all_other_genes), 
+                                nrow = 2, byrow = TRUE)
+    
+    # Fisher’s test
+    fisher_test <- fisher.test(contingency_table)
+    
+    # Store results
+    results <- rbind(results, data.frame(
+      Gene_Category = gene,
+      Genome = genome,
+      p_value = fisher_test$p.value,
+      Odds_Ratio = fisher_test$estimate
+    ))
+  }
+}
+```
+
+```{R}
+# Adjust for multiple testing
+results$p_adj <- p.adjust(results$p_value, method = "BH")
+
+# Filter significant results
+sig_results <- results %>% filter(p_adj < 0.05)
+
+# Print results
+print(sig_results)
+```
+
+```{R}
+# Save results to a CSV
+write.csv(results, "gene_enrichment_results.csv", row.names = FALSE)
+```
+
+# Find unique genes in crusticola for MEROPS, pfam and CAZY
+
+# Find genes present in all other genomes but not crusticola for MEROPS, Pfam and CAZY
+
