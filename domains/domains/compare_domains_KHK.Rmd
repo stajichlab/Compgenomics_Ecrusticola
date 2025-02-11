@@ -175,7 +175,7 @@ Ecrusticola <- cazy.meta %>% filter(Genome=="Exophiala_crusticola" & Fold>1)
 # get counts for all the genomes for the domains in CTH in d, then filter out the domains in CTH
 other_data <- cazy.meta %>% filter(Domain %in% Ecrusticola$Domain) # %>% filter(Genome != "CTH")
 
-pfam_plot <- ggplot(data = other_data, aes(y = reorder(Domain, Fold), x = Genome, color = Direction, size = Fold)) +
+cazy_plot <- ggplot(data = other_data, aes(y = reorder(Domain, Fold), x = Genome, color = Direction, size = Fold)) +
   geom_point(alpha = 0.8) +  # Points for other genomes
   geom_stripes(inherit.aes = FALSE, aes(y = reorder(Domain, Fold)), odd = "#33333333", even = "#00000000") +  # Add striped background
   theme_minimal() +  # Base theme
@@ -189,7 +189,7 @@ pfam_plot <- ggplot(data = other_data, aes(y = reorder(Domain, Fold), x = Genome
   guides(color = guide_legend(override.aes = list(size = 3), order = 1))  # Adjust legend appearance
 
 # Show the plot
-print(pfam_plot)
+print(cazy_plot)
 
 ```
 ##### 10: make multifacet plot with bar
@@ -200,7 +200,7 @@ diff_data <- Ecrusticola %>%
   mutate(Diff = Count - avg)  # ΔCount = Count - avg
 
 # Create the bar plot
-diff_plot <- ggplot(diff_data, aes(x = reorder(Domain, Diff), y = Diff, fill = Diff > 0)) +
+cazy_bar_plot <- ggplot(diff_data, aes(x = reorder(Domain, Diff), y = Diff, fill = Diff > 0)) +
   geom_col() +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.95, size = 12),
@@ -212,7 +212,7 @@ diff_plot <- ggplot(diff_data, aes(x = reorder(Domain, Diff), y = Diff, fill = D
 
 # Show the plot
 
-cazy_comb <- diff_plot + pfam_plot
+cazy_comb <- cazy_bar_plot + cazy_plot
 cazy_comb
 #ggsave(p, filename = "exophiala_crusticola_CAZY_plot_multipannel.png", width = 20, height = 10)
 
@@ -261,10 +261,9 @@ pfam=pfam.raw %>%
   rename(Accession=`X1`, Pfam=`X4`)
 head(pfam, 20)
 ```
-#### 6: Simplify dataframe so that it only has the domain accessions and the genome it came from
+#### 6: build dataframe with counts of secreted/not secreted predictions for each domain
 
 ```{r}
-# change accession to strain
 sigp.pfam=pfam %>%
   left_join(sigp2, by = "Accession") %>%
   mutate(Prediction=replace_na(Prediction, "Not Secreted")) %>%
@@ -279,6 +278,114 @@ sigp.pfam=pfam %>%
   group_by(Pfam) %>%
   mutate(Secretion=ifelse(Prediction_n==2, "Both", Predictions)) %>%
   rename("Domain"="Pfam")
-  head(sigp.pfam)
+
+sigp.pfam2 = sigp.pfam %>%
+select(Domain, Secretion)
+head(sigp.pfam2)
 ```
 
+#### 7: df with Pfam, genome source, counts
+
+```{r}
+pfam.counts.acc=pfam %>%
+  group_by(Genome, Pfam) %>%
+  summarize(Count=n_distinct(Accession)) %>%
+  group_by(Genome) %>%
+  mutate(n=sum(Count)) %>%
+  group_by(Pfam) %>%
+  mutate(n_Genomes=n_distinct(Genome), Genomes=toString(unique(Genome))) %>%
+  mutate(Method="Accessions")
+  head(pfam.counts.acc)
+```
+#### 8: df with all domains listed for each genome in a single column where genomes are rows
+
+```{r}
+pfam.composition=pfam.counts.acc %>%
+  group_by(Genome) %>%
+  summarize(n=sum(n_Genomes), pfams=list(unique(Pfam)))
+  head(pfam.composition)
+```
+#### 9: df with all unique pfam domains for each genome
+
+```{r}
+pfam.unique=pfam.counts.acc %>%
+  filter(n_Genomes==1) %>%
+  group_by(Genome) %>%
+  summarize(n=n_distinct(Pfam), pfam=list(unique(Pfam)))
+  head(pfam.unique)
+
+```
+#### 10: Make upset plot 
+
+```{r}
+pfam.dat=pfam.counts.acc %>%
+  filter(n_Genomes>1) %>%
+  select(-n_Genomes) 
+  head(pfam.dat)
+
+
+pfam.phylo=levels(as.factor(pfam.dat$Genome))[c(1, 2, 5, 6, 7, 3, 4)]
+
+pfam.upset.dat=pfam.composition$pfams
+names(pfam.upset.dat)=pfam.composition$Genome
+
+pfam.uplt=UpSetR::upset(fromList(pfam.upset.dat), sets=pfam.phylo, mb.ratio = c(0.55, 0.45), order.by = "freq", keep.order = TRUE)
+
+pfam.uplt
+grid.text("Pfam UpSet Plot",x = 0.65, y=0.95, gp=gpar(fontsize=20))
+```
+
+#### 11
+```{R}
+enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.01){
+  out=data.frame()
+  vars=unique(dat[[var]])
+  len=length(vars)
+  for(i in 1:len){
+    sub=vars[i]
+    #print(sub)
+    tmp=dat[dat[[var]]==sub,]
+    Ct=tmp$Count
+    num=tmp$n
+    names(Ct)=tmp[[group]]
+    test=broom::tidy(pairwise.fisher.test(Ct, num, p.adjust.method="bonferroni"))
+    if(dim(test)[1]>0){
+      test2=data.frame(test) %>%
+        filter(p.value<thresh) %>%
+        mutate(Domain=sub)}else(test2=NA)
+    out=rbind(out, test2)
+  }
+  return(out)
+} #Enrichment function
+
+pfam.res=enrich(pfam.dat, var="Pfam", group="Genome")
+
+```
+
+```{R}
+library(igraph)
+library(ggraph)
+library(tidyverse)
+
+# Convert the edge list into an igraph object
+edges <- pfam.res[, c("group1", "group2", "Domain")]  # Include Domain column
+g <- graph_from_data_frame(edges, directed = FALSE)
+
+# Prepare the edges data with the -log10(p-value) for edge thickness
+# Assign log_p and Domain names directly to the edges of the graph
+E(g)$log_p <- -log10(pfam.res$p.value)
+E(g)$domain <- pfam.res$Domain  # Add Domain information to edges
+
+# Create the network plot with ggplot2-style syntax
+f <- ggraph(g, layout = "fr") +  # Using "fr" layout for force-directed layout
+  geom_edge_link(aes(edge_alpha = log_p, edge_width = log_p, color = domain)) +  # Edge color based on Domain
+  geom_node_point(size = 8, color = "steelblue") +  # Node size and color
+  geom_node_text(aes(label = name), size = 5, color = "black", repel = TRUE) +  # Node labels
+  theme_void() +  # Remove grid lines and background
+  scale_edge_color_brewer(palette = "Set1") +  # Use a vibrant color palette
+  scale_edge_alpha(range = c(0.5, 1)) +  # Adjust transparency for more vivid edges
+  scale_edge_width(range = c(1, 5)) +  # Adjust edge thickness for better visibility
+  labs(title = "Pfam Domain Enrichment Network", subtitle = "Edge width represents -log10(p-value)", color = "Pfam Domain")
+
+f 
+```
