@@ -13,11 +13,13 @@ library(UpSetR)
 library(ggforestplot)
 library(viridis)
 library(colorblindr)
+library(patchwork)
+
 ```
 
-# Find enrichment or depletion of genes in genome for CAZY, MEROPS and Pfam
-## CAZY 
-### Start by reading in the dbcan results
+# Part A: CAZY 
+
+#### 1: Start by reading in the dbcan results. Make df with file names
 ```{r}
 
 chosen=c("Exophiala_alcalophila", "Exophiala_crusticola", "Exophiala_lecanii-corni", "Exophiala_mesophila", "Exophiala_spinifera", "Exophiala_viscosa", "Exophiala_xenobiotica")
@@ -29,58 +31,254 @@ cazy.files=data.frame(names=str_replace(list.files("CAZY/"), ".tsv", "")) %>%
 head(cazy.files)
 
 ```
-
-```{R}
-# Convert to long format
-long_df <- gene_counts %>%
-  pivot_longer(-Gene_Category, names_to = "Genome", values_to = "Count")
+#### 2: make a single dataframe with the dbcan hits for each genome and add a column label for each genome
+```{r}
+cazy.raw=cazy.files$loc %>% map_dfr(read.delim, .id="source", header=F) %>%
+  left_join(cazy.files %>% select(source, Genome)) %>%
+  select(-source)
+head(cazy.raw)
 ```
 
+#### 3: Make a dataframe with each CAZY annotation, the genome it is in, and the accession of the CAZY domain
+```{r}
+
+cazy=cazy.raw %>%
+  select(V3, V1, Genome) %>%
+  rename(Accession=`V3`, CAZY=`V1`) %>%
+  mutate(CAZY=str_replace_all(CAZY, ".hmm", ""))
+head(cazy)
+
+```
+
+#### 4: count number of times a unique accession appears in each genome
+```{r}
+cazy.counts=cazy %>%
+  group_by(Genome, CAZY) %>%
+  summarize(Count=n_distinct(Accession)) %>%
+  group_by(Genome) %>%
+  mutate(n=sum(Count)) %>%
+  group_by(CAZY) %>%
+  mutate(n_Genomes=length(unique(Genome)), Genomes=toString(unique(Genome)))
+head(cazy.counts)
+
+```
+#### 5: get counts of unique cazy domains for each genome, and also a column with list of all the cazy domains in each genome for the upset plot
+```{r}
+cazy.composition=cazy.counts %>%
+  group_by(Genome) %>%
+  summarize(n=sum(n_Genomes), CAZYs=list(unique(CAZY)))
+  head(cazy.composition)
+```
+
+#### 6: make the upset plot for cazy. Note that it was not very interesting so not including in paper
+```{r}
+cazy.dat=cazy.counts %>%
+  filter(n_Genomes>1) %>%
+  select(-n_Genomes) 
+  head(cazy.dat)
+cazy.phylo=levels(as.factor(cazy.dat$Genome))[c(1, 2, 5, 6, 7, 3, 4)]
+
+cazy.upset.dat=cazy.composition$CAZYs
+names(cazy.upset.dat)=cazy.composition$Genome
+head(cazy.upset.dat)
+
+cazy.uplt=UpSetR::upset(fromList(cazy.upset.dat), sets=cazy.phylo, mb.ratio = c(0.55, 0.45), order.by = "freq", keep.order = TRUE)
+
+cazy.uplt
+```
+##### Note that the result was not very interesting so not including in paper as there is only one unique domain for E. crusticola
+
+#### 7: Check the only unique domain for E crusticola
+```{r}
+cazy.unique=cazy.counts %>%
+  filter(n_Genomes==1) %>%
+  group_by(Genome) %>%
+  summarize(n=n_distinct(CAZY), cazy=list(unique(CAZY)))
+  head(cazy.unique)
+
+print(cazy.unique[cazy.unique$Genome=="Exophiala_crusticola",]$cazy)
+```
+##### Note: expected to find more unique cazy domains... This one might be involved in EPS production but not really sure. Probably it's a function of copy
+
+#### 8: function for enrichment of cazy
 ```{R}
-# Perform Fisher’s Exact Test for enrichment in each genome
-results <- data.frame()
-for (gene in unique(long_df$Gene_Category)) {
-  for (genome in colnames(gene_counts)[-1]) {
-    observed <- gene_counts %>% filter(Gene_Category == gene) %>% pull(genome)
-    other_genomes <- sum(gene_counts %>% filter(Gene_Category == gene) %>% select(-Gene_Category, -all_of(genome)))
-    other_genes_in_genome <- sum(gene_counts %>% filter(Gene_Category != gene) %>% pull(genome))
-    all_other_genes <- sum(gene_counts %>% filter(Gene_Category != gene) %>% select(-Gene_Category, -all_of(genome)))
-    
-    # Create contingency table
-    contingency_table <- matrix(c(observed, other_genomes, other_genes_in_genome, all_other_genes), 
-                                nrow = 2, byrow = TRUE)
-    
-    # Fisher’s test
-    fisher_test <- fisher.test(contingency_table)
-    
-    # Store results
-    results <- rbind(results, data.frame(
-      Gene_Category = gene,
-      Genome = genome,
-      p_value = fisher_test$p.value,
-      Odds_Ratio = fisher_test$estimate
-    ))
-  }
+# Load necessary libraries
+
+# Define target genome
+target_genome <- "Exophiala_lecanii-corni"
+
+# Total number of genomes
+total_genomes <- unique(cazy.dat$n_Genomes)
+
+# Initialize results dataframe
+results <- data.frame(CAZY = character(), p_value = numeric(), odds_ratio = numeric(), stringsAsFactors = FALSE)
+
+# Iterate over each unique CAZy gene family
+for (gene in unique(cazy.dat$CAZY)) {
+  
+  # Number of times the gene appears in the target genome
+  a <- sum(cazy.dat$Count[cazy.dat$Genome == target_genome & cazy.dat$CAZY == gene])
+  
+  # Number of times the gene is absent in the target genome
+  b <- sum(cazy.dat$Count[cazy.dat$Genome == target_genome & cazy.dat$CAZY != gene])
+  
+  # Number of times the gene appears in other genomes
+  c <- sum(cazy.dat$Count[cazy.dat$Genome != target_genome & cazy.dat$CAZY == gene])
+  
+  # Number of times the gene is absent in other genomes
+  d <- sum(cazy.dat$Count[cazy.dat$Genome != target_genome & cazy.dat$CAZY != gene])
+  
+  # Create contingency table
+  contingency_table <- matrix(c(a, b, c, d), nrow = 2, byrow = TRUE)
+  
+  # Perform Fisher’s exact test
+  test <- fisher.test(contingency_table)
+  
+  # Store results
+  results <- rbind(results, data.frame(CAZY = gene, p_value = test$p.value, odds_ratio = test$estimate))
 }
+
+# View results
+print(results)
+
+# Adjust p-values for multiple testing (optional)
+results$adjusted_p <- p.adjust(results$p_value, method = "BH")
+
+# View results sorted by significance
+results <- results %>% arrange(adjusted_p)
+print(results)
+
 ```
 
+
+##### Note: nothing was significant for E crusticola compared to genus members, have to compare to other outgroups
+##### Note: I can try doing fisher's exact test between only a couple genomes to see if that changes things, for example E crusticola and E dermatidis. 
+##### I can also use the function from the original script once I include outgroups since it seemed to work for comparing all genes from all genomes
+
+#### 9: Make plot for fold change in cazy domain count
+
+```{r}
+# get median counts for genes across the genus
+cazy.meta=cazy.dat %>%
+  select(CAZY, Genome, Count) %>%
+  rename(Domain="CAZY") %>%
+  group_by(Domain) %>%
+  mutate(avg=median(Count), Fold=ifelse((Count+avg)>0, Count/avg, 0),
+         Direction=ifelse(Fold>1 | Fold==Inf, "Up", ifelse(Fold==1 | Fold==0, ifelse(Count<avg, "Down", "Equal"), "Down"))) %>%
+  mutate(Fold=ifelse(Direction=="Down", 1/Fold, Fold))
+  head(cazy.meta, 30)
+
+
+# print only values above 2 fold in genome E crusticola
+Ecrusticola <- cazy.meta %>% filter(Genome=="Exophiala_crusticola" & Fold>1)
+
+# get counts for all the genomes for the domains in CTH in d, then filter out the domains in CTH
+other_data <- cazy.meta %>% filter(Domain %in% Ecrusticola$Domain) # %>% filter(Genome != "CTH")
+
+pfam_plot <- ggplot(data = other_data, aes(y = reorder(Domain, Fold), x = Genome, color = Direction, size = Fold)) +
+  geom_point(alpha = 0.8) +  # Points for other genomes
+  geom_stripes(inherit.aes = FALSE, aes(y = reorder(Domain, Fold)), odd = "#33333333", even = "#00000000") +  # Add striped background
+  theme_minimal() +  # Base theme
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.95, size = 15),  # Rotate x-axis text
+        axis.text.y = element_text(size = 15),  # Y-axis text size
+        legend.position = "right") +  # Legend position
+  ylab("Domain") +  # Y-axis label
+  scale_color_manual(values = c("Up" = "#127852", "Equal" = "#8B8588", "Down" = "#FF0000")) +  # Custom colors for Direction
+  labs(color = "Direction\nvs. median", size = "Significant\nDifferences") +  # Labels for legend
+  coord_flip() +  # Flip coordinates
+  guides(color = guide_legend(override.aes = list(size = 3), order = 1))  # Adjust legend appearance
+
+# Show the plot
+print(pfam_plot)
+
+```
+##### 10: make multifacet plot with bar
+```{R} 
+# Calculate difference from genus mean
+diff_data <- Ecrusticola %>%
+  filter(Genome == "Exophiala_crusticola") %>%
+  mutate(Diff = Count - avg)  # ΔCount = Count - avg
+
+# Create the bar plot
+diff_plot <- ggplot(diff_data, aes(x = reorder(Domain, Diff), y = Diff, fill = Diff > 0)) +
+  geom_col() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.95, size = 12),
+        axis.text.y = element_text(size = 12),
+        legend.position = "none") +
+  scale_fill_manual(values = c("TRUE" = "#127852", "FALSE" = "#FF0000")) +  # Green for increase, red for decrease
+  labs(x = "Pfam Domain", y = "ΔCount (E. crusticola - Genus Mean)") +
+  coord_flip()
+
+# Show the plot
+
+cazy_comb <- diff_plot + pfam_plot
+cazy_comb
+#ggsave(p, filename = "exophiala_crusticola_CAZY_plot_multipannel.png", width = 20, height = 10)
+
+```
+
+# Part B: Pfam domains 
+#### 1: read in signalP results for crusticola
 ```{R}
-# Adjust for multiple testing
-results$p_adj <- p.adjust(results$p_value, method = "BH")
+sigp <- read.table("CAZY/Exophiala_crusticola.run_dbcan/signalp.out", quote="\"", comment.char="")
+head(sigp)
 
-# Filter significant results
-sig_results <- results %>% filter(p_adj < 0.05)
-
-# Print results
-print(sig_results)
 ```
-
+#### 2: add column to denote these accessions are secreted
 ```{R}
-# Save results to a CSV
-write.csv(results, "gene_enrichment_results.csv", row.names = FALSE)
+#Combining noTm/TM results
+sigp2 = sigp %>%
+  select(V1, V12) %>%
+  rename(`Accession`="V1", `Method`="V12") %>%
+  mutate(Prediction="Secreted") %>%
+  distinct()
+
+```
+#### 3: Get locations for pfam annotations
+```{R}
+chosen=c("Exophiala_alcalophila", "Exophiala_crusticola", "Exophiala_lecanii-corni", "Exophiala_mesophila", "Exophiala_sideris", "Exophiala_spinifera", "Exophiala_viscosa", "Exophiala_xenobiotica")
+
+pfam.files=data.frame(names=str_replace(list.files("Pfam/"), ".domtbl", "")) %>%
+  filter(names %in% chosen) %>%
+  mutate(loc=paste("Pfam/", names, ".domtbl", sep="")) %>%
+  mutate(source=as.character(1:length(loc)), Genome=as.factor(c("Exophiala_alcalophila", "Exophiala_crusticola", "Exophiala_lecanii-corni", "Exophiala_mesophila", "Exophiala_sideris", "Exophiala_spinifera", "Exophiala_viscosa", "Exophiala_xenobiotica")))
+head(pfam.files)
 ```
 
-# Find unique genes in crusticola for MEROPS, pfam and CAZY
+#### 4: read in raw files for pfam annotations
+```{r}
+pfam.raw=pfam.files$loc %>% map_dfr(read_table2, .id="source", comment="#", col_names=F) %>%
+  left_join(pfam.files %>% select(source, Genome)) %>%
+  select(-source)
+head(pfam.raw)
+# check against the dom table to make sure it was read in properly
+```
+#### 5: Simplify dataframe so that it only has the domain accessions and the genome it came from
+```{r}
+pfam=pfam.raw %>%
+  select(X4, X1, Genome) %>%
+  rename(Accession=`X1`, Pfam=`X4`)
+head(pfam, 20)
+```
+#### 6: Simplify dataframe so that it only has the domain accessions and the genome it came from
 
-# Find genes present in all other genomes but not crusticola for MEROPS, Pfam and CAZY
+```{r}
+# change accession to strain
+sigp.pfam=pfam %>%
+  left_join(sigp2, by = "Accession") %>%
+  mutate(Prediction=replace_na(Prediction, "Not Secreted")) %>%
+  group_by(Pfam, Prediction) %>%
+  summarize(Accessions_n=length(unique(Accession)), Accessions=toString(unique(Accession))) %>%
+  group_by(Pfam) %>%
+  mutate(Prediction_n=n_distinct(Prediction), Predictions=toString(unique(Prediction), sep="\n")) %>%
+  pivot_wider(names_from="Prediction", values_from=c("Accessions_n", "Accessions")) %>%
+  rename(Secreted="Accessions_n_Secreted", `Not Secreted`="Accessions_n_Not Secreted") %>%
+  mutate(Secreted=replace_na(Secreted, 0),
+         `Not Secreted`=replace_na(`Not Secreted`, 0)) %>%
+  group_by(Pfam) %>%
+  mutate(Secretion=ifelse(Prediction_n==2, "Both", Predictions)) %>%
+  rename("Domain"="Pfam")
+  head(sigp.pfam)
+```
 
