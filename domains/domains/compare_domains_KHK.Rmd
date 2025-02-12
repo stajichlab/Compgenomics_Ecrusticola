@@ -14,7 +14,9 @@ library(ggforestplot)
 library(viridis)
 library(colorblindr)
 library(patchwork)
-
+library(igraph)
+library(ggraph)
+library(tidyverse)
 ```
 
 # Part A: CAZY 
@@ -183,7 +185,7 @@ cazy_plot <- ggplot(data = other_data, aes(y = reorder(Domain, Fold), x = Genome
         axis.text.y = element_text(size = 15),  # Y-axis text size
         legend.position = "right") +  # Legend position
   ylab("Domain") +  # Y-axis label
-  scale_color_manual(values = c("Up" = "#127852", "Equal" = "#8B8588", "Down" = "#FF0000")) +  # Custom colors for Direction
+  scale_color_manual(values = c("Up" = "#004488", "Equal" = "#DDAA33", "Down" = "#BB5566")) +  # Custom colors for Direction
   labs(color = "Direction\nvs. median", size = "Significant\nDifferences") +  # Labels for legend
   coord_flip() +  # Flip coordinates
   guides(color = guide_legend(override.aes = list(size = 3), order = 1))  # Adjust legend appearance
@@ -206,14 +208,12 @@ cazy_bar_plot <- ggplot(diff_data, aes(x = reorder(Domain, Diff), y = Diff, fill
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.95, size = 12),
         axis.text.y = element_text(size = 12),
         legend.position = "none") +
-  scale_fill_manual(values = c("TRUE" = "#127852", "FALSE" = "#FF0000")) +  # Green for increase, red for decrease
+  scale_fill_manual(values = c("TRUE" = "#004488", "FALSE" = "#BB5566")) +  # Green for increase, red for decrease
   labs(x = "Pfam Domain", y = "ΔCount (E. crusticola - Genus Mean)") +
   coord_flip()
 
 # Show the plot
 
-cazy_comb <- cazy_bar_plot + cazy_plot
-cazy_comb
 #ggsave(p, filename = "exophiala_crusticola_CAZY_plot_multipannel.png", width = 20, height = 10)
 
 ```
@@ -335,7 +335,7 @@ pfam.uplt
 grid.text("Pfam UpSet Plot",x = 0.65, y=0.95, gp=gpar(fontsize=20))
 ```
 
-#### 11
+#### 11: enrichment analysis of pfam domains across genomes
 ```{R}
 enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.01){
   out=data.frame()
@@ -361,31 +361,127 @@ enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.01){
 pfam.res=enrich(pfam.dat, var="Pfam", group="Genome")
 
 ```
+#### 12: Plot enrichment using network analysis
 
 ```{R}
-library(igraph)
-library(ggraph)
-library(tidyverse)
-
 # Convert the edge list into an igraph object
 edges <- pfam.res[, c("group1", "group2", "Domain")]  # Include Domain column
 g <- graph_from_data_frame(edges, directed = FALSE)
 
+# Define a custom color palette
+pallette <- c("#F5793A", "#A95AA1", "#85C0F9", "#0F2080")
+
 # Prepare the edges data with the -log10(p-value) for edge thickness
-# Assign log_p and Domain names directly to the edges of the graph
 E(g)$log_p <- -log10(pfam.res$p.value)
 E(g)$domain <- pfam.res$Domain  # Add Domain information to edges
 
 # Create the network plot with ggplot2-style syntax
-f <- ggraph(g, layout = "fr") +  # Using "fr" layout for force-directed layout
+network <- ggraph(g, layout = "fr") +  # Using "fr" layout for force-directed layout
   geom_edge_link(aes(edge_alpha = log_p, edge_width = log_p, color = domain)) +  # Edge color based on Domain
-  geom_node_point(size = 8, color = "steelblue") +  # Node size and color
+  geom_node_point(size = 12, color = "darkgrey") +  # Node size and color
   geom_node_text(aes(label = name), size = 5, color = "black", repel = TRUE) +  # Node labels
   theme_void() +  # Remove grid lines and background
-  scale_edge_color_brewer(palette = "Set1") +  # Use a vibrant color palette
+  scale_edge_color_manual(values = pallette) +  # Use custom color palette
   scale_edge_alpha(range = c(0.5, 1)) +  # Adjust transparency for more vivid edges
-  scale_edge_width(range = c(1, 5)) +  # Adjust edge thickness for better visibility
-  labs(title = "Pfam Domain Enrichment Network", subtitle = "Edge width represents -log10(p-value)", color = "Pfam Domain")
+  scale_edge_width(range = c(1, 5))  # Adjust edge thickness for better visibility
 
-f 
+   # Adjust edge thickness for better visibility
+ # labs(title = "Pfam Domain Enrichment Network", subtitle = "Edge width represents -log10(p-value)", color = "Pfam Domain")
+
+# Save the plot as a PNG file
+#ggsave("pfam_domain_enrichment_network.png", plot = f, width = 6, height = 6)
+
+
+```
+
+#### 13: determine fold change for pfam domains in Exophiala_crusticola
+```{R}
+pfam.meta=pfam.dat %>%
+  select(Pfam, Genome, Count) %>%
+  rename(Domain="Pfam") %>%
+  group_by(Domain) %>%
+  mutate(avg=median(Count), Fold=ifelse((Count+avg)>0, Count/avg, 0),
+         Direction=ifelse(Fold>1 | Fold==Inf, "Up", ifelse(Fold==1 | Fold==0, ifelse(Count<avg, "Down", "Equal"), "Down"))) %>%
+  mutate(Fold=ifelse(Direction=="Down", 1/Fold, Fold))
+```
+#### 14: plot the fold change across genomes for crusticola and others for pfam vs median
+
+```{r}
+
+# print only values above 2 fold in genome E crusticola
+Ecrusticola_pfam <- pfam.meta %>% filter(Genome=="Exophiala_crusticola" & Fold>2)
+
+# get counts for all the genomes for the domains in CTH in d, then filter out the domains in CTH
+other_data_pfam <- pfam.meta %>% filter(Domain %in% Ecrusticola_pfam$Domain) # %>% filter(Genome != "CTH")
+
+pfam_plot <- ggplot(data = other_data_pfam, aes(y = reorder(Domain, Fold), x = Genome, color = Direction, size = Fold)) +
+  geom_point(alpha = 0.8) +  # Points for other genomes
+  geom_stripes(inherit.aes = FALSE, aes(y = reorder(Domain, Fold)), odd = "#33333333", even = "#00000000") +  # Add striped background
+  theme_minimal() +  # Base theme
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.95, size = 15),  # Rotate x-axis text
+        axis.text.y = element_text(size = 15),  # Y-axis text size
+        legend.position = "right") +  # Legend position
+  ylab("Domain") +  # Y-axis label
+  scale_color_manual(values = c("Up" = "#004488", "Equal" = "#DDAA33", "Down" = "#BB5566")) +  # Custom colors for Direction
+  labs(color = "Direction\nvs. median", size = "Significant\nDifferences") +  # Labels for legend
+  coord_flip() +  # Flip coordinates
+  guides(color = guide_legend(override.aes = list(size = 3), order = 1))  # Adjust legend appearance
+
+# Show the plot
+print(pfam_plot)
+
+```
+##### 10: make multifacet plot with bar
+```{R} 
+# Calculate difference from genus mean
+diff_data_pfam <- Ecrusticola_pfam %>%
+  filter(Genome == "Exophiala_crusticola") %>%
+  mutate(Diff = Count - avg)  # ΔCount = Count - avg
+
+# Create the bar plot
+pfam_bar_plot <- ggplot(diff_data_pfam, aes(x = reorder(Domain, Diff), y = Diff, fill = Diff > 0)) +
+  geom_col() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 0.95, size = 12),
+        axis.text.y = element_text(size = 12),
+        legend.position = "none") +
+  scale_fill_manual(values = c("TRUE" = "#004488", "FALSE" = "#BB5566")) +  # Green for increase, red for decrease
+  labs(x = "Pfam Domain", y = "ΔCount (E. crusticola - Genus Mean)") +
+  coord_flip()
+
+# Show the plot
+pfam_bar_plot
+```
+
+
+```{R} 
+
+  # plot unique Pfam domains for CTH 
+  d <- pfam.unique %>% filter(Genome=="Exophiala_crusticola")
+  print(d, n=100)
+
+# take list of unique Pfam domains for CTH and convert to a dataframe where Pfam domains are rows
+pfam.unique2=pfam.unique %>% filter(Genome=="Exophiala_crusticola") %>% select(pfam) %>% unnest(pfam)
+
+# join the pfam domains with the counts from the pfam.counts.dom dataframe, extract only value from Count column
+pfam.unique3=pfam.unique2 %>% left_join(pfam.counts.acc, by=c("pfam"="Pfam"))
+print(pfam.unique3, n=100)
+
+# plot the unique Pfam domains for CTH with counts
+library(ggplot2)
+
+# Create a bar plot
+
+tiger <- ggplot(pfam.unique3, aes(x = reorder(pfam, Count), y = Count, fill = Genome)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  coord_flip() +  # Flip coordinates for better visibility
+  labs(title = "Unique Pfam Domains in Exophiala crusticola",
+       x = "Protein Domains",
+       y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  scale_fill_manual(values = c("#DDAA33"))
+multiplot <- (pfam_bar_plot | pfam_plot) / (cazy_bar_plot | cazy_plot) / (network | tiger)
+
+ggsave(multiplot, filename = "exophiala_crusticola_multipannel.png", width = 30, height = 40)
 ```
