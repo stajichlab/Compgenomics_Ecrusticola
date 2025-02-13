@@ -103,56 +103,8 @@ print(cazy.unique[cazy.unique$Genome=="Exophiala_crusticola",]$cazy)
 ##### Note: expected to find more unique cazy domains... This one might be involved in EPS production but not really sure. Probably it's a function of copy
 
 #### 8: function for enrichment of cazy
-```{R}
-# Load necessary libraries
 
-# Define target genome
-target_genome <- "Exophiala_lecanii-corni"
-
-# Total number of genomes
-total_genomes <- unique(cazy.dat$n_Genomes)
-
-# Initialize results dataframe
-results <- data.frame(CAZY = character(), p_value = numeric(), odds_ratio = numeric(), stringsAsFactors = FALSE)
-
-# Iterate over each unique CAZy gene family
-for (gene in unique(cazy.dat$CAZY)) {
-  
-  # Number of times the gene appears in the target genome
-  a <- sum(cazy.dat$Count[cazy.dat$Genome == target_genome & cazy.dat$CAZY == gene])
-  
-  # Number of times the gene is absent in the target genome
-  b <- sum(cazy.dat$Count[cazy.dat$Genome == target_genome & cazy.dat$CAZY != gene])
-  
-  # Number of times the gene appears in other genomes
-  c <- sum(cazy.dat$Count[cazy.dat$Genome != target_genome & cazy.dat$CAZY == gene])
-  
-  # Number of times the gene is absent in other genomes
-  d <- sum(cazy.dat$Count[cazy.dat$Genome != target_genome & cazy.dat$CAZY != gene])
-  
-  # Create contingency table
-  contingency_table <- matrix(c(a, b, c, d), nrow = 2, byrow = TRUE)
-  
-  # Perform Fisher’s exact test
-  test <- fisher.test(contingency_table)
-  
-  # Store results
-  results <- rbind(results, data.frame(CAZY = gene, p_value = test$p.value, odds_ratio = test$estimate))
-}
-
-# View results
-print(results)
-
-# Adjust p-values for multiple testing (optional)
-results$adjusted_p <- p.adjust(results$p_value, method = "BH")
-
-# View results sorted by significance
-results <- results %>% arrange(adjusted_p)
-print(results)
-
-```
-
-
+##### Note: Removed this part
 ##### Note: nothing was significant for E crusticola compared to genus members, have to compare to other outgroups
 ##### Note: I can try doing fisher's exact test between only a couple genomes to see if that changes things, for example E crusticola and E dermatidis. 
 ##### I can also use the function from the original script once I include outgroups since it seemed to work for comparing all genes from all genomes
@@ -262,7 +214,6 @@ pfam=pfam.raw %>%
 head(pfam, 20)
 ```
 #### 6: build dataframe with counts of secreted/not secreted predictions for each domain
-
 ```{r}
 sigp.pfam=pfam %>%
   left_join(sigp2, by = "Accession") %>%
@@ -335,7 +286,7 @@ pfam.uplt
 grid.text("Pfam UpSet Plot",x = 0.65, y=0.95, gp=gpar(fontsize=20))
 ```
 
-#### 11: enrichment analysis of pfam domains across genomes
+#### 11: enrichment analysis of pfam domains across genomes from Jason's paper
 ```{R}
 enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.01){
   out=data.frame()
@@ -361,22 +312,21 @@ enrich = function(dat, var='DOMAIN', group="Genome", thresh=0.01){
 pfam.res=enrich(pfam.dat, var="Pfam", group="Genome")
 
 ```
-#### 12: Plot enrichment using network analysis
+#### 12: Plot enrichment plot using network analysis
 
 ```{R}
 # Convert the edge list into an igraph object
 edges <- pfam.res[, c("group1", "group2", "Domain")]  # Include Domain column
-g <- graph_from_data_frame(edges, directed = FALSE)
+graph <- graph_from_data_frame(edges, directed = FALSE)
 
 # Define a custom color palette
 pallette <- c("#F5793A", "#A95AA1", "#85C0F9", "#0F2080")
 
 # Prepare the edges data with the -log10(p-value) for edge thickness
-E(g)$log_p <- -log10(pfam.res$p.value)
-E(g)$domain <- pfam.res$Domain  # Add Domain information to edges
+E(graph)$log_p <- -log10(pfam.res$p.value)
+E(graph)$domain <- pfam.res$Domain  # Add Domain information to edges
 
-# Create the network plot with ggplot2-style syntax
-network <- ggraph(g, layout = "fr") +  # Using "fr" layout for force-directed layout
+network <- ggraph(graph, layout = "fr") +  # Using "fr" layout for force-directed layout
   geom_edge_link(aes(edge_alpha = log_p, edge_width = log_p, color = domain)) +  # Edge color based on Domain
   geom_node_point(size = 12, color = "darkgrey") +  # Node size and color
   geom_node_text(aes(label = name), size = 5, color = "black", repel = TRUE) +  # Node labels
@@ -384,13 +334,6 @@ network <- ggraph(g, layout = "fr") +  # Using "fr" layout for force-directed la
   scale_edge_color_manual(values = pallette) +  # Use custom color palette
   scale_edge_alpha(range = c(0.5, 1)) +  # Adjust transparency for more vivid edges
   scale_edge_width(range = c(1, 5))  # Adjust edge thickness for better visibility
-
-   # Adjust edge thickness for better visibility
- # labs(title = "Pfam Domain Enrichment Network", subtitle = "Edge width represents -log10(p-value)", color = "Pfam Domain")
-
-# Save the plot as a PNG file
-#ggsave("pfam_domain_enrichment_network.png", plot = f, width = 6, height = 6)
-
 
 ```
 
@@ -431,7 +374,7 @@ pfam_plot <- ggplot(data = other_data_pfam, aes(y = reorder(Domain, Fold), x = G
 print(pfam_plot)
 
 ```
-##### 10: make multifacet plot with bar
+##### 10: make bar plot for Exophiala crusticola pfam domains to show count differences
 ```{R} 
 # Calculate difference from genus mean
 diff_data_pfam <- Ecrusticola_pfam %>%
@@ -452,27 +395,20 @@ pfam_bar_plot <- ggplot(diff_data_pfam, aes(x = reorder(Domain, Diff), y = Diff,
 # Show the plot
 pfam_bar_plot
 ```
-
+##### 11: make bar plot for unique pfam domains in E crusticola 
 
 ```{R} 
 
-  # plot unique Pfam domains for CTH 
-  d <- pfam.unique %>% filter(Genome=="Exophiala_crusticola")
-  print(d, n=100)
-
-# take list of unique Pfam domains for CTH and convert to a dataframe where Pfam domains are rows
+# take list of unique Pfam domains for crusticola and convert to a dataframe where Pfam domains are rows
 pfam.unique2=pfam.unique %>% filter(Genome=="Exophiala_crusticola") %>% select(pfam) %>% unnest(pfam)
 
 # join the pfam domains with the counts from the pfam.counts.dom dataframe, extract only value from Count column
 pfam.unique3=pfam.unique2 %>% left_join(pfam.counts.acc, by=c("pfam"="Pfam"))
 print(pfam.unique3, n=100)
 
-# plot the unique Pfam domains for CTH with counts
-library(ggplot2)
-
 # Create a bar plot
 
-tiger <- ggplot(pfam.unique3, aes(x = reorder(pfam, Count), y = Count, fill = Genome)) +
+unique_pfam <- ggplot(pfam.unique3, aes(x = reorder(pfam, Count), y = Count, fill = Genome)) +
   geom_bar(stat = "identity", position = "dodge") +
   coord_flip() +  # Flip coordinates for better visibility
   labs(title = "Unique Pfam Domains in Exophiala crusticola",
@@ -481,7 +417,75 @@ tiger <- ggplot(pfam.unique3, aes(x = reorder(pfam, Count), y = Count, fill = Ge
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
   scale_fill_manual(values = c("#DDAA33"))
-multiplot <- (pfam_bar_plot | pfam_plot) / (cazy_bar_plot | cazy_plot) / (network | tiger)
+```
+
+##### 12: make multipannel plot for E crusticola domains
+
+```{R} 
+multiplot <- (pfam_bar_plot | pfam_plot) / (cazy_bar_plot | cazy_plot) / (network | unique_pfam)
 
 ggsave(multiplot, filename = "exophiala_crusticola_multipannel.png", width = 30, height = 40)
+```
+
+##### 13: make multipannel plot for E crusticola domains
+```{R} 
+library(ggplot2)
+library(dplyr)
+
+# Convert 'Down' values to negative fold change
+pfam.meta_heat <- other_data_pfam %>%
+  mutate(Fold = ifelse(Direction == "Down", -Fold, Fold))
+
+# Create the heatmap
+pfam_heatmap <- ggplot(data = pfam.meta_heat, aes(x = Genome, y = reorder(Domain, Fold), fill = Fold)) +
+  geom_tile(color = "white") +  # Heatmap with white gridlines
+  geom_text(aes(label = Count), color = "black", size = 5) +  # Add count values inside cells
+  scale_fill_gradient2(low = "#2166AC", mid = "#DDAA33", high = "#B2182B", midpoint = 0) +  
+  theme_minimal() +  
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 15),  
+    axis.text.y = element_text(size = 15),
+    legend.position = "right"
+  ) +
+  labs(
+    x = "Genome",
+    y = "Domain",
+    fill = "Fold Change"
+  )
+
+# Show the plot
+print(pfam_heatmap)
+
+```
+
+##### 13: make multipannel plot for E crusticola cazy domains
+
+```{R} 
+
+# Convert 'Down' values to negative fold change
+cazy.meta_heat <- other_data %>%
+  mutate(Fold = ifelse(Direction == "Down", -Fold, Fold))
+
+# Create the heatmap
+cazy_heatmap <- ggplot(data = cazy.meta_heat, aes(x = Genome, y = reorder(Domain, Fold), fill = Fold)) +
+  geom_tile(color = "white") +  # Heatmap with white gridlines
+  geom_text(aes(label = Count), color = "black", size = 5) +  # Add count values inside cells
+  scale_fill_gradient2(low = "#2166AC", mid = "#DDAA33", high = "#B2182B", midpoint = 0) +  
+  theme_minimal() +  
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 15),  
+    axis.text.y = element_text(size = 15),
+    legend.position = "right"
+  ) +
+  labs(
+    x = "Genome",
+    y = "Domain",
+    fill = "Fold Change"
+  )
+
+# Show the plot
+print(cazy_heatmap)
+multiplot2 <- (pfam_heatmap | cazy_heatmap) + plot_annotation(tag_levels = 'A')
+ggsave(multiplot2, filename = "exophiala_crusticola_heatmaps.png", width = 30, height = 15)
+
 ```
